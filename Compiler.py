@@ -1,7 +1,7 @@
 # imports
 import sys
 
-if (len(sys.argv) >= 3):
+if (len(sys.argv) >= 4):
     print("file: " + sys.argv[0])
     print("<filename>: " + sys.argv[1])
     print("[-flag]: " + sys.argv[2])
