@@ -1,11 +1,36 @@
 # imports
 import sys
 
-if (len(sys.argv) >= 4):
+def output(outname):
+    print(outname)
+
+def target(stage):
+    print(stage)
+
+def opt(opt_stage):
+    print(opt_stage)
+
+def debug(stage):
+    print(stage)
+
+if (len(sys.argv) >= 4 and len(sys.argv)%2==0):
+    #fixed
     print("file: " + sys.argv[0])
     print("<filename>: " + sys.argv[1])
-    print("[-flag]: " + sys.argv[2])
-    print("[option value]: " + sys.argv[3])
+
+    #variable
+    for i in range(2,len(sys.argv)):
+        if(i%2==0):
+            if(sys.argv[i]=='-o'):
+                output(sys.argv[i+1])
+            elif(sys.argv[i]=='-target'):
+                target(sys.argv[i+1])
+            elif(sys.argv[i]=='-opt'):
+                opt(sys.argv[i+1])
+            elif(sys.argv[i]=='-debug'):
+                debug(sys.argv[i+1])
+            else:
+                print('invalid param')
 
 elif (len(sys.argv) == 2):
     print("Show Help\n"
