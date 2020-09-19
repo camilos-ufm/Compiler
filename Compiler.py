@@ -1,11 +1,11 @@
-#imports
+# imports
 import sys
 
-if(len(sys.argv)==3):
+if (len(sys.argv) == 3):
     print("file: " + sys.argv[0])
     print("[option]: " + sys.argv[1])
     print("<filename>: " + sys.argv[2])
-elif(len(sys.argv)==2):
-    print("mostrar ayuda")
+elif (len(sys.argv) == 2):
+    print("Show Help.")
 else:
-    print("falta param option")
+    print("'option' parameter missing.")
