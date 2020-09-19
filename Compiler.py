@@ -1,6 +1,7 @@
 # imports
 import sys
 import scanner.Scanner as Scanner
+import utils.ReadFile as ReadFile
 
 
 def showHelp():
@@ -14,6 +15,10 @@ def showHelp():
 def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
     sc = Scanner.Scanner()
     sc.holaScanner()
+    rf = ReadFile.ReadFile(f"decafs/{input_file}.decaf")
+    print(rf.file_to_string())
+
+
     print(input_file, file_name, stage, opt_stage, debug_stage)
 
 
