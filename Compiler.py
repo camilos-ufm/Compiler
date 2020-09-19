@@ -9,27 +9,30 @@ DEBUG_STAGE = ""
 
 def output(outname):
     FILE_NAME = outname
-    # print(outname)
+    print(FILE_NAME)
 
 
 def target(stage):
     # scan, parse, ast, semantic, irt, codegen
     STAGE = stage
-    # print(stage)
+    print(STAGE)
 
 
 def opt(opt_stage):
     OPT_STAGE = opt_stage
-    # print(opt_stage)
+    print(OPT_STAGE)
 
 
 def debug(stage):
     DEBUG_STAGE = stage
-    # print(stage)
+    print(DEBUG_STAGE)
 
+def runCompiler():
+    print(FILE_NAME, STAGE, OPT_STAGE, DEBUG_STAGE)
 
 if __name__ == "__main__":
     if (len(sys.argv) >= 4 and len(sys.argv) % 2 == 0):
+        valid = True
         # fixed
         print("file: " + sys.argv[0])
         print("<filename>: " + sys.argv[1])
@@ -39,6 +42,7 @@ if __name__ == "__main__":
             if(i % 2 == 0):
                 if(sys.argv[i] == '-o'):
                     output(sys.argv[i+1])
+                    print(FILE_NAME)
                 elif(sys.argv[i] == '-target'):
                     target(sys.argv[i+1])
                 elif(sys.argv[i] == '-opt'):
@@ -46,7 +50,10 @@ if __name__ == "__main__":
                 elif(sys.argv[i] == '-debug'):
                     debug(sys.argv[i+1])
                 else:
+                    valid = False
                     print('invalid param')
+        if(valid):
+            runCompiler()
 
     elif (len(sys.argv) == 2):
         print("Show Help\n"
