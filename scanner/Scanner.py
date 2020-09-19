@@ -1,2 +1,3 @@
 class Scanner:
-    print("DESDE SCANNER")
+    def holaScanner(self):
+        print("DESDE SCANNER")
