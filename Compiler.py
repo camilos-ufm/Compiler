@@ -1,14 +1,26 @@
 # imports
 import sys
+import scanner.Scanner as Scanner
+import utils.ReadFile as ReadFile
+
 
 def showHelp():
     print("Show Help\n"
-        "-o <outname>     Escribir el output a <outname>\n"
-        "-target <stage>  <stage> es uno de los siguientes elementos: scan, parse, ast, semantic, irt, codegen\n"
-        "-opt <opt_stage> <opt_stage> es uno de: constant, algebraic\n"
-        "-debug <stage>   Debugging <stage>\n")
+          "-o <outname>     Escribir el output a <outname>\n"
+          "-target <stage>  <stage> es uno de los siguientes elementos: scan, parse, ast, semantic, irt, codegen\n"
+          "-opt <opt_stage> <opt_stage> es uno de: constant, algebraic\n"
+          "-debug <stage>   Debugging <stage>\n")
+
+
 def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
+    sc = Scanner.Scanner()
+    sc.holaScanner()
+    rf = ReadFile.ReadFile(f"decafs/{input_file}.decaf")
+    print(rf.file_to_string())
+
+
     print(input_file, file_name, stage, opt_stage, debug_stage)
+
 
 if __name__ == "__main__":
     input_file = ""
