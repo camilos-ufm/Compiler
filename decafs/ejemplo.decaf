@@ -1,7 +1,7 @@
 class Program {
         int x; int y[5];
         void main() {
-                    if(x>0) {
+                    if (x>0) {
                         x += 1;
                     }
                     return;
