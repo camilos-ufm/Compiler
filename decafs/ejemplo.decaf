@@ -5,6 +5,11 @@ class Program { //hola
         void main() {
                     if (x>0) {
                         x += 1;
+                        /* hola
+    hola
+            SOMOS COMMENT
+    hola
+*/
                     }
                     return;
 /* hola
