@@ -5,5 +5,5 @@ class Symbol:
         self.name = name
         self.regEx = regEx
 
-    def pretty_print(self)
+    def pretty_print(self):
         print("<Type: " + self.type_num + ", Name: " + self.name+">")
