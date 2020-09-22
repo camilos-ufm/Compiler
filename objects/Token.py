@@ -6,7 +6,7 @@ class Token:
         self.line = line
 
     def pretty_print(self):
-        pretty_string = "<Type: " + self.symbol_type.name + ", Line: " + str(self.line)+">"
+        pretty_string = "~Type: " + self.symbol_type.name + ", Line: " + str(self.line)
         if(self.value != ""):
-            pretty_string += ", Value: " + self.value
+            pretty_string += ", Value: " + self.value+"~"
         print(pretty_string)
