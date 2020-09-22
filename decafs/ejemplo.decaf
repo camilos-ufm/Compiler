@@ -3,8 +3,9 @@
 class Program { //hola
         int x; int y[5];
         void main() {
-                    if (x>0) {
-                        x += 1;
+                    if ( x>0) {
+                        x+=1;
+                        x=y+1;
                         /* hola
     hola
             SOMOS COMMENT
