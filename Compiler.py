@@ -15,9 +15,9 @@ def showHelp():
 def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
     sc = Scanner.Scanner()
     sc.holaScanner()
-    rf = ReadFile.ReadFile(f"decafs/{input_file}.decaf")
+    rf = ReadFile.ReadFile()
     # print(rf.file_to_string())
-
+    rf.set_file(f"decafs/{input_file}.decaf")
     sc.scan(rf.file_to_string())
     print(input_file, file_name, stage, opt_stage, debug_stage)
 
