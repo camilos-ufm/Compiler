@@ -1,2 +1,2 @@
-    class Algebraic:
-        pass
+class Algebraic:
+    pass
