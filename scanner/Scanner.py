@@ -50,5 +50,95 @@ class Scanner:
                 if(word=="Program"):
                     tk = Token.Token(self.SYMBOL_LIST[2], object_list[1])
                     token_list.append(tk)
-                #print(word, object_list[1])
+                if(word=="{"):
+                    tk = Token.Token(self.SYMBOL_LIST[3], object_list[1])
+                    token_list.append(tk)
+                if(word=="}"):
+                    tk = Token.Token(self.SYMBOL_LIST[4], object_list[1])
+                    token_list.append(tk)
+                if(word==","):
+                    tk = Token.Token(self.SYMBOL_LIST[5], object_list[1])
+                    token_list.append(tk)
+                if(word=="["):
+                    tk = Token.Token(self.SYMBOL_LIST[6], object_list[1])
+                    token_list.append(tk)
+                if(word=="]"):
+                    tk = Token.Token(self.SYMBOL_LIST[7], object_list[1])
+                    token_list.append(tk)
+                if(word==";"):
+                    tk = Token.Token(self.SYMBOL_LIST[8], object_list[1])
+                    token_list.append(tk)
+                if(word=="type"):
+                    tk = Token.Token(self.SYMBOL_LIST[9], object_list[1])
+                    token_list.append(tk)
+                if(word=="void"):
+                    tk = Token.Token(self.SYMBOL_LIST[10], object_list[1])
+                    token_list.append(tk)
+                if(word=="if"):
+                    tk = Token.Token(self.SYMBOL_LIST[11], object_list[1])
+                    token_list.append(tk)
+                if(word=="("):
+                    tk = Token.Token(self.SYMBOL_LIST[12], object_list[1])
+                    token_list.append(tk)
+                if(word==")"):
+                    tk = Token.Token(self.SYMBOL_LIST[13], object_list[1])
+                    token_list.append(tk)
+                if(word=="else"):
+                    tk = Token.Token(self.SYMBOL_LIST[14], object_list[1])
+                    token_list.append(tk)
+                if(word=="for"):
+                    tk = Token.Token(self.SYMBOL_LIST[15], object_list[1])
+                    token_list.append(tk)
+                if(word=="return"):
+                    tk = Token.Token(self.SYMBOL_LIST[16], object_list[1])
+                    token_list.append(tk)
+                if(word=="break"):
+                    tk = Token.Token(self.SYMBOL_LIST[17], object_list[1])
+                    token_list.append(tk)
+                if(word=="continue"):
+                    tk = Token.Token(self.SYMBOL_LIST[18], object_list[1])
+                    token_list.append(tk)
+                if(word=="asign_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[19], object_list[1])
+                    token_list.append(tk)
+                if(word=="callout"):
+                    tk = Token.Token(self.SYMBOL_LIST[20], object_list[1])
+                    token_list.append(tk)
+                if(word=="arit_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[21], object_list[1])
+                    token_list.append(tk)
+                if(word=="rel_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[22], object_list[1])
+                    token_list.append(tk)
+                if(word=="eq_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[23], object_list[1])
+                    token_list.append(tk)
+                if(word=="cond_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[24], object_list[1])
+                    token_list.append(tk)
+                if(word=="bool_literal"):
+                    tk = Token.Token(self.SYMBOL_LIST[25], object_list[1])
+                    token_list.append(tk)
+                if(word=="char_literal"):
+                    tk = Token.Token(self.SYMBOL_LIST[26], object_list[1])
+                    token_list.append(tk)
+                if(word=="string_literal"):
+                    tk = Token.Token(self.SYMBOL_LIST[27], object_list[1])
+                    token_list.append(tk)
+                if(word=="int_literal"):
+                    tk = Token.Token(self.SYMBOL_LIST[28], object_list[1])
+                    token_list.append(tk)
+                if(word=="id"):
+                    tk = Token.Token(self.SYMBOL_LIST[29], object_list[1])
+                    token_list.append(tk)
+                if(word=="minus_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[30], object_list[1])
+                    token_list.append(tk)
+                if(word=="exclamation_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[31], object_list[1])
+                    token_list.append(tk)
+                if(word=="equal_op"):
+                    tk = Token.Token(self.SYMBOL_LIST[32], object_list[1])
+                    token_list.append(tk)
+                
         return token_list
