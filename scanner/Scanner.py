@@ -35,7 +35,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(26, "char_literal", "'.'"))
     SYMBOL_LIST.append(Symbol.Symbol(27, "string_literal", ""))
     SYMBOL_LIST.append(Symbol.Symbol(28, "int_literal", ""))
-    SYMBOL_LIST.append(Symbol.Symbol(29, "id", ""))
+    SYMBOL_LIST.append(Symbol.Symbol(29, "identifier", ""))
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
     SYMBOL_LIST.append(Symbol.Symbol(32, "equal_op", "="))
@@ -68,7 +68,7 @@ class Scanner:
                 if(word==";"):
                     tk = Token.Token(self.SYMBOL_LIST[8], object_list[1])
                     token_list.append(tk)
-                if(word=="type"):
+                if(word=="boolean" or word=="int"):
                     tk = Token.Token(self.SYMBOL_LIST[9], object_list[1])
                     token_list.append(tk)
                 if(word=="void"):
@@ -98,25 +98,25 @@ class Scanner:
                 if(word=="continue"):
                     tk = Token.Token(self.SYMBOL_LIST[18], object_list[1])
                     token_list.append(tk)
-                if(word=="asign_op"):
+                if(word=="+=" or word=="-="):
                     tk = Token.Token(self.SYMBOL_LIST[19], object_list[1])
                     token_list.append(tk)
                 if(word=="callout"):
                     tk = Token.Token(self.SYMBOL_LIST[20], object_list[1])
                     token_list.append(tk)
-                if(word=="arit_op"):
+                if(word=="+" or word=="*" or word == "/" or word = "%"):
                     tk = Token.Token(self.SYMBOL_LIST[21], object_list[1])
                     token_list.append(tk)
-                if(word=="rel_op"):
+                if(word=="<" or word == ">" or word == ">=" or word == "<="):
                     tk = Token.Token(self.SYMBOL_LIST[22], object_list[1])
                     token_list.append(tk)
-                if(word=="eq_op"):
+                if(word=="==" or word == "!="):
                     tk = Token.Token(self.SYMBOL_LIST[23], object_list[1])
                     token_list.append(tk)
                 if(word=="cond_op"):
                     tk = Token.Token(self.SYMBOL_LIST[24], object_list[1])
                     token_list.append(tk)
-                if(word=="bool_literal"):
+                if(word=="true" or word=="false"):
                     tk = Token.Token(self.SYMBOL_LIST[25], object_list[1])
                     token_list.append(tk)
                 if(word=="char_literal"):
@@ -128,16 +128,16 @@ class Scanner:
                 if(word=="int_literal"):
                     tk = Token.Token(self.SYMBOL_LIST[28], object_list[1])
                     token_list.append(tk)
-                if(word=="id"):
+                if(word=="identifier"):
                     tk = Token.Token(self.SYMBOL_LIST[29], object_list[1])
                     token_list.append(tk)
-                if(word=="minus_op"):
+                if(word=="-"):
                     tk = Token.Token(self.SYMBOL_LIST[30], object_list[1])
                     token_list.append(tk)
-                if(word=="exclamation_op"):
+                if(word=="!"):
                     tk = Token.Token(self.SYMBOL_LIST[31], object_list[1])
                     token_list.append(tk)
-                if(word=="equal_op"):
+                if(word=="="):
                     tk = Token.Token(self.SYMBOL_LIST[32], object_list[1])
                     token_list.append(tk)
                 
