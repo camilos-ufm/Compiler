@@ -1,10 +1,19 @@
-class Program {
+// comment 
+
+class Program { //hola
         int x; int y[5];
         void main() {
                     if (x>0) {
                         x += 1;
+                        /* hola
+    hola
+            SOMOS COMMENT
+    hola
+*/
                     }
                     return;
-
+/* hola
+    hola
+*/
         }
             }
