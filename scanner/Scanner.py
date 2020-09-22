@@ -1,11 +1,12 @@
 import objects.Symbol as Symbol
+import objects.Token as Token
 
 
 class Scanner:
     # symbol list cons
     SYMBOL_LIST = []
-    SYMBOL_LIST.append(Symbol.Symbol(100000, "holaname", "holaregex"))
-    SYMBOL_LIST.append(Symbol.Symbol(0, "Token no v\u00e1lido", ""))
+    #SYMBOL_LIST.append(Symbol.Symbol(100000, "holaname", "holaregex"))
+    SYMBOL_LIST.append(Symbol.Symbol(0, "Token no válido", ""))
     SYMBOL_LIST.append(Symbol.Symbol(1, "class", "class"))
     SYMBOL_LIST.append(Symbol.Symbol(2, "Program", "Program"))
     SYMBOL_LIST.append(Symbol.Symbol(3, "{", "{"))
@@ -40,8 +41,14 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(32, "equal_op", "="))
 
     def scan(self, input_string):
+        token_list = []
         for object_list in input_string:
             for word in object_list[0].split(" "):
-                print(word, object_list[1])
-
-        print(self.SYMBOL_LIST[0].regEx)
+                if(word=="class"):
+                    tk = Token.Token(self.SYMBOL_LIST[1], object_list[1])
+                    token_list.append(tk)
+                if(word=="Program"):
+                    tk = Token.Token(self.SYMBOL_LIST[2], object_list[1])
+                    token_list.append(tk)
+                #print(word, object_list[1])
+        return token_list
