@@ -48,6 +48,7 @@ if __name__ == "__main__":
                 else:
                     valid = False
                     print('invalid param')
+                    showHelp()
         if(valid):
             runCompiler(input_file, file_name, stage, opt_stage, debug_stage)
 
