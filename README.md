@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="cpu" src="<img src="https://img.icons8.com/bubbles/50/000000/code.png"/>"
+    <img alt="cpu" src="https://img.icons8.com/bubbles/50/000000/code.png" width="400">
   <br>🚀 OIKOS COMPILER <br>
 </h1>
 
