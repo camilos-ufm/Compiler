@@ -40,6 +40,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
 
     def scan(self, input_string):
+        error_list = []
         token_list = []
         for object_list in input_string:
             for word in object_list[0].split(" "):
@@ -118,12 +119,6 @@ class Scanner:
                 elif(word=="true" or word=="false"):
                     tk = Token.Token(self.SYMBOL_LIST[25], object_list[1], word)
                     token_list.append(tk)
-                elif(word=="char_literal"):
-                    tk = Token.Token(self.SYMBOL_LIST[26], object_list[1], word)
-                    token_list.append(tk)
-                elif(word=="string_literal"):
-                    tk = Token.Token(self.SYMBOL_LIST[27], object_list[1], word)
-                    token_list.append(tk)
                 elif(word=="int_literal"):
                     tk = Token.Token(self.SYMBOL_LIST[28], object_list[1], word)
                     token_list.append(tk)
@@ -137,7 +132,32 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[31], object_list[1], word)
                     token_list.append(tk)
                 else:
+                    #TODO:
+                    # regEx for ID ([alpha] [alpha_num]*)
+                        # alpha = [a-zA-Z]
+                        # alpha_num = [alpha] or [digit]
+                            # digit = [0-9]
+                    # regEx for hex_digit
+                        # [digit] or [a-fA-F]
+                    # regex for int_literal (hex_literal or decimal_literal)
+                        # hex_literal = 0x [hex_digit] [hex_digit]*
+                        # decimal_literal = [digit] [digit]*
+                    # condition for string_literal
+                        # " [char]* "
+                    # condition for char_literal
+                        # ' [char] '
+                    if ("\"" in word):
+                        if(word[-1]=="\""):
+                            tk = Token.Token(self.SYMBOL_LIST[27], object_list[1], word)
+                            token_list.append(tk)
+                        else:
+                            error_list.append(f"wrong string, missing one \" in line {object_list[1]}")
+                    if ("\'" in word):
+                        if(word[-1]=="\'" and len(word)==3):
+                            tk = Token.Token(self.SYMBOL_LIST[26], object_list[1], word)
+                            token_list.append(tk)
+                        else:
+                            error_list.append(f"wrong char, missing one \' or too many chars in line {object_list[1]}")
                     print("RIP TOKEN: " + word)
                 
-                
-        return token_list
+        return token_list, error_list
