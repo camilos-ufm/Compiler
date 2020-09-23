@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="cpu" src="https://github.com/camilos-ufm/Compiler/blob/Kath/compilerimage.png" width="400">
+    <img alt="cpu" src="<img src="https://img.icons8.com/bubbles/50/000000/code.png"/>" width="400">
   <br>🚀 OIKOS COMPILER <br>
 </h1>
 
