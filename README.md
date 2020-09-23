@@ -32,7 +32,7 @@ python Compiler.py <file_name>
 
 ```
 
-IMPORTANTE:
+**💡 IMPORTANTE** 
 - El archivo debe de estar en la carpeta decafs y debe de tener la extensión decaf
 
 # Flags
