@@ -11,4 +11,4 @@ class Token:
             pretty_string += ", Value: " + self.value+" ~"
         else:
             pretty_string += " ~"
-        print(pretty_string)
+        return pretty_string

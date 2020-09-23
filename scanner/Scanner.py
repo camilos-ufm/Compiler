@@ -39,92 +39,120 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
 
-    def scan(self, input_string):
+    def scan(self, input_string, debug):
         error_list = []
         token_list = []
         for object_list in input_string:
             for word in object_list[0].split(" "):
+                invalid_token = True
                 if(word=="class"):
                     tk = Token.Token(self.SYMBOL_LIST[1], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="Program"):
                     tk = Token.Token(self.SYMBOL_LIST[2], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="{"):
                     tk = Token.Token(self.SYMBOL_LIST[3], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="}"):
                     tk = Token.Token(self.SYMBOL_LIST[4], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word==","):
                     tk = Token.Token(self.SYMBOL_LIST[5], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="["):
                     tk = Token.Token(self.SYMBOL_LIST[6], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="]"):
                     tk = Token.Token(self.SYMBOL_LIST[7], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word==";"):
                     tk = Token.Token(self.SYMBOL_LIST[8], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="boolean" or word=="int"):
                     tk = Token.Token(self.SYMBOL_LIST[9], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="void"):
                     tk = Token.Token(self.SYMBOL_LIST[10], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="if"):
                     tk = Token.Token(self.SYMBOL_LIST[11], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="("):
                     tk = Token.Token(self.SYMBOL_LIST[12], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word==")"):
                     tk = Token.Token(self.SYMBOL_LIST[13], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="else"):
                     tk = Token.Token(self.SYMBOL_LIST[14], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="for"):
                     tk = Token.Token(self.SYMBOL_LIST[15], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="return"):
                     tk = Token.Token(self.SYMBOL_LIST[16], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="break"):
                     tk = Token.Token(self.SYMBOL_LIST[17], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="continue"):
                     tk = Token.Token(self.SYMBOL_LIST[18], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="+=" or word=="-="):
                     tk = Token.Token(self.SYMBOL_LIST[19], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="callout"):
                     tk = Token.Token(self.SYMBOL_LIST[20], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="+" or word=="*" or word == "/" or word == "%"):
                     tk = Token.Token(self.SYMBOL_LIST[21], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="<" or word == ">" or word == ">=" or word == "<="):
                     tk = Token.Token(self.SYMBOL_LIST[22], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="==" or word == "!=" or word == "="):
                     tk = Token.Token(self.SYMBOL_LIST[23], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="cond_op"):
                     tk = Token.Token(self.SYMBOL_LIST[24], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="true" or word=="false"):
                     tk = Token.Token(self.SYMBOL_LIST[25], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="-"):
                     tk = Token.Token(self.SYMBOL_LIST[30], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 elif(word=="!"):
                     tk = Token.Token(self.SYMBOL_LIST[31], object_list[1], word)
                     token_list.append(tk)
+                    invalid_token = False
                 else:
                     valid_word = False
                     #TODO:
@@ -147,25 +175,36 @@ class Scanner:
                         valid_word=True
                         tk = Token.Token(self.SYMBOL_LIST[29], object_list[1], word)
                         token_list.append(tk)
+                        invalid_token = False
                     
                     # INT_LITERAL
                     if(bool(re.match("(0[xX][0-9a-fA-F]+)|([0-9]+)", word))):
                         valid_word=True
                         tk = Token.Token(self.SYMBOL_LIST[28], object_list[1], word)
                         token_list.append(tk)
+                        invalid_token = False
 
                     if ("\"" in word):
                         if(word[-1]=="\""):
                             tk = Token.Token(self.SYMBOL_LIST[27], object_list[1], word)
                             token_list.append(tk)
+                            invalid_token = False
                         else:
                             error_list.append(f"wrong string, missing one \" in line {object_list[1]}")
                     if ("\'" in word):
                         if(word[-1]=="\'" and len(word)==3):
                             tk = Token.Token(self.SYMBOL_LIST[26], object_list[1], word)
                             token_list.append(tk)
+                            invalid_token = False
                         else:
                             error_list.append(f"wrong char, missing one \' or too many chars in line {object_list[1]}")
                     #print("RIP TOKEN: " + word)
-                
+                if(invalid_token):
+                    error_list.append("invalid token found in line " + str(object_list[1]))
+        if(debug):
+            for token in token_list:
+                print(token.pretty_print())
+            for error in error_list:
+                print(error)
+
         return token_list, error_list
