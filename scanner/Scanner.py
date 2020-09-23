@@ -204,7 +204,7 @@ class Scanner:
         if(debug):
             for token in token_list:
                 print(token.pretty_print())
-            for error in error_list:
-                print(error)
+        for error in error_list:
+            print("Lexical error: "+error)
 
         return token_list, error_list

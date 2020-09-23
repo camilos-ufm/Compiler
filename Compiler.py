@@ -60,7 +60,7 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
 if __name__ == "__main__":
     input_file = ""
     file_name = "out"
-    stage = "codegen"
+    stage = "scan"
     opt_stage = ""
     debug_stage = []
     if (len(sys.argv) >= 4 and len(sys.argv) % 2 == 0):
