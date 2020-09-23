@@ -172,7 +172,7 @@ class Scanner:
                         # ' [char] '
                     
                     # ID
-                    # if(bool(re.match("([a-zA-Z_]([a-zA-Z_][0-9])*)", word))):
+                    # if(bool(re.match("([a-zA-Z_]([a-zA-Z_]|[0-9])*)", word))):
                     dfa = Dfa.Dfa()
 
                     if(dfa.accepts("id", word)):
@@ -182,11 +182,22 @@ class Scanner:
                         invalid_token = False
 
                     # INT_LITERAL
-                    if(bool(re.match("(0[xX][0-9a-fA-F]+)|([0-9]+)", word))):
+                    # if(bool(re.match("(0x[0-9a-fA-F]+)|([0-9]+)", word))):
+                    if(dfa.accepts("int", word)):
                         valid_word=True
                         tk = Token.Token(self.SYMBOL_LIST[28], object_list[1], word)
                         token_list.append(tk)
                         invalid_token = False
+
+                    if("[" in word):
+                        if("]" in word):
+                            if(bool(re.match("^([a-z]|[A-Z])+\[[0-9]+\]$", word))):
+                                valid_word=True
+                                tk = Token.Token(self.SYMBOL_LIST[29], object_list[1], word)
+                                token_list.append(tk)
+                                invalid_token = False
+                        else:
+                            error_list.append(f"Missing one ] in line {object_list[1]}")
 
                     if ("\"" in word):
                         if(word[-1]=="\""):
