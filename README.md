@@ -28,7 +28,10 @@ El proyecto para el curso Compiladores consiste en escribir un compilador para u
 # Installing and Running
 
 ```
-python Compiler.py <file_name>
+python Compiler.py <file_name> -flag
+
+Ejemplo:
+python Compiler.py ejemplo -target hola
 
 ```
 
