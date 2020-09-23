@@ -1,6 +1,3 @@
-# Compiler
-yet another compiler, built with python rip
-
 <h1 align="center">
     <img alt="cpu" src="https://github.com/lisos-ufm/CPUsimulator/blob/andr/Simulator-Frontend/Unordered/cpu2.png" width="400">
   <br>🚀 COMPILER <br>
@@ -22,12 +19,14 @@ yet another compiler, built with python rip
 </div>
 <br>
 
-CPU simulator is an app that provides a set of instruction in order to recreate the functions of an actual CPU.
+The project for the course is to write a compiler for a language called Decaf. Decaf is a simple imperative language similar to C or Pascal.
+
 
 <sub>Vist <a href="#">Troubleshooting</a> to find more.</sub>
 
 
 # Requeriments
+- Python 3
 
 
 # Installing and Running
