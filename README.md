@@ -1,14 +1,14 @@
 <h1 align="center">
     <img alt="cpu" src="https://github.com/camilos-ufm/Compiler/blob/Kath/compilerimage.png" width="400">
-  <br>🚀 COMPILER <br>
+  <br>🚀 OIKOS COMPILER <br>
 </h1>
 
 <div align="center">
   <h4>
-    <a href="#Requeriments">Requeriments</a> |
+    <a href="#Requeriments">Requerimientos</a> |
     <a href="#Fase del proyecto">Fases</a> |
-    <a href="#Installing and running">Installing</a> 
-    <a href="#Help">Help</a>
+    <a href="#Installing and running">Instalación</a>|
+    <a href="#Flags">Flags</a>
   </h4>
 </div>
 
@@ -19,11 +19,7 @@
 </div>
 <br>
 
-The project for the course is to write a compiler for a language called Decaf. Decaf is a simple imperative language similar to C or Pascal.
-
-
-<sub>Vist <a href="#">Troubleshooting</a> to find more.</sub>
-
+El proyecto para el curso Compiladores consiste en escribir un compilador para un lenguaje llamado Decaf. Decaf es un lenguaje similar a C o Pascal.
 
 # Requeriments
 - Python 3
@@ -31,7 +27,20 @@ The project for the course is to write a compiler for a language called Decaf. D
 
 # Installing and Running
 
-# Help
+```
+python Compiler.py <file_name>
+
+```
+
+IMPORTANTE:
+- El archivo debe de estar en la carpeta decafs y debe de tener la extensión decaf
+
+# Flags
+
+-o <outname>     Escribir el output a <outname>
+-target <stage>  <stage> es uno de los siguientes elementos: scan, parse, ast, semantic, irt, codegen
+-opt <opt_stage> <opt_stage> es uno de: constant, algebraic
+-debug <stage>   Debugging <stage>
 
 # Fase del proyecto
 - [ ] Scanner
