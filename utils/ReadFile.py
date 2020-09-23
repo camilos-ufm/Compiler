@@ -69,5 +69,5 @@ class ReadFile():
             file.close()
             if(flag_comment==True):
                 file_as_string_list = []
-                print("bad comment")
+                print("Lexical error: Bad comment, missing closing */")
         return file_as_string_list

@@ -5,7 +5,6 @@
 ~ Type: id, Line: 4, Value: x ~
 ~ Type: ;, Line: 4, Value: ; ~
 ~ Type: type, Line: 4, Value: int ~
-~ Type: id, Line: 4, Value: y[5] ~
 ~ Type: ;, Line: 4, Value: ; ~
 ~ Type: void, Line: 5, Value: void ~
 ~ Type: id, Line: 5, Value: main ~
