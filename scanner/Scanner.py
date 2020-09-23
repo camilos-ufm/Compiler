@@ -25,7 +25,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(16, "return", "return"))
     SYMBOL_LIST.append(Symbol.Symbol(17, "break", "break"))
     SYMBOL_LIST.append(Symbol.Symbol(18, "continue", "continue"))
-    SYMBOL_LIST.append(Symbol.Symbol(19, "asign_op", "(+=)|(-=)"))
+    SYMBOL_LIST.append(Symbol.Symbol(19, "asign_op", "(+=)|(-=)|(=)"))
     SYMBOL_LIST.append(Symbol.Symbol(20, "callout", "callout"))
     SYMBOL_LIST.append(Symbol.Symbol(21, "arit_op", "(+)|(*)|(/)|(%)"))
     SYMBOL_LIST.append(Symbol.Symbol(22, "rel_op", "(<)|(>)|(>=)|(<=)"))
@@ -38,7 +38,6 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(29, "identifier", ""))
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
-    SYMBOL_LIST.append(Symbol.Symbol(32, "equal_op", "="))
 
     def scan(self, input_string):
         token_list = []
