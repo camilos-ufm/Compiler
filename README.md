@@ -37,8 +37,8 @@ IMPORTANTE:
 
 # Flags
 
--o <outname>     Escribir el output a <outname>
--target <stage>  <stage> es uno de los siguientes elementos: scan, parse, ast, semantic, irt, codegen
+-o <outname>     Escribir el output a <outname>\n
+-target <stage>  <stage> es uno de los siguientes elementos: scan, parse, ast, semantic, irt, codegen\n
 -opt <opt_stage> <opt_stage> es uno de: constant, algebraic
 -debug <stage>   Debugging <stage>
 
