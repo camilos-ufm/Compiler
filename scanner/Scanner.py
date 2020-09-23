@@ -109,7 +109,7 @@ class Scanner:
                 elif(word=="<" or word == ">" or word == ">=" or word == "<="):
                     tk = Token.Token(self.SYMBOL_LIST[22], object_list[1], word)
                     token_list.append(tk)
-                elif(word=="==" or word == "!="):
+                elif(word=="==" or word == "!=" or word == "="):
                     tk = Token.Token(self.SYMBOL_LIST[23], object_list[1], word)
                     token_list.append(tk)
                 elif(word=="cond_op"):
@@ -135,9 +135,6 @@ class Scanner:
                     token_list.append(tk)
                 elif(word=="!"):
                     tk = Token.Token(self.SYMBOL_LIST[31], object_list[1], word)
-                    token_list.append(tk)
-                elif(word=="="):
-                    tk = Token.Token(self.SYMBOL_LIST[32], object_list[1], word)
                     token_list.append(tk)
                 else:
                     print("RIP TOKEN: " + word)
