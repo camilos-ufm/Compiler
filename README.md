@@ -36,11 +36,13 @@ python Compiler.py <file_name>
 - El archivo debe de estar en la carpeta decafs y debe de tener la extensión decaf
 
 # Flags
-
+```
 -o <outname>     Escribir el output a <outname>\n
 -target <stage>  <stage> es uno de los siguientes elementos: scan, parse, ast, semantic, irt, codegen\n
--opt <opt_stage> <opt_stage> es uno de: constant, algebraic
+-opt <opt_stage> <opt_stage> es uno de: constant, algebrai\n
 -debug <stage>   Debugging <stage>
+
+```
 
 # Fase del proyecto
 - [ ] Scanner
