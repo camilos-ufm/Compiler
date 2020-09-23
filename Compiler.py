@@ -17,9 +17,11 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
     rf = ReadFile.ReadFile()
     # print(rf.file_to_string())
     rf.set_file(f"decafs/{input_file}.decaf")
-    token_list = sc.scan(rf.file_to_string())
+    token_list, error_list = sc.scan(rf.file_to_string())
     for token in token_list:
         token.pretty_print()
+    for error in error_list:
+        print(error)
     print(input_file, file_name, stage, opt_stage, debug_stage)
 
 
