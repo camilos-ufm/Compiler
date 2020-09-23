@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="cpu" src="https://github.com/lisos-ufm/CPUsimulator/blob/andr/Simulator-Frontend/Unordered/cpu2.png" width="400">
+    <img alt="cpu" src="https://github.com/camilos-ufm/Compiler/blob/Kath/compilerimage.png" width="400">
   <br>🚀 COMPILER <br>
 </h1>
 
