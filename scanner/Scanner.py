@@ -1,6 +1,6 @@
 import objects.Symbol as Symbol
 import objects.Token as Token
-
+import re
 
 class Scanner:
     # symbol list cons
@@ -35,7 +35,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(26, "char_literal", "'.'"))
     SYMBOL_LIST.append(Symbol.Symbol(27, "string_literal", ""))
     SYMBOL_LIST.append(Symbol.Symbol(28, "int_literal", ""))
-    SYMBOL_LIST.append(Symbol.Symbol(29, "identifier", ""))
+    SYMBOL_LIST.append(Symbol.Symbol(29, "id", ""))
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
 
@@ -119,12 +119,6 @@ class Scanner:
                 elif(word=="true" or word=="false"):
                     tk = Token.Token(self.SYMBOL_LIST[25], object_list[1], word)
                     token_list.append(tk)
-                elif(word=="int_literal"):
-                    tk = Token.Token(self.SYMBOL_LIST[28], object_list[1], word)
-                    token_list.append(tk)
-                elif(word=="identifier"):
-                    tk = Token.Token(self.SYMBOL_LIST[29], object_list[1], word)
-                    token_list.append(tk)
                 elif(word=="-"):
                     tk = Token.Token(self.SYMBOL_LIST[30], object_list[1], word)
                     token_list.append(tk)
@@ -132,6 +126,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[31], object_list[1], word)
                     token_list.append(tk)
                 else:
+                    valid_word = False
                     #TODO:
                     # regEx for ID ([alpha] [alpha_num]*)
                         # alpha = [a-zA-Z]
@@ -146,6 +141,19 @@ class Scanner:
                         # " [char]* "
                     # condition for char_literal
                         # ' [char] '
+                    
+                    # ID
+                    if(bool(re.match("([a-zA-Z_]([a-zA-Z_][0-9])*)", word))):
+                        valid_word=True
+                        tk = Token.Token(self.SYMBOL_LIST[29], object_list[1], word)
+                        token_list.append(tk)
+                    
+                    # INT_LITERAL
+                    if(bool(re.match("(0[xX][0-9a-fA-F]+)|([0-9]+)", word))):
+                        valid_word=True
+                        tk = Token.Token(self.SYMBOL_LIST[28], object_list[1], word)
+                        token_list.append(tk)
+
                     if ("\"" in word):
                         if(word[-1]=="\""):
                             tk = Token.Token(self.SYMBOL_LIST[27], object_list[1], word)
@@ -158,6 +166,6 @@ class Scanner:
                             token_list.append(tk)
                         else:
                             error_list.append(f"wrong char, missing one \' or too many chars in line {object_list[1]}")
-                    print("RIP TOKEN: " + word)
+                    #print("RIP TOKEN: " + word)
                 
         return token_list, error_list

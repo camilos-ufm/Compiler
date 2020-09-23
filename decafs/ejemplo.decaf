@@ -6,8 +6,8 @@ class Program { //hola
                     if ( x>0) {
                         x+=1;
                         x=y+1;
-                        j="hola;
-                        char1='aa'
+                        j="hola";
+                        char1='a'
                         boolean b=true
                         /* hola
     hola
