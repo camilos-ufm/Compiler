@@ -48,7 +48,7 @@ python Compiler.py ejemplo -target hola
 ```
 
 # Fase del proyecto
-- [ ] Scanner
+- [x] Scanner
 - [ ] Parser
 - [ ] Semantic Check
 - [ ] IRT
