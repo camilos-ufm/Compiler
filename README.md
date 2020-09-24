@@ -36,7 +36,7 @@ python Compiler.py ejemplo -target hola
 ```
 
 **💡 IMPORTANTE** 
-- El archivo debe de estar en la carpeta decafs y debe de tener la extensión decaf
+- El archivo debe de estar en la carpeta decafs y debe de tener la extensión .decaf
 
 # Flags
 ```
