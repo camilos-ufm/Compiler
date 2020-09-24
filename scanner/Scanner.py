@@ -143,7 +143,7 @@ class Scanner:
                     invalid_token = False
                 elif(word=="true" or word=="false"):
                     tk = Token.Token(self.SYMBOL_LIST[25], object_list[1], word)
-                    token_list.append(tk)
+                    token_list.appendx(tk)
                     invalid_token = False
                 elif(word=="-"):
                     tk = Token.Token(self.SYMBOL_LIST[30], object_list[1], word)
