@@ -1,6 +1,7 @@
 # imports
 import sys
 import scanner.Scanner as Scanner
+import parser.Parser as Parser
 import utils.ReadFile as ReadFile
 import utils.WriteFile as WriteFile
 
@@ -36,6 +37,12 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
 
         # write file in output/
         wf.write_file(file_name, string_list)
+
+        if(("parse" in debug_stage)):
+            debug=True
+        
+        pr = Parser.Parser()
+        pr.parse(token_list, debug)
 
     if(stage=="parse" or stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
         debug=False
