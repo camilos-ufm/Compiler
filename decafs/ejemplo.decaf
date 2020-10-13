@@ -8,7 +8,7 @@ class Program { //hola
                         x+=1;
                         x=y+1;
                         j="hola";
-                        ñ;
+                        //ñ;
                         x=3;
                         char1='a'; boolean b=true;
                         /* hola

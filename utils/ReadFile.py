@@ -65,7 +65,6 @@ class ReadFile():
                     string_line = ' '.join(string_line.split())
                     if(string_line!=""):
                         file_as_string_list.append([string_line, count])
-                    print(string_line)
                 count+=1
             file.close()
             if(flag_comment==True):

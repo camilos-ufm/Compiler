@@ -38,18 +38,13 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         # write file in output/
         wf.write_file(file_name, string_list)
 
-        if(("parse" in debug_stage)):
-            debug=True
-        
-        pr = Parser.Parser()
-        pr.parse(token_list, debug)
-
     if(stage=="parse" or stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
         debug=False
         if(("parse" in debug_stage)):
             debug=True
-        print("PARSE not ready")
-        print("With debug"+str(debug))
+
+        pr = Parser.Parser()
+        pr.parse(token_list, debug)
     if(stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
         print("AST not ready")
     if(stage=="semantic" or stage=="irt" or stage=="codegen"):

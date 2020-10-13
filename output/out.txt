@@ -35,7 +35,6 @@
 ~ Type: eq_op, Line: 10, Value: = ~
 ~ Type: string_literal, Line: 10, Value: "hola" ~
 ~ Type: ;, Line: 10, Value: ; ~
-~ Type: ;, Line: 11, Value: ; ~
 ~ Type: id, Line: 12, Value: x ~
 ~ Type: eq_op, Line: 12, Value: = ~
 ~ Type: int_literal, Line: 12, Value: 3 ~
