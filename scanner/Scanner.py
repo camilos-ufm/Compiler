@@ -40,6 +40,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
 
+
     def scan(self, input_string, debug):
         error_list = []
         token_list = []

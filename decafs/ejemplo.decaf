@@ -1,7 +1,8 @@
 // comment 
 
 class Program { //hola
-        int x; int y[5];
+        int x, y;
+        int y[5];
         void main() {
                     if ( x>0) {
                         x+=1;
@@ -9,8 +10,7 @@ class Program { //hola
                         j="hola";
                         ñ;
                         x=3;
-                        char1='a'
-                        boolean b=true
+                        char1='a'; boolean b=true;
                         /* hola
     hola
             SOMOS COMMENT

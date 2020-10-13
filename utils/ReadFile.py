@@ -42,7 +42,7 @@ class ReadFile():
                             else:
                                 pass
                         if(char=="&" or char=="%" or char=="/"
-                            or char=="*" or char=="(" or char==")" or char=="{" or char=="}" or char==";"):
+                            or char=="*" or char=="(" or char==")" or char=="{" or char=="}" or char==";" or char==","):
                             string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
                     if("+=" in string_line):
                         string_line = string_line.replace("+=", " += ")
@@ -65,6 +65,7 @@ class ReadFile():
                     string_line = ' '.join(string_line.split())
                     if(string_line!=""):
                         file_as_string_list.append([string_line, count])
+                    print(string_line)
                 count+=1
             file.close()
             if(flag_comment==True):
