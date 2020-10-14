@@ -1,70 +1,83 @@
 class ParseDFA:
-    dfa_id = {
-            0:{'a':1, 'b':1, 'c':1, 'd':1, 'e':1, 'f':1, 'g':1, 'h':1, 'i':1, 'j':1, 'k':1, 'l':1,
-                'm':1, 'n':1, 'o':1, 'p':1, 'q':1, 'r':1, 's':1, 't':1, 'u':1, 'v':1, 'w':1, 'x':1,  
-                'y':1, 'z':1, 'A':1, 'B':1, 'C':1, 'D':1, 'E':1, 'F':1, 'G':1, 'H':1, 'I':1, 'J':1, 
-                'K':1, 'L':1,'M':1, 'N':1, 'O':1, 'P':1, 'Q':1, 'R':1, 'S':1, 'T':1, 'U':1, 'V':1, 
-                'W':1, 'X':1, 'Y':1, 'Z':1, '_':1},
-            1:{'a':2, 'b':2, 'c':2, 'd':2, 'e':2, 'f':2, 'g':2, 'h':2, 'i':2, 'j':2, 'k':2, 'l':2,
-                'm':2, 'n':2, 'o':2, 'p':2, 'q':2, 'r':2, 's':2, 't':2, 'u':2, 'v':2, 'w':2, 'x':2,  
-                'y':2, 'z':2, 'A':2, 'B':2, 'C':2, 'D':2, 'E':2, 'F':2, 'G':2, 'H':2, 'I':2, 'J':2, 
-                'K':2, 'L':2,'M':2, 'N':2, 'O':2, 'P':2, 'Q':2, 'R':2, 'S':2, 'T':2, 'U':2, 'V':2, 
-                'W':2, 'X':2, 'Y':2, 'Z':2, '_':2, '0':3, '1':3, '2':3, '3':3, '4':3, '5':3, '6':3, 
-                '7':3, '8':3, '9':3},
-            2:{'a':2, 'b':2, 'c':2, 'd':2, 'e':2, 'f':2, 'g':2, 'h':2, 'i':2, 'j':2, 'k':2, 'l':2,
-                'm':2, 'n':2, 'o':2, 'p':2, 'q':2, 'r':2, 's':2, 't':2, 'u':2, 'v':2, 'w':2, 'x':2,  
-                'y':2, 'z':2, 'A':2, 'B':2, 'C':2, 'D':2, 'E':2, 'F':2, 'G':2, 'H':2, 'I':2, 'J':2, 
-                'K':2, 'L':2,'M':2, 'N':2, 'O':2, 'P':2, 'Q':2, 'R':2, 'S':2, 'T':2, 'U':2, 'V':2, 
-                'W':2, 'X':2, 'Y':2, 'Z':2, '_':2, '0':3, '1':3, '2':3, '3':3, '4':3, '5':3, '6':3, 
-                '7':3, '8':3, '9':3},
-            3:{'a':2, 'b':2, 'c':2, 'd':2, 'e':2, 'f':2, 'g':2, 'h':2, 'i':2, 'j':2, 'k':2, 'l':2,
-                'm':2, 'n':2, 'o':2, 'p':2, 'q':2, 'r':2, 's':2, 't':2, 'u':2, 'v':2, 'w':2, 'x':2,  
-                'y':2, 'z':2, 'A':2, 'B':2, 'C':2, 'D':2, 'E':2, 'F':2, 'G':2, 'H':2, 'I':2, 'J':2, 
-                'K':2, 'L':2,'M':2, 'N':2, 'O':2, 'P':2, 'Q':2, 'R':2, 'S':2, 'T':2, 'U':2, 'V':2, 
-                'W':2, 'X':2, 'Y':2, 'Z':2, '_':2, '0':3, '1':3, '2':3, '3':3, '4':3, '5':3, '6':3, 
-                '7':3, '8':3, '9':3}
-            }
 
-    dfa_int = {
-                0:{'0':1, '1':2, '2':2, '3':2, '4':2, '5':2, '6':2, '7':2, '8':2, '9':2},
-                1:{'0':3, 'x':4, '1':5, '2':5, '3':5, '4':5, '5':5, '6':5, '7':5, '8':5, '9':5},
-                2:{'0':3, '1':5, '2':5, '3':5, '4':5, '5':5, '6':5, '7':5, '8':5, '9':5},
-                3:{'0':3, '1':5, '2':5, '3':5, '4':5, '5':5, '6':5, '7':5, '8':5, '9':5},
-                4:{'0':5, '1':7, '2':7, '3':7, '4':7, '5':7, '6':7, '7':7, '8':7, '9':7,
-                'a':8, 'b':8, 'c':8, 'd':8, 'e':8, 'f':8,'A':8, 'B':8, 'C':8, 'D':8, 'E':8, 'F':8},
-                5:{'0':3, '1':5, '2':5, '3':5, '4':5, '5':5, '6':5, '7':5, '8':5, '9':5},
-                6:{'0':9, '1':10, '2':10, '3':10, '4':10, '5':10, '6':10, '7':10, '8':10, '9':10,
-                'a':11, 'b':11, 'c':11, 'd':11, 'e':11, 'f':11,'A':11, 'B':11, 'C':11, 'D':11, 'E':11, 'F':11},
-                7:{'0':9, '1':10, '2':10, '3':10, '4':10, '5':10, '6':10, '7':10, '8':10, '9':10,
-                'a':11, 'b':11, 'c':11, 'd':11, 'e':11, 'f':11,'A':11, 'B':11, 'C':11, 'D':11, 'E':11, 'F':11},
-                8:{'0':9, '1':10, '2':10, '3':10, '4':10, '5':10, '6':10, '7':10, '8':10, '9':10,
-                'a':11, 'b':11, 'c':11, 'd':11, 'e':11, 'f':11,'A':11, 'B':11, 'C':11, 'D':11, 'E':11, 'F':11},
-                9:{'0':9, '1':10, '2':10, '3':10, '4':10, '5':10, '6':10, '7':10, '8':10, '9':10,
-                'a':11, 'b':11, 'c':11, 'd':11, 'e':11, 'f':11,'A':11, 'B':11, 'C':11, 'D':11, 'E':11, 'F':11},
-                10:{'0':9, '1':10, '2':10, '3':10, '4':10, '5':10, '6':10, '7':10, '8':10, '9':10,
-                'a':11, 'b':11, 'c':11, 'd':11, 'e':11, 'f':11,'A':11, 'B':11, 'C':11, 'D':11, 'E':11, 'F':11},
-                11:{'0':9, '1':10, '2':10, '3':10, '4':10, '5':10, '6':10, '7':10, '8':10, '9':10,
-                'a':11, 'b':11, 'c':11, 'd':11, 'e':11, 'f':11,'A':11, 'B':11, 'C':11, 'D':11, 'E':11, 'F':11}
-            }
+    states_stack = [0]
 
-    def accepts(self, dfa_type,s):
-        if dfa_type == 'id':
-            transitions = self.dfa_id
-            initial = 0
-            accepting = {1,2,3}
-        elif dfa_type=='int':
-            transitions = self.dfa_int
-            initial = 0
-            accepting = {1,2,3,5,6,7,8,9,10,11}
+    tokens_stack = ['$']
 
-        #print(transitions)
-        #print(self.dfa_id1)
-        state = initial
-        for c in s:
-            try:
-                state = transitions[state][c]
-            except Exception:
-                return False
+    grammar = [
+        {'<S>': ['<X>', '$']},
+        {'<X>': ['(', '<X>', ')']},
+        {'<X>': ['(', ')']}
+    ]
+
+    dfa_parse = {
+            0:{'(':['shift', 2], '<X>':['goto', 1]},
+            1:{'$':['accept', 2]},
+            2:{'(':['shift', 2], ')':['shift', 4], 'for':['goto', 3]},
+            3:{')':['shift', 5]},
+            4:{'(':['reduce', 3], ')':['reduce', 3], '$':['reduce', 3]},
+            5:{'(':['reduce', 2], ')':['reduce', 2], '$':['reduce', 2]},
+    }
+
+    def shift_to(self, state, token):
+        print(state, token)
+
+    def go_to(self, state):
+        print(state)
+
+    def reduce_to(self, index):
+        print(index)
+
+    def accepts(self, token_list):
+        print(''.join(list(self.grammar[1].values())[0]))
+
+        state = 0
+        index = 0
+        param_list=[]
+        print(len(token_list))
+        while index<=len(token_list):
+            #print(token_list[index].symbol_type.name)
+            if(index<len(token_list)):
+                print(token_list[index].symbol_type.name)
+                param_list = self.dfa_parse.get(state).get(token_list[index].symbol_type.name)
             else:
-                pass
-        return state in accepting
+                param_list = self.dfa_parse.get(state).get(self.tokens_stack[-1])
+            if (param_list != None):
+                print("param_list:", param_list)
+                if(param_list[0]=='shift'):
+                    state=param_list[1]
+                    if(index<len(token_list)):
+                        self.states_stack.append(state)
+                        self.tokens_stack.append(token_list[index].symbol_type.name)
+                    print("shift")
+                elif(param_list[0]=='goto'):
+                    state=param_list[1]
+                    self.states_stack.append(state)
+                    self.tokens_stack.append(token_list[index].symbol_type.name)
+                    print("goto state:"+str(state))
+                    print("goto")
+                elif(param_list[0]=='reduce'):
+                    index = index-1
+                    count = len(list(self.grammar[param_list[1]-1].values())[0])
+                    self.tokens_stack = self.tokens_stack[:-count]
+                    self.states_stack = self.states_stack[:-count]
+                    state=self.states_stack[-1]
+                    print("count:"+ str(count))
+                    print("state:" + str(state))
+                    print("reduce")
+                elif(param_list[0]=='accept'):
+                    print("accept :)")
+            else:
+                print("state not defined")
+            print("state: "+str(state))
+            print(self.tokens_stack)
+            print(self.states_stack)
+            print(index)
+            index+=1
+            print("------")
+
+        if(len(self.tokens_stack)==1 and len(self.states_stack)==1):
+            print("NICEEE")
+        else:
+            print("invalid parsing")
+        return True

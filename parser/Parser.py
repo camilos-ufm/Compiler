@@ -5,5 +5,7 @@ import re
 
 class Parser:
     def parse(self, tokens, debug):
-        print(tokens)
+        #print(tokens)
+        dfa = ParseDFA.ParseDFA()
+        dfa.accepts(tokens)
         print(debug)
