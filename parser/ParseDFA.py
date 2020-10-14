@@ -54,7 +54,6 @@ class ParseDFA:
                     state=param_list[1]
                     self.states_stack.append(state)
                     self.tokens_stack.append(token_list[index].symbol_type.name)
-                    print("goto state:"+str(state))
                     print("goto")
                 elif(param_list[0]=='reduce'):
                     index = index-1
@@ -62,8 +61,6 @@ class ParseDFA:
                     self.tokens_stack = self.tokens_stack[:-count]
                     self.states_stack = self.states_stack[:-count]
                     state=self.states_stack[-1]
-                    print("count:"+ str(count))
-                    print("state:" + str(state))
                     print("reduce")
                 elif(param_list[0]=='accept'):
                     print("accept :)")
