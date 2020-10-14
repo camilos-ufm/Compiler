@@ -77,6 +77,8 @@ class ParseDFA:
                     print("accept :)")
             else:
                 print("state not defined")
+                print("Invalid token",token_list[index].symbol_type.name,"at line",token_list[index].line)
+                break
             print(self.tokens_stack)
             print(self.states_stack)
             print("------")
