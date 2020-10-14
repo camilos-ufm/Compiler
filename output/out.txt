@@ -1,14 +1,6 @@
 ~ Type: (, Line: 1, Value: ( ~
-~ Type: for, Line: 1, Value: for ~
+~ Type: (, Line: 1, Value: ( ~
+~ Type: (, Line: 1, Value: ( ~
 ~ Type: ), Line: 1, Value: ) ~
-~ Type: (, Line: 1, Value: ( ~
-~ Type: for, Line: 1, Value: for ~
-~ Type: ), Line: 1, Value: ) ~
-~ Type: (, Line: 1, Value: ( ~
-~ Type: for, Line: 1, Value: for ~
-~ Type: ), Line: 1, Value: ) ~
-~ Type: (, Line: 1, Value: ( ~
-~ Type: (, Line: 1, Value: ( ~
-~ Type: for, Line: 1, Value: for ~
 ~ Type: ), Line: 1, Value: ) ~
 ~ Type: ), Line: 1, Value: ) ~
