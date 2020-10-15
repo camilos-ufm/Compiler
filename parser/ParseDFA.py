@@ -5,18 +5,18 @@ class ParseDFA:
     tokens_stack = ['$']
 
     grammar = [
-        {'<S>': ['<X>', '$']},
-        {'<X>': ['(', '<X>', ')']},
-        {'<X>': ['(', ')']}
+        {'<program>': ['class', , 'Program', '{', '}', '$']},
+        # {'<X>': ['(', '<X>', ')']},
+        # {'<X>': ['(', ')']}
     ]
 
     dfa_parse = {
-            0:{'(':['shift', 2], '<X>':['goto', 1]},
-            1:{'$':['accept', 2]},
-            2:{'(':['shift', 2], ')':['shift', 4], '<X>':['goto', 3]},
-            3:{')':['shift', 5]},
-            4:{'(':['reduce', 3], ')':['reduce', 3], '$':['reduce', 3]},
-            5:{'(':['reduce', 2], ')':['reduce', 2], '$':['reduce', 2]},
+            0:{'class':['shift', 1],
+            1:{'Program':['shift', 2]},
+            2:{'{':['shift', 3],
+            3:{'}':['shift', 4]},
+            4:{'$':['accept',2 ],
+            # 5:{'(':['reduce', 2], ')':['reduce', 2], '$':['reduce', 2]},
     }
 
     def shift_to(self, state, token):
