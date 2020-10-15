@@ -2,4 +2,3 @@
 ~ Type: Program, Line: 1, Value: Program ~
 ~ Type: {, Line: 1, Value: { ~
 ~ Type: }, Line: 1, Value: } ~
-~ Type: }, Line: 1, Value: } ~
