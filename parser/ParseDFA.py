@@ -87,9 +87,9 @@ class ParseDFA:
             else:
                 print("state not defined")
                 if(index<len(token_list)):
-                    print("Invalid token",token_list[index].symbol_type.name,"at line",token_list[index].line)
+                    print("unexpected token",token_list[index].symbol_type.name,"at line",token_list[index].line)
                 else:
-                    print("Invalid token",token_list[index-1].symbol_type.name,"at line",token_list[index-1].line)
+                    print("unexpected token",token_list[index-1].symbol_type.name,"at line",token_list[index-1].line)
                 break
             print(self.tokens_stack)
             print(self.states_stack)
