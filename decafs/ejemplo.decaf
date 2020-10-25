@@ -3,6 +3,9 @@
 class Program { //hola
         int x, y;
         int y[5];
+        int k;
+        int j;
+        boolean a;
         void main() {
                     if ( x>0) {
                         x+=1;

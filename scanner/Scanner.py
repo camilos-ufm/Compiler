@@ -119,7 +119,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[18], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="+=" or word=="-="):
+                elif(word=="+=" or word=="-="  or word == "="):
                     tk = Token.Token(self.SYMBOL_LIST[19], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
@@ -135,7 +135,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[22], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="==" or word == "!=" or word == "="):
+                elif(word=="==" or word == "!="):
                     tk = Token.Token(self.SYMBOL_LIST[23], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
