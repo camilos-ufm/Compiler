@@ -31,6 +31,15 @@ class ParseDFA:
     def reduce_to(self, index):
         print(index)
 
+    def parse(self, program, node, type_dfa):
+        node_list = node.node_list
+
+
+        print(program)
+        print(node)
+        print(type_dfa)
+
+
     def accepts(self, token_list):
         #print(''.join(list(self.grammar[1].values())[0]))
         state = 0

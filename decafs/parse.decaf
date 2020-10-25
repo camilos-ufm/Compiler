@@ -1,9 +1,10 @@
 class Program {
-    int x;
+    int x, u;
     int y[5];
     int k;
     int j;
     boolean a;
+    string a;
 
     int myFunction(){
         x = 4;

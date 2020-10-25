@@ -3,6 +3,8 @@
 ~ Type: {, Line: 1, Value: { ~
 ~ Type: type, Line: 2, Value: int ~
 ~ Type: id, Line: 2, Value: x ~
+~ Type: ,, Line: 2, Value: , ~
+~ Type: id, Line: 2, Value: u ~
 ~ Type: ;, Line: 2, Value: ; ~
 ~ Type: type, Line: 3, Value: int ~
 ~ Type: id, Line: 3, Value: y[5] ~
@@ -18,6 +20,7 @@
 ~ Type: ;, Line: 6, Value: ; ~
 ~ Type: type, Line: 7, Value: string ~
 ~ Type: id, Line: 7, Value: a ~
+~ Type: ;, Line: 7, Value: ; ~
 ~ Type: type, Line: 9, Value: int ~
 ~ Type: id, Line: 9, Value: myFunction ~
 ~ Type: (, Line: 9, Value: ( ~

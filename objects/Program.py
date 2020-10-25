@@ -1,11 +1,12 @@
 class Program:
 
-    def __init__(self, list_nodes):
-        self.list_nodes = list_nodes
+    def __init__(self, node_list):
+        self.node_list = node_list
         self.type = "Program"
+        self.symbol_table = []
 
     def getFieldDeclList(self):
-        return self.list_nodes[3]
+        return self.node_list[3].node_list
 
     def getMethodDeclList(self):
-        return self.list_nodes[4]    
+        return self.node_list[4].node_list 
