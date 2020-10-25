@@ -33,7 +33,7 @@ class ParseDFA:
 
     def parse(self, program, node, type_dfa):
         node_list = node.node_list
-
+        print(len(node_list))
 
         print(program)
         print(node)
