@@ -1,0 +1,25 @@
+class Program {
+    int x;
+    int y[5];
+    int k;
+    int j;
+    boolean a;
+
+    int myFunction(){
+        x = 4;
+        if(x>2){
+            k=0;
+        }
+    }
+
+    void main() {
+        if (x>0) {
+            x+=1;
+            x=y+1;
+            j="hola";
+            x=3;
+            char1='a'; boolean b=true;
+        }
+        return;
+    }
+}

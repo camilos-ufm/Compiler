@@ -79,7 +79,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[8], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="boolean" or word=="int"):
+                elif(word=="boolean" or word=="int" or word=="char" or word=="string"):
                     tk = Token.Token(self.SYMBOL_LIST[9], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
