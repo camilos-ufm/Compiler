@@ -1,4 +1,4 @@
-class Program {
+ Program {
     int x, u;
     int y[5];
     /*
