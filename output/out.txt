@@ -1,4 +1,3 @@
-~ Type: class, Line: 1, Value: class ~
 ~ Type: Program, Line: 1, Value: Program ~
 ~ Type: {, Line: 1, Value: { ~
 ~ Type: type, Line: 2, Value: int ~
