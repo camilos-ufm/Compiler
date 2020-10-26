@@ -1,5 +1,6 @@
 class Program {
     int x, u;
+    int j;
     int y[5];
     /*
     int k;
