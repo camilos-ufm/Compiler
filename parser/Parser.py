@@ -4,6 +4,9 @@ import objects.Node as Node
 import objects.Program as Program
 import parser.ParseDFA as ParseDFA
 import re
+from anytree import Node as Node_any
+from anytree import RenderTree
+from anytree.exporter import DotExporter
 
 class Parser:
     def parse(self, tokens, debug):
@@ -69,8 +72,15 @@ class Parser:
             print("before parse", len(main_program.node_list[3].node_list))
             dfa.parse_field(main_program, main_program.node_list[3], 'field_decl_list')
             print("after parse", len(main_program.node_list[3].node_list))
-
+            
+            main_program.getAllNodes()
             print(main_program.node_list)
+
+            program_ui = main_program.program_tree
+            for pre, fill, node in RenderTree(program_ui):
+                print("%s%s" % (pre, node.name))
+
+            print(main_program.all_nodes)
             # print(main_program.symbol_table)
             # for field_decl in main_program.getFieldDeclList():
             #     print(field_decl.type_node)      

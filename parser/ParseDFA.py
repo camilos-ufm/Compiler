@@ -88,27 +88,26 @@ class ParseDFA:
             print(main_node.type_node)
         print(program)
 
-        program_ui = Node_any("Program")
-        counter=0
-        for node in program.node_list:
-            nodex = Node_any(node.type_node + str(counter), parent=program_ui)
-            counter+=1
-            if(len(node.node_list)!=0 and node.type_node!='method_decl_list'):
-                for node1 in node.node_list:
-                    nodey = Node_any(node1.type_node + str(counter), parent=nodex)
-                    counter+=1
-                    if(len(node1.node_list)!=0):
-                        for node2 in node1.node_list:
-                            nodez = Node_any(node2.type_node + str(counter), parent=nodey)
-                            counter+=1
+        # program_ui = Node_any("Program")
+        # counter=0
+        # for node in program.node_list:
+        #     nodex = Node_any(node.type_node + str(counter), parent=program_ui)
+        #     counter+=1
+        #     if(len(node.node_list)!=0 and node.type_node!='method_decl_list'):
+        #         for node1 in node.node_list:
+        #             nodey = Node_any(node1.type_node + str(counter), parent=nodex)
+        #             counter+=1
+        #             if(len(node1.node_list)!=0):
+        #                 for node2 in node1.node_list:
+        #                     nodez = Node_any(node2.type_node + str(counter), parent=nodey)
+        #                     counter+=1
         # ceo = Node_any("CEO") #root
         # vp_1 = Node_any("VP_1", parent=ceo)
         # vp_2 = Node_any("VP_2", parent=ceo)
         # gm_1 = Node_any("GM_1", parent=vp_1)
         # gm_2 = Node_any("GM_2", parent=vp_2)
-        for pre, fill, node in RenderTree(program_ui):
-            print("%s%s" % (pre, node.name))
-        DotExporter(program_ui).to_picture("AST.png")
+
+        #DotExporter(program_ui).to_picture("AST.png")
         # print(type_dfa)
         print(error_list)
 
