@@ -66,14 +66,18 @@ class Parser:
 
         if(first_step):
             dfa = ParseDFA.ParseDFA()
-            dfa.parse(main_program, main_program.node_list[3], 'field_decl_list')
-            print(main_program.symbol_table)
-            for field_decl in main_program.getFieldDeclList():
-                print(field_decl.type_node)      
+            print("before parse", len(main_program.node_list[3].node_list))
+            dfa.parse_field(main_program, main_program.node_list[3], 'field_decl_list')
+            print("after parse", len(main_program.node_list[3].node_list))
 
-            print("---------------")
-            for method_decl in main_program.getMethodDeclList():
-                print(method_decl.object_node) 
+            print(main_program.node_list)
+            # print(main_program.symbol_table)
+            # for field_decl in main_program.getFieldDeclList():
+            #     print(field_decl.type_node)      
+
+            # print("---------------")
+            # for method_decl in main_program.getMethodDeclList():
+            #     print(method_decl.object_node) 
               
         # for token in tokens:
         #     print(token.symbol_type.name)
@@ -81,4 +85,4 @@ class Parser:
         #dfa.accepts(tokens)
         print(debug)
         print(error_list)
-        print(main_program.node_list)
+    #print(main_program.node_list)
