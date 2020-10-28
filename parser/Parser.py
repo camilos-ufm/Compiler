@@ -86,7 +86,7 @@ class Parser:
                 print("%s%s" % (pre, node.name))
 
             print(main_program.all_nodes)
-            DotExporter(program_ui).to_picture("AST.png")
+            # DotExporter(program_ui).to_picture("AST.png")
             # print(main_program.symbol_table)
             # for field_decl in main_program.getFieldDeclList():
             #     print(field_decl.type_node)      

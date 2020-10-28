@@ -11,8 +11,8 @@ class Node:
     def getNodes(self, Program, counter, parent_node):
         if(len(self.node_list)!=0 and self.type_node!='block'):
             for node1 in self.node_list:
-                nodey = Node_any(node1.type_node + str(counter), parent=parent_node)
-                Program.append(node1.type_node + str(counter))
+                nodey = Node_any(node1.type_node + ' ' + str(counter), parent=parent_node)
+                Program.append(node1.type_node + ' ' + str(counter))
                 counter+=1
                 if(len(node1.node_list)!=0):
                     counter = node1.getNodes(Program, counter, nodey)

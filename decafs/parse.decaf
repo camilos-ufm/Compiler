@@ -27,4 +27,15 @@ class Program {
         }
         return;
     }
+
+    int myFunction2(int x, string y){
+        int k;
+        for k = 5 , k=k+1;
+        x = 4;
+        if(x>2){
+            k=0;
+        }
+        k+=1;
+        k-=1;
+    }
 }
