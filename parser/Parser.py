@@ -69,18 +69,24 @@ class Parser:
 
         if(first_step):
             dfa = ParseDFA.ParseDFA()
-            print("before parse", len(main_program.node_list[3].node_list))
+            # print("before parse", len(main_program.node_list[3].node_list))
             dfa.parse_field(main_program, main_program.node_list[3], 'field_decl_list')
-            print("after parse", len(main_program.node_list[3].node_list))
+            # print("after parse", len(main_program.node_list[3].node_list))
             
+            # print(main_program.node_list)
+
+            print("before parse", len(main_program.node_list[4].node_list))
+            dfa.parse_method(main_program, main_program.node_list[4], 'method_decl_list')
+            print("after parse", len(main_program.node_list[4].node_list))
+
             main_program.getAllNodes()
-            print(main_program.node_list)
 
             program_ui = main_program.program_tree
             for pre, fill, node in RenderTree(program_ui):
                 print("%s%s" % (pre, node.name))
 
             print(main_program.all_nodes)
+            DotExporter(program_ui).to_picture("AST.png")
             # print(main_program.symbol_table)
             # for field_decl in main_program.getFieldDeclList():
             #     print(field_decl.type_node)      

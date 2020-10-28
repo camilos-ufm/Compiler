@@ -1,5 +1,8 @@
 import objects.Node as Node
 import objects.FieldDecl as FieldDecl
+import objects.MethodDecl as MethodDecl
+import objects.VarDeclList as VarDeclList
+import objects.Block as Block
 from anytree import Node as Node_any
 from anytree import RenderTree
 from anytree.exporter import DotExporter
@@ -29,7 +32,7 @@ class ParseDFA:
     def parse_field(self, program, main_node, type_dfa):
         error_list = []
         node_list = main_node.node_list
-        print(main_node.type_node)
+        # print(main_node.type_node)
         if(type_dfa == 'field_decl_list'):
             new_node_list = []
             node_index = 0
@@ -57,7 +60,8 @@ class ParseDFA:
                     if(field_decl[0].object_node.symbol_type.name=='type'
                         and field_decl[1].object_node.symbol_type.name=='id'
                         and field_decl[2].object_node.symbol_type.name==';'):
-                        new_node_list.append(Node.Node("<field_decl>", "field_decl", [field_decl[0], field_decl[1], field_decl[2]]))
+                        field_obj = FieldDecl.FieldDecl()
+                        new_node_list.append(Node.Node(field_obj, "field_decl", [field_decl[0], field_decl[1], field_decl[2]]))
                 if(len(field_decl)>3):
                     temp_ids = []
                     id_list_bool = True
@@ -77,7 +81,8 @@ class ParseDFA:
                                 id_list_bool = False
                     if(id_list_bool):
                         for temp_id in temp_ids:
-                            new_node_list.append(Node.Node("<field_decl>", "field_decl", [field_decl[0], temp_id, field_decl[len(field_decl)-1]]))
+                            field_obj = FieldDecl.FieldDecl()
+                            new_node_list.append(Node.Node(field_obj, "field_decl", [field_decl[0], temp_id, field_decl[len(field_decl)-1]]))
                 # for field in field_decl:
                 #     print(field.object_node.symbol_type.name)
             # print(new_node_list)
@@ -85,8 +90,8 @@ class ParseDFA:
             #     print(new_node.type_node)
             main_node.node_list = new_node_list
             program.node_list[3] = main_node
-            print(main_node.type_node)
-        print(program)
+            # print(main_node.type_node)
+        # print(program)
 
         # program_ui = Node_any("Program")
         # counter=0
@@ -109,8 +114,114 @@ class ParseDFA:
 
         #DotExporter(program_ui).to_picture("AST.png")
         # print(type_dfa)
-        print(error_list)
+        print("error list", error_list)
 
+    def parse_method(self, program, main_node, type_dfa):
+        new_node_list_method = []
+        error_list = []
+        node_list = main_node.node_list
+        print(main_node.type_node)
+        if(len(node_list)<6):
+            error_list.append("Not enough tokens to parse a valid method decl")
+        else:
+            if(node_list[0].object_node.symbol_type.name != "type" and node_list[0].object_node.symbol_type.name != "void"):
+                error_list.append("Unexpected token "+ node_list[0].object_node.symbol_type.name +" at line "+str(node_list[0].object_node.line))
+            if(node_list[1].object_node.symbol_type.name != "id"):
+                error_list.append("Unexpected token "+ node_list[1].object_node.symbol_type.name +" at line "+str(node_list[1].object_node.line))
+            if(node_list[2].object_node.symbol_type.name != "("):
+                error_list.append("Unexpected token "+ node_list[2].object_node.symbol_type.name +" at line "+str(node_list[2].object_node.line))
+            
+            for node_index in range(len(node_list)):
+                if(node_index<len(node_list)-3):
+                    if(
+                        (node_list[node_index].object_node.symbol_type.name == "type" or node_list[node_index].object_node.symbol_type.name == "void") and
+                         node_list[node_index+1].object_node.symbol_type.name == "id" and
+                         node_list[node_index+2].object_node.symbol_type.name == "("
+                    ):
+                        #crear nodo method decl
+                        method_decl_obj = MethodDecl.MethodDecl()
+                        method_decl_node = Node.Node(method_decl_obj, "method_decl", [node_list[node_index], node_list[node_index+1], node_list[node_index+2]])
+                        new_node_list_method.append(method_decl_node)
+                        print("method decl ", node_list[node_index].object_node.symbol_type.name)
+                        print("method decl ", node_list[node_index+1].object_node.symbol_type.name)
+                        print("method decl ", node_list[node_index+2].object_node.symbol_type.name)
+                        counter_1 = node_index+3
+                        child_var_decl_list=[]
+                        while(node_list[counter_1].object_node.symbol_type.name != ")" and counter_1<len(node_list)-3):
+                            tout_bien = True
+                            if(node_list[counter_1].object_node.symbol_type.name == "type"):
+                                if(node_list[counter_1+1].object_node.symbol_type.name != "id" 
+                                    or (node_list[counter_1+2].object_node.symbol_type.name != "," and node_list[counter_1+2].object_node.symbol_type.name != ")")):
+                                    error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                    tout_bien = False
+                                else:
+                                    child_var_decl_list.append(node_list[counter_1])
+                                    print("node", node_list[counter_1].object_node.symbol_type.name)
+                                    print("child var decl list", child_var_decl_list)
+                                    print("todo bien")
+                            elif(node_list[counter_1].object_node.symbol_type.name == "id"):
+                                if((node_list[counter_1+1].object_node.symbol_type.name != "," and node_list[counter_1+1].object_node.symbol_type.name != ")")
+                                    or node_list[counter_1-1].object_node.symbol_type.name != "type" ):
+                                    error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                    tout_bien = False
+                                else:
+                                    child_var_decl_list.append(node_list[counter_1])
+                                    print("node", node_list[counter_1].object_node.symbol_type.name)
+                                    print("child var decl list", child_var_decl_list)
+                                    print("todo bien")   
+                            elif(node_list[counter_1].object_node.symbol_type.name == ","):
+                                if(node_list[counter_1+1].object_node.symbol_type.name != "type"
+                                    or node_list[counter_1-1].object_node.symbol_type.name != "id" ):
+                                    error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                    tout_bien = False
+                                else:
+                                    child_var_decl_list.append(node_list[counter_1])
+                                    print("node", node_list[counter_1].object_node.symbol_type.name)
+                                    print("child var decl list", child_var_decl_list)
+                                    print("todo bien")  
+                            else:
+                                error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                tout_bien = False
+                            print(node_list[counter_1].object_node.symbol_type.name)
+                            counter_1+=1
+                        if(node_list[counter_1].object_node.symbol_type.name != ")"):
+                            error_list.append("Missing closing ) in method declaration args")
+                        var_decl_object = VarDeclList.VarDeclList()
+                        var_decl_node = Node.Node(var_decl_object, "var_decl_list", [])
+                        if(tout_bien):
+                            var_decl_node.node_list = child_var_decl_list
+                        method_decl_node.node_list.append(var_decl_node)
+                        method_decl_node.node_list.append(node_list[counter_1])
+                        print("counter", counter_1, node_list[counter_1].object_node.symbol_type.name)
+                        counter_1+=1
+                        block_children_list = []
+                        if(node_list[counter_1].object_node.symbol_type.name == "{"):
+                                #create block node
+                                block_children_list.append(node_list[counter_1])
+                                while not(
+                                        (node_list[counter_1].object_node.symbol_type.name == "type" or node_list[counter_1].object_node.symbol_type.name == "void") and
+                                        node_list[counter_1+1].object_node.symbol_type.name == "id" and
+                                        node_list[counter_1+2].object_node.symbol_type.name == "("
+                                    ) and counter_1<len(node_list)-2:
+                                    print("block", counter_1, node_list[counter_1].object_node.value)
+                                    block_children_list.append(node_list[counter_1])
+                                    counter_1+=1
+                                if(counter_1==len(node_list)-2):
+                                    block_children_list.append(node_list[counter_1])
+                                    print("block", counter_1, node_list[counter_1].object_node.value) 
+                                    block_children_list.append(node_list[counter_1+1])                              
+                                    print("block", counter_1, node_list[counter_1+1].object_node.value)
+                        #create block node
+                        block_object = Block.Block()
+                        block_node = Node.Node(block_object, "block", block_children_list)
+                        method_decl_node.node_list.append(block_node)
+                        # if not(
+                        #     (node_list[counter_1].object_node.symbol_type.name == "type" or node_list[counter_1].object_node.symbol_type.name == "void") and
+                        #     node_list[counter_1+1].object_node.symbol_type.name == "id" and
+                        #     node_list[counter_1+2].object_node.symbol_type.name == "("
+                        # ):
+            main_node.node_list=new_node_list_method
+        print(error_list)
 
     def accepts(self, token_list):
         #print(''.join(list(self.grammar[1].values())[0]))

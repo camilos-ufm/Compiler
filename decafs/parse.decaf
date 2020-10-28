@@ -9,14 +9,15 @@ class Program {
     boolean a;
     string a;
     */
-    int myFunction(){
+
+    int myFunction(int x, string y){
         x = 4;
         if(x>2){
             k=0;
         }
     }
 
-    void main() {
+    void main(int x, int y) {
         if (x>0) {
             x+=1;
             x=y+1;
