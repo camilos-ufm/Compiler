@@ -6,4 +6,13 @@ class Program {
         h = 0;
         x = 1;
     }
+
+    int method1(int) {
+        int z;
+        string z;
+        if(x>3){
+            int j;
+            z+=1;
+        }
+    }
 }
