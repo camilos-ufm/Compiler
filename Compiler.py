@@ -1,6 +1,9 @@
 # imports
 import sys
 import scanner.Scanner as Scanner
+import parser.Parser as Parser
+import ast.Ast as Ast
+import semantic.Semantic as Semantic
 import utils.ReadFile as ReadFile
 import utils.WriteFile as WriteFile
 
@@ -41,12 +44,22 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         debug=False
         if(("parse" in debug_stage)):
             debug=True
-        print("PARSE not ready")
-        print("With debug"+str(debug))
+
+        pr = Parser.Parser()
+        main_program = pr.parse(token_list, debug)
+
     if(stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
-        print("AST not ready")
+        debug=False
+        if(("ast" in debug_stage)):
+            debug=True
+        ast = Ast.Ast()
+        ast.ast(main_program,debug)
     if(stage=="semantic" or stage=="irt" or stage=="codegen"):
-        print("SEMANTIC not ready")
+        debug=False
+        if(("semantic" in debug_stage)):
+            debug=True
+        sm = Semantic.Semantic()
+        sm.semantic(main_program, debug)
     if(stage=="irt" or stage=="codegen"):
         print("IRT not ready")
     if(stage=="codegen"):
@@ -60,7 +73,7 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
 if __name__ == "__main__":
     input_file = ""
     file_name = "out"
-    stage = "scan"
+    stage = "parse"
     opt_stage = ""
     debug_stage = []
     if (len(sys.argv) >= 4 and len(sys.argv) % 2 == 0):

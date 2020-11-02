@@ -1,0 +1,41 @@
+class Program {
+    int x, u;
+    int j;
+    int y[5];
+    /*
+    int k;
+    int a,b,c,d,e;
+    int j;
+    boolean a;
+    string a;
+    */
+
+    int myFunction(int x, string y){
+        x = 4;
+        if(x>2){
+            k=0;
+        }
+    }
+
+    void main(int x, int y) {
+        if (x>0) {
+            x+=1;
+            x=y+1;
+            j="hola";
+            x=3;
+            char1='a'; boolean b=true;
+        }
+        return;
+    }
+
+    int myFunction2(int x, string y){
+        int k;
+        for k = 5 , k=k+1;
+        x = 4;
+        if(x>2){
+            k=0;
+        }
+        k+=1;
+        k-=1;
+    }
+}

@@ -33,6 +33,9 @@ python Compiler.py <file_name> -flag
 Ejemplo:
 python Compiler.py ejemplo -target hola
 
+python Compiler.py simple -target parse -debug parse:scan -o out
+
+python Compiler.py semantic -target semantic -debug ast:semantic
 ```
 
 **💡 IMPORTANTE** 
@@ -48,7 +51,7 @@ python Compiler.py ejemplo -target hola
 ```
 
 # Fase del proyecto
-- [ ] Scanner
+- [x] Scanner
 - [ ] Parser
 - [ ] Semantic Check
 - [ ] IRT

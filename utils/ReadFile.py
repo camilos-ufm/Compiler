@@ -42,7 +42,7 @@ class ReadFile():
                             else:
                                 pass
                         if(char=="&" or char=="%" or char=="/"
-                            or char=="*" or char=="(" or char==")" or char=="{" or char=="}" or char==";"):
+                            or char=="*" or char=="(" or char==")" or char=="{" or char=="}" or char==";" or char==","):
                             string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
                     if("+=" in string_line):
                         string_line = string_line.replace("+=", " += ")

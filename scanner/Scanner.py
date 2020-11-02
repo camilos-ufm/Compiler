@@ -40,6 +40,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
     SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
 
+
     def scan(self, input_string, debug):
         error_list = []
         token_list = []
@@ -78,7 +79,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[8], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="boolean" or word=="int"):
+                elif(word=="boolean" or word=="int" or word=="char" or word=="string"):
                     tk = Token.Token(self.SYMBOL_LIST[9], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
@@ -118,7 +119,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[18], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="+=" or word=="-="):
+                elif(word=="+=" or word=="-="  or word == "="):
                     tk = Token.Token(self.SYMBOL_LIST[19], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
@@ -134,7 +135,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[22], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="==" or word == "!=" or word == "="):
+                elif(word=="==" or word == "!="):
                     tk = Token.Token(self.SYMBOL_LIST[23], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
