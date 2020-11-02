@@ -1,9 +1,11 @@
 class Program {
     int x, u;
-
+    int x;
     void main(int x, int y) {
+        int x;
         if (x>0) {
             x+=1;
+            j+=3;
             x=y+1;
             j="hola";
             x=3;

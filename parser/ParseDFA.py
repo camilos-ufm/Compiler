@@ -29,7 +29,7 @@ class ParseDFA:
             # 5:{'(':['reduce', 2], ')':['reduce', 2], '$':['reduce', 2]},
     }
 
-    def parse_field(self, program, main_node, type_dfa):
+    def parse_field(self, program, main_node, type_dfa, debug):
         error_list = []
         node_list = main_node.node_list
         # print(main_node.type_node)
@@ -114,13 +114,14 @@ class ParseDFA:
 
         #DotExporter(program_ui).to_picture("AST.png")
         # print(type_dfa)
-        print("error list", error_list)
+        if(debug):
+            print("error list", error_list)
 
-    def parse_method(self, program, main_node, type_dfa):
+    def parse_method(self, program, main_node, type_dfa, debug):
         new_node_list_method = []
         error_list = []
         node_list = main_node.node_list
-        print(main_node.type_node)
+        # print(main_node.type_node)
         if(len(node_list)<6):
             error_list.append("Not enough tokens to parse a valid method decl")
         else:
@@ -142,9 +143,9 @@ class ParseDFA:
                         method_decl_obj = MethodDecl.MethodDecl()
                         method_decl_node = Node.Node(method_decl_obj, "method_decl", [node_list[node_index], node_list[node_index+1], node_list[node_index+2]])
                         new_node_list_method.append(method_decl_node)
-                        print("method decl ", node_list[node_index].object_node.symbol_type.name)
-                        print("method decl ", node_list[node_index+1].object_node.symbol_type.name)
-                        print("method decl ", node_list[node_index+2].object_node.symbol_type.name)
+                        # print("method decl ", node_list[node_index].object_node.symbol_type.name)
+                        # print("method decl ", node_list[node_index+1].object_node.symbol_type.name)
+                        # print("method decl ", node_list[node_index+2].object_node.symbol_type.name)
                         counter_1 = node_index+3
                         child_var_decl_list=[]
                         while(node_list[counter_1].object_node.symbol_type.name != ")" and counter_1<len(node_list)-3):
@@ -156,9 +157,9 @@ class ParseDFA:
                                     tout_bien = False
                                 else:
                                     child_var_decl_list.append(node_list[counter_1])
-                                    print("node", node_list[counter_1].object_node.symbol_type.name)
-                                    print("child var decl list", child_var_decl_list)
-                                    print("todo bien")
+                                    # print("node", node_list[counter_1].object_node.symbol_type.name)
+                                    # print("child var decl list", child_var_decl_list)
+                                    # print("todo bien")
                             elif(node_list[counter_1].object_node.symbol_type.name == "id"):
                                 if((node_list[counter_1+1].object_node.symbol_type.name != "," and node_list[counter_1+1].object_node.symbol_type.name != ")")
                                     or node_list[counter_1-1].object_node.symbol_type.name != "type" ):
@@ -166,9 +167,9 @@ class ParseDFA:
                                     tout_bien = False
                                 else:
                                     child_var_decl_list.append(node_list[counter_1])
-                                    print("node", node_list[counter_1].object_node.symbol_type.name)
-                                    print("child var decl list", child_var_decl_list)
-                                    print("todo bien")   
+                                    # print("node", node_list[counter_1].object_node.symbol_type.name)
+                                    # print("child var decl list", child_var_decl_list)
+                                    # print("todo bien")   
                             elif(node_list[counter_1].object_node.symbol_type.name == ","):
                                 if(node_list[counter_1+1].object_node.symbol_type.name != "type"
                                     or node_list[counter_1-1].object_node.symbol_type.name != "id" ):
@@ -176,13 +177,13 @@ class ParseDFA:
                                     tout_bien = False
                                 else:
                                     child_var_decl_list.append(node_list[counter_1])
-                                    print("node", node_list[counter_1].object_node.symbol_type.name)
-                                    print("child var decl list", child_var_decl_list)
-                                    print("todo bien")  
+                                    # print("node", node_list[counter_1].object_node.symbol_type.name)
+                                    # print("child var decl list", child_var_decl_list)
+                                    # print("todo bien")  
                             else:
                                 error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
                                 tout_bien = False
-                            print(node_list[counter_1].object_node.symbol_type.name)
+                            # print(node_list[counter_1].object_node.symbol_type.name)
                             counter_1+=1
                         if(node_list[counter_1].object_node.symbol_type.name != ")"):
                             error_list.append("Missing closing ) in method declaration args")
@@ -192,25 +193,25 @@ class ParseDFA:
                             var_decl_node.node_list = child_var_decl_list
                         method_decl_node.node_list.append(var_decl_node)
                         method_decl_node.node_list.append(node_list[counter_1])
-                        print("counter", counter_1, node_list[counter_1].object_node.symbol_type.name)
+                        # print("counter", counter_1, node_list[counter_1].object_node.symbol_type.name)
                         counter_1+=1
                         block_children_list = []
                         if(node_list[counter_1].object_node.symbol_type.name == "{"):
                                 #create block node
-                                block_children_list.append(node_list[counter_1])
+                                # block_children_list.append(node_list[counter_1])
                                 while not(
                                         (node_list[counter_1].object_node.symbol_type.name == "type" or node_list[counter_1].object_node.symbol_type.name == "void") and
                                         node_list[counter_1+1].object_node.symbol_type.name == "id" and
                                         node_list[counter_1+2].object_node.symbol_type.name == "("
                                     ) and counter_1<len(node_list)-2:
-                                    print("block", counter_1, node_list[counter_1].object_node.value)
+                                    # print("block", counter_1, node_list[counter_1].object_node.value)
                                     block_children_list.append(node_list[counter_1])
                                     counter_1+=1
                                 if(counter_1==len(node_list)-2):
                                     block_children_list.append(node_list[counter_1])
-                                    print("block", counter_1, node_list[counter_1].object_node.value) 
+                                    # print("block", counter_1, node_list[counter_1].object_node.value) 
                                     block_children_list.append(node_list[counter_1+1])                              
-                                    print("block", counter_1, node_list[counter_1+1].object_node.value)
+                                    # print("block", counter_1, node_list[counter_1+1].object_node.value)
                         #create block node
                         block_object = Block.Block()
                         block_node = Node.Node(block_object, "block", block_children_list)
@@ -221,7 +222,8 @@ class ParseDFA:
                         #     node_list[counter_1+2].object_node.symbol_type.name == "("
                         # ):
             main_node.node_list=new_node_list_method
-        print(error_list)
+        if(debug):
+            print(error_list)
 
     def accepts(self, token_list):
         #print(''.join(list(self.grammar[1].values())[0]))
