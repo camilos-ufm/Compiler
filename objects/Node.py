@@ -22,7 +22,7 @@ class Node:
         if(len(self.node_list)!=0 and self.type_node!=''):
             inner_counter = 0
             for node1 in self.node_list:
-                print(type(node1.object_node))
+                # print(type(node1.object_node))
                 if(len(node1.node_list)==0 and str(type(node1.object_node)) == "<class 'objects.Token.Token'>" and node1.object_node.symbol_type.name=="id"):
                     if(inner_counter!=0 and (self.node_list[inner_counter-1].object_node.symbol_type.name == 'type' or self.node_list[inner_counter-1].object_node.symbol_type.name == 'void')):
                         is_unique = True

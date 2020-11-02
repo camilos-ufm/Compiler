@@ -35,6 +35,7 @@
 ~ Type: id, Line: 10, Value: method1 ~
 ~ Type: (, Line: 10, Value: ( ~
 ~ Type: type, Line: 10, Value: int ~
+~ Type: id, Line: 10, Value: z ~
 ~ Type: ), Line: 10, Value: ) ~
 ~ Type: {, Line: 10, Value: { ~
 ~ Type: type, Line: 11, Value: int ~

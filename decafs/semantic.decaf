@@ -7,7 +7,7 @@ class Program {
         x = 1;
     }
 
-    int method1(int) {
+    int method1(int z) {
         int z;
         string z;
         if(x>3){
