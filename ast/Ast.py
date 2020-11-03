@@ -16,5 +16,5 @@ class Ast:
             program_ui = main_program.program_tree
             for pre, fill, node in RenderTree(program_ui):
                 print("%s%s" % (pre, node.name))
-
+            # DotExporter(program_ui).to_picture("AST.pdf")
             print(main_program.all_nodes)
