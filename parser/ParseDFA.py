@@ -375,6 +375,9 @@ class ParseDFA:
         if(debug):
             print(error_list)
 
+    def parse_block(self, program, main_node, debug):
+        print(program, main_node, debug)
+        #print(self.dfa_parse_1)
     def accepts(self, token_list):
         #print(''.join(list(self.grammar[1].values())[0]))
         state = 0

@@ -79,7 +79,8 @@ class Parser:
             dfa.parse_method(main_program, main_program.node_list[4], 'method_decl_list', debug)
             # print("after parse", len(main_program.node_list[4].node_list))
 
-
+            for method in main_program.getMethodDeclList():
+                dfa.parse_block(main_program, method.node_list[5], debug)
             # DotExporter(program_ui).to_picture("AST.png")
             # print(main_program.symbol_table)
             # for field_decl in main_program.getFieldDeclList():
