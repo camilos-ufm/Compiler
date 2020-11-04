@@ -7,6 +7,7 @@ class Program {
         x = 1;
     }
 
+    /*
     int method1(int z) {
         int z;
         string z;
@@ -14,5 +15,5 @@ class Program {
             int j;
             z+=1;
         }
-    }
+    }*/
 }
