@@ -30,5 +30,5 @@
 ~ Type: asign_op, Line: 7, Value: = ~
 ~ Type: int_literal, Line: 7, Value: 1 ~
 ~ Type: ;, Line: 7, Value: ; ~
-~ Type: }, Line: 8, Value: } ~
-~ Type: }, Line: 19, Value: } ~
+~ Type: }, Line: 11, Value: } ~
+~ Type: }, Line: 22, Value: } ~
