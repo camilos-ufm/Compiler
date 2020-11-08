@@ -19,6 +19,10 @@
 ~ Type: type, Line: 4, Value: int ~
 ~ Type: id, Line: 4, Value: z ~
 ~ Type: ;, Line: 4, Value: ; ~
+~ Type: id, Line: 6, Value: main ~
+~ Type: (, Line: 6, Value: ( ~
+~ Type: ), Line: 6, Value: ) ~
+~ Type: ;, Line: 6, Value: ; ~
 ~ Type: for, Line: 7, Value: for ~
 ~ Type: id, Line: 7, Value: z ~
 ~ Type: assign_op, Line: 7, Value: = ~

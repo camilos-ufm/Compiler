@@ -3,7 +3,7 @@ class Program {
     void main(int x, int y) {
         int z;
         //int j;
-        //main();
+        main();
         for z = 3, (z <= 1) {
             int x;
             int y;
