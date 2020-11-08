@@ -1,8 +1,7 @@
 class Program {
     int x, u;
-    int x;
     void main(int x, int y) {
-        //int z;
+        int z;
         //int j;
         //main();
         for z = 3, (z <= 1) {
@@ -12,10 +11,11 @@ class Program {
                 x=1;
                 if(x<3){
                     x=3;
+                    int x;
+                    int j;
+                    char z;
                 }
             }
-            j = 4;
-            j += 4;
         }
         /*
         if(j<1){

@@ -449,11 +449,33 @@ class ParseDFA:
                 elif(param_list[0]=='reduce'):
                     print(param_list[1])
                     if(param_list[1] == 2):  
+                        temp_statement_list = []
+                        open_bracket = ""
+                        for node_verify in nodes_stack[::-1]:
+                            if(node_verify.type_node == "statement"):
+                                print("statement found")
+                                temp_statement_list.append(node_verify)
+                            elif(node_verify.type_node == "{"):
+                                open_bracket = node_verify
+                                break
+                            else:
+                                error_list.append("Parsing error, unexpected production "+node_verify.type_node)
+                                break
+                        print("open", open_bracket.type_node)
+                        print("statement_list", temp_statement_list)
                         print("last node", node_list_analize[index].type_node)
+                        statement_list_node = Node.Node("statement_list", "statement_list", temp_statement_list[::-1])
+                        node_block = Node.Node("block", "block", [open_bracket, statement_list_node, node_list_analize[index]])
+                        count = len(temp_statement_list) + 1
+                        nodes_stack = nodes_stack[:-count]
+                        states_stack = states_stack[:-(count)]
+                        nodes_stack.append(node_block)
+                        index+=1
+
+                        param_list = self.dfa_parse_1.get(states_stack[-1]).get(node_block.type_node)
                         #create while (statement) ---> {; verify block method
                         #return block with children
                         print("riiiip") 
-                        break
                         #hacer otro algo rip
                     else:
                         object_node = list(self.grammer_1[param_list[1]-1].keys())[0]
@@ -522,9 +544,9 @@ class ParseDFA:
             else:
                 print("state not defined")
                 if(index<len(node_list_analize)):
-                    print("unexpected token",node_list_analize[index].type_node,"at line",node_list_analize[index].object_node.line)
+                    error_list.append("unexpected token " + node_list_analize[index].type_node + " at line " + str(node_list_analize[index].object_node.line))
                 else:
-                    print("unexpected token",node_list_analize[index-1].type_node,"at line",node_list_analize[index-1].object_node.line)
+                    error_list.append("unexpected token " + node_list_analize[index-1].type_node + " at line " + str(node_list_analize[index-1].object_node.line))
                 break
             print("----[")
             for xd in nodes_stack:
@@ -532,12 +554,18 @@ class ParseDFA:
             print("----]")
             print(states_stack)
             print("------")
-        for node in node_list_analize:
-            print(node.object_node.symbol_type.name)
+        # for node in node_list_analize:
+        #     print(node.object_node.symbol_type.name)
 
 
         if(debug):
             print(error_list)
+
+        if(len(error_list) == 0):
+            return nodes_stack[-1]
+        else:
+            return Node.Node("block", "block", [])
+
         #print(self.dfa_parse_1)
     def accepts(self, token_list):
         #print(''.join(list(self.grammar[1].values())[0]))

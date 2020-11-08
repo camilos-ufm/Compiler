@@ -58,8 +58,8 @@ class Node:
                     print("pop scope")
                     #del main_program.symbol_table[-1]
 
-                if(node1.type_node == "expr"):
-                    node1.object_node.typeCheck(node1.node_list, symbol_table, error_list)
+                # if(node1.type_node == "expr"):
+                #     node1.object_node.typeCheck(node1.node_list, symbol_table, error_list)
                 counter+=1
                 inner_counter+=1
                 if(len(node1.node_list)!=0):
