@@ -2,9 +2,30 @@ class Program {
     int x, u;
     int x;
     void main(int x, int y) {
-        int z;
-        h = 0;
-        x = 1;
+        //int z;
+        //int j;
+        //main();
+        for z = 3, (z <= 1) {
+            int x;
+            int y;
+            if ( x>1 ){
+                x=1;
+                if(x<3){
+                    x=3;
+                }
+            }
+            j = 4;
+            j += 4;
+        }
+        /*
+        if(j<1){
+            int j;
+            main();
+            x=2;
+            int h;
+        }*/
+        //h = 0;
+        //x = 1;
         //if (x < 1) { 
         //    x=0;
         //}

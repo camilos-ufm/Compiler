@@ -91,10 +91,10 @@ class ParseDFA:
 
     dfa_parse_1 = {
             0:{'{':['shift',1]},
-            1:{'{':['shift',1],'type':['shift',17],'if':['shift',7],'for':['shift',9],'return':['shift',10],'break':['shift',11],'continue':['shift',12],'callout':['shift',16],'id':['shift',15],'statement_list':['goto',2],'statement':['goto',4],'location':['goto',5],'method_call':['goto',6],'block':['goto',13],'var_decl':['goto',14],'method_name':['goto',24]},
+            1:{'}':['reduce',2],'{':['shift',1],'type':['shift',17],'if':['shift',8],'for':['shift',9],'return':['shift',10],'break':['shift',11],'continue':['shift',12],'callout':['shift',16],'id':['shift',15],'statement_list':['goto',2],'statement':['goto',4],'location':['goto',5],'method_call':['goto',6],'block':['goto',13],'var_decl':['goto',14],'method_name':['goto',24]},
             2:{'}':['shift',3]},
             3:{'{':['reduce',1],'}':['reduce',1],',':['reduce',1],'[':['reduce',1],']':['reduce',1],';':['reduce',1],'type':['reduce',1],'void':['reduce',1],'if':['reduce',1],'(':['reduce',1],')':['reduce',1],'else':['reduce',1],'for':['reduce',1],'return':['reduce',1],'break':['reduce',1],'continue':['reduce',1],'assign_op':['reduce',1],'callout':['reduce',1],'arit_op':['reduce',1],'rel_op':['reduce',1],'eq_op':['reduce',1],'cond_op':['reduce',1],'bool_literal':['reduce',1],'char_literal':['reduce',1],'string_literal':['reduce',1],'int_literal':['reduce',1],'id':['reduce',1],'minus_op':['reduce',1],'exclamation_op':['reduce',1],'minus_op':['reduce',1],'exclamation_op':['reduce',1],'statement_list':['reduce',1],'statement':['reduce',1],'location':['reduce',1],'method_call':['reduce',1],'block':['reduce',1],'var_decl':['reduce',1],'expr':['reduce',1],'method_name':['reduce',1],'literal':['reduce',1],'-':['reduce',1],'!':['reduce',1],'=':['reduce',1],'expr_list':['reduce',1],'bin_op':['reduce',1],'callout_arg_list':['reduce',1],'callout_arg':['reduce',1]},
-            4:{'{':['shift',0],'}':['reduce',2],',':['reduce',2],'[':['reduce',2],']':['reduce',2],';':['reduce',2],'type':['shift',17],'void':['reduce',2],'if':['shift',7],'(':['reduce',2],')':['reduce',2],'else':['reduce',2],'for':['shift',9],'return':['shift',10],'break':['shift',11],'continue':['shift',12],'assign_op':['reduce',2],'callout':['shift',16],'arit_op':['reduce',2],'rel_op':['reduce',2],'eq_op':['reduce',2],'cond_op':['reduce',2],'bool_literal':['reduce',2],'char_literal':['reduce',2],'string_literal':['reduce',2],'int_literal':['reduce',2],'id':['shift',15],'minus_op':['reduce',2],'exclamation_op':['reduce',2],'minus_op':['reduce',2],'exclamation_op':['reduce',2],'statement_list':['goto',18],'statement':['goto',4],'location':['goto',5],'method_call':['goto',6],'block':['goto',13],'var_decl':['goto',14],'expr':['reduce',2],'method_name':['goto',24],'literal':['reduce',2],'-':['reduce',2],'!':['reduce',2],'=':['reduce',2],'expr_list':['reduce',2],'bin_op':['reduce',2],'callout_arg_list':['reduce',2],'callout_arg':['reduce',2]},
+            4:{'{':['shift',0],'}':['reduce',2],',':['reduce',2],'[':['reduce',2],']':['reduce',2],';':['reduce',2],'type':['shift',17],'void':['reduce',2],'if':['shift',8],'(':['reduce',2],')':['reduce',2],'else':['reduce',2],'for':['shift',9],'return':['shift',10],'break':['shift',11],'continue':['shift',12],'assign_op':['reduce',2],'callout':['shift',16],'arit_op':['reduce',2],'rel_op':['reduce',2],'eq_op':['reduce',2],'cond_op':['reduce',2],'bool_literal':['reduce',2],'char_literal':['reduce',2],'string_literal':['reduce',2],'int_literal':['reduce',2],'id':['shift',15],'minus_op':['reduce',2],'exclamation_op':['reduce',2],'minus_op':['reduce',2],'exclamation_op':['reduce',2],'statement_list':['goto',18],'statement':['goto',4],'location':['goto',5],'method_call':['goto',6],'block':['goto',13],'var_decl':['goto',14],'expr':['reduce',2],'method_name':['goto',24],'literal':['reduce',2],'-':['reduce',2],'!':['reduce',2],'=':['reduce',2],'expr_list':['reduce',2],'bin_op':['reduce',2],'callout_arg_list':['reduce',2],'callout_arg':['reduce',2]},
             5:{'assign_op':['shift',19]},
             6:{';':['shift',7],'(':['shift',25]},
             7:{'{':['reduce',6],'}':['reduce',6],',':['reduce',6],'[':['reduce',6],']':['reduce',6],';':['reduce',6],'type':['reduce',6],'void':['reduce',6],'if':['reduce',6],'(':['reduce',6],')':['reduce',6],'else':['reduce',6],'for':['reduce',6],'return':['reduce',6],'break':['reduce',6],'continue':['reduce',6],'assign_op':['reduce',6],'callout':['reduce',6],'arit_op':['reduce',6],'rel_op':['reduce',6],'eq_op':['reduce',6],'cond_op':['reduce',6],'bool_literal':['reduce',6],'char_literal':['reduce',6],'string_literal':['reduce',6],'int_literal':['reduce',6],'id':['reduce',6],'minus_op':['reduce',6],'exclamation_op':['reduce',6],'minus_op':['reduce',6],'exclamation_op':['reduce',6],'statement_list':['reduce',6],'statement':['reduce',6],'location':['reduce',6],'method_call':['reduce',6],'block':['reduce',6],'var_decl':['reduce',6],'expr':['reduce',6],'method_name':['reduce',6],'literal':['reduce',6],'-':['reduce',6],'!':['reduce',6],'=':['reduce',6],'expr_list':['reduce',6],'bin_op':['reduce',6],'callout_arg_list':['reduce',6],'callout_arg':['reduce',6]},
@@ -105,24 +105,24 @@ class ParseDFA:
             12:{';':['shift',37]},
             13:{'{':['reduce',14],'}':['reduce',14],',':['reduce',14],'[':['reduce',14],']':['reduce',14],';':['reduce',14],'type':['reduce',14],'void':['reduce',14],'if':['reduce',14],'(':['reduce',14],')':['reduce',14],'else':['reduce',14],'for':['reduce',14],'return':['reduce',14],'break':['reduce',14],'continue':['reduce',14],'assign_op':['reduce',14],'callout':['reduce',14],'arit_op':['reduce',14],'rel_op':['reduce',14],'eq_op':['reduce',14],'cond_op':['reduce',14],'bool_literal':['reduce',14],'char_literal':['reduce',14],'string_literal':['reduce',14],'int_literal':['reduce',14],'id':['reduce',14],'minus_op':['reduce',14],'exclamation_op':['reduce',14],'minus_op':['reduce',14],'exclamation_op':['reduce',14],'statement_list':['reduce',14],'statement':['reduce',14],'location':['reduce',14],'method_call':['reduce',14],'block':['reduce',14],'var_decl':['reduce',14],'expr':['reduce',14],'method_name':['reduce',14],'literal':['reduce',14],'-':['reduce',14],'!':['reduce',14],'=':['reduce',14],'expr_list':['reduce',14],'bin_op':['reduce',14],'callout_arg_list':['reduce',14],'callout_arg':['reduce',14]},
             14:{'{':['reduce',15],'}':['reduce',15],',':['reduce',15],'[':['reduce',15],']':['reduce',15],';':['reduce',15],'type':['reduce',15],'void':['reduce',15],'if':['reduce',15],'(':['reduce',15],')':['reduce',15],'else':['reduce',15],'for':['reduce',15],'return':['reduce',15],'break':['reduce',15],'continue':['reduce',15],'assign_op':['reduce',15],'callout':['reduce',15],'arit_op':['reduce',15],'rel_op':['reduce',15],'eq_op':['reduce',15],'cond_op':['reduce',15],'bool_literal':['reduce',15],'char_literal':['reduce',15],'string_literal':['reduce',15],'int_literal':['reduce',15],'id':['reduce',15],'minus_op':['reduce',15],'exclamation_op':['reduce',15],'minus_op':['reduce',15],'exclamation_op':['reduce',15],'statement_list':['reduce',15],'statement':['reduce',15],'location':['reduce',15],'method_call':['reduce',15],'block':['reduce',15],'var_decl':['reduce',15],'expr':['reduce',15],'method_name':['reduce',15],'literal':['reduce',15],'-':['reduce',15],'!':['reduce',15],'=':['reduce',15],'expr_list':['reduce',15],'bin_op':['reduce',15],'callout_arg_list':['reduce',15],'callout_arg':['reduce',15]},
-            15:{'{':['reduce',0],'}':['reduce',0],',':['reduce',0],'[':['shift',38],']':['reduce',0],';':['reduce',0],'type':['reduce',0],'void':['reduce',0],'if':['reduce',0],'(':['reduce',0],')':['reduce',0],'else':['reduce',0],'for':['reduce',0],'return':['reduce',0],'break':['reduce',0],'continue':['reduce',0],'assign_op':['reduce',0],'callout':['reduce',0],'arit_op':['reduce',0],'rel_op':['reduce',0],'eq_op':['reduce',0],'cond_op':['reduce',0],'bool_literal':['reduce',0],'char_literal':['reduce',0],'string_literal':['reduce',0],'int_literal':['reduce',0],'id':['reduce',0],'minus_op':['reduce',0],'exclamation_op':['reduce',0],'minus_op':['reduce',0],'exclamation_op':['reduce',0],'statement_list':['reduce',0],'statement':['reduce',0],'location':['reduce',0],'method_call':['reduce',0],'block':['reduce',0],'var_decl':['reduce',0],'expr':['reduce',0],'method_name':['reduce',0],'literal':['reduce',0],'-':['reduce',0],'!':['reduce',0],'=':['reduce',0],'expr_list':['reduce',0],'bin_op':['reduce',0],'callout_arg_list':['reduce',0],'callout_arg':['reduce',0]},
+            15:{'{':['reduce',23],'}':['reduce',23],',':['reduce',23],'[':['shift',38],']':['reduce',23],';':['reduce',23],'type':['reduce',23],'void':['reduce',23],'if':['reduce',23],'(':['reduce',25],')':['reduce',23],'else':['reduce',23],'for':['reduce',23],'return':['reduce',23],'break':['reduce',23],'continue':['reduce',23],'assign_op':['reduce',23],'callout':['reduce',23],'arit_op':['reduce',23],'rel_op':['reduce',23],'eq_op':['reduce',23],'cond_op':['reduce',23],'bool_literal':['reduce',23],'char_literal':['reduce',23],'string_literal':['reduce',23],'int_literal':['reduce',23],'id':['reduce',23],'minus_op':['reduce',23],'exclamation_op':['reduce',23],'minus_op':['reduce',23],'exclamation_op':['reduce',23],'statement_list':['reduce',23],'statement':['reduce',23],'location':['reduce',23],'method_call':['reduce',23],'block':['reduce',23],'var_decl':['reduce',23],'expr':['reduce',23],'method_name':['reduce',23],'literal':['reduce',23],'-':['reduce',23],'!':['reduce',23],'=':['reduce',23],'expr_list':['reduce',23],'bin_op':['reduce',23],'callout_arg_list':['reduce',23],'callout_arg':['reduce',23]},
             16:{'(':['shift',39]},
             17:{'id':['shift',40]},
             18:{'{':['reduce',3],'}':['reduce',3],',':['reduce',3],'[':['reduce',3],']':['reduce',3],';':['reduce',3],'type':['reduce',3],'void':['reduce',3],'if':['reduce',3],'(':['reduce',3],')':['reduce',3],'else':['reduce',3],'for':['reduce',3],'return':['reduce',3],'break':['reduce',3],'continue':['reduce',3],'assign_op':['reduce',3],'callout':['reduce',3],'arit_op':['reduce',3],'rel_op':['reduce',3],'eq_op':['reduce',3],'cond_op':['reduce',3],'bool_literal':['reduce',3],'char_literal':['reduce',3],'string_literal':['reduce',3],'int_literal':['reduce',3],'id':['reduce',3],'minus_op':['reduce',3],'exclamation_op':['reduce',3],'minus_op':['reduce',3],'exclamation_op':['reduce',3],'statement_list':['reduce',3],'statement':['reduce',3],'location':['reduce',3],'method_call':['reduce',3],'block':['reduce',3],'var_decl':['reduce',3],'expr':['reduce',3],'method_name':['reduce',3],'literal':['reduce',3],'-':['reduce',3],'!':['reduce',3],'=':['reduce',3],'expr_list':['reduce',3],'bin_op':['reduce',3],'callout_arg_list':['reduce',3],'callout_arg':['reduce',3]},
             19:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34]},
             20:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34],'=':['goto',45]},
-            21:{'id':['shift',45]},
+            21:{'assign_op':['shift',45]},
             22:{'{':['reduce',10],'}':['reduce',10],',':['reduce',10],'[':['reduce',10],']':['reduce',10],';':['reduce',10],'type':['reduce',10],'void':['reduce',10],'if':['reduce',10],'(':['reduce',10],')':['reduce',10],'else':['reduce',10],'for':['reduce',10],'return':['reduce',10],'break':['reduce',10],'continue':['reduce',10],'assign_op':['reduce',10],'callout':['reduce',10],'arit_op':['reduce',10],'rel_op':['reduce',10],'eq_op':['reduce',10],'cond_op':['reduce',10],'bool_literal':['reduce',10],'char_literal':['reduce',10],'string_literal':['reduce',10],'int_literal':['reduce',10],'id':['reduce',10],'minus_op':['reduce',10],'exclamation_op':['reduce',10],'minus_op':['reduce',10],'exclamation_op':['reduce',10],'statement_list':['reduce',10],'statement':['reduce',10],'location':['reduce',10],'method_call':['reduce',10],'block':['reduce',10],'var_decl':['reduce',10],'expr':['reduce',10],'method_name':['reduce',10],'literal':['reduce',10],'-':['reduce',10],'!':['reduce',10],'=':['reduce',10],'expr_list':['reduce',10],'bin_op':['reduce',10],'callout_arg_list':['reduce',10],'callout_arg':['reduce',10]},
-            23:{';':['shift',45]},
+            23:{';':['shift',86]},
             24:{'(':['shift',46]},
             25:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',50],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34],'expr_list':['goto',48]},
-            26:{'(':['shift',51],'for':['reduce',16],'return':['reduce',16],'break':['reduce',16],'continue':['reduce',16],'assign_op':['reduce',16],'callout':['reduce',16],'arit_op':['reduce',16],'rel_op':['reduce',16],'eq_op':['reduce',16],'cond_op':['reduce',16],'bool_literal':['reduce',16],'char_literal':['reduce',16],'string_literal':['reduce',16],'int_literal':['reduce',16],'id':['reduce',16],'minus_op':['reduce',16],'exclamation_op':['reduce',16],'minus_op':['reduce',16],'exclamation_op':['reduce',16],'statement_list':['reduce',16],'statement':['reduce',16],'location':['reduce',16],'method_call':['reduce',16],'block':['reduce',16],'var_decl':['reduce',16],'expr':['reduce',16],'method_name':['reduce',16],'literal':['reduce',16],'-':['reduce',16],'!':['reduce',16],'=':['reduce',16],'expr_list':['reduce',16],'bin_op':['reduce',16],'callout_arg_list':['reduce',16],'callout_arg':['reduce',16]},
-            27:{'{':['reduce',17],'}':['reduce',17],',':['reduce',17],'[':['reduce',17],']':['reduce',17],';':['reduce',17],'type':['reduce',17],'void':['reduce',17],'if':['reduce',17],'(':['reduce',17],')':['reduce',17],'else':['reduce',17],'for':['reduce',17],'return':['reduce',17],'break':['reduce',17],'continue':['reduce',17],'assign_op':['reduce',17],'callout':['reduce',17],'arit_op':['reduce',17],'rel_op':['reduce',17],'eq_op':['reduce',17],'cond_op':['reduce',17],'bool_literal':['reduce',17],'char_literal':['reduce',17],'string_literal':['reduce',17],'int_literal':['reduce',17],'id':['reduce',17],'minus_op':['reduce',17],'exclamation_op':['reduce',17],'minus_op':['reduce',17],'exclamation_op':['reduce',17],'statement_list':['reduce',17],'statement':['reduce',17],'location':['reduce',17],'method_call':['goto',27],'block':['reduce',17],'var_decl':['reduce',17],'expr':['reduce',17],'method_name':['reduce',17],'literal':['reduce',17],'-':['reduce',17],'!':['reduce',17],'=':['reduce',17],'expr_list':['reduce',17],'bin_op':['reduce',17],'callout_arg_list':['reduce',17],'callout_arg':['reduce',17]},
+            26:{'{':['reduce',16],'}':['reduce',16],',':['reduce',16],'[':['reduce',16],']':['reduce',16],']':['reduce',16],']':['reduce',16],']':['reduce',16],']':['reduce',16],']':['reduce',16],']':['reduce',16],']':['reduce',16],'for':['reduce',16],'return':['reduce',16],'break':['reduce',16],'continue':['reduce',16],'assign_op':['reduce',16],'callout':['reduce',16],'arit_op':['reduce',16],'rel_op':['reduce',16],'eq_op':['reduce',16],'cond_op':['reduce',16],'bool_literal':['reduce',16],'char_literal':['reduce',16],'string_literal':['reduce',16],'int_literal':['reduce',16],'id':['reduce',16],'minus_op':['reduce',16],'exclamation_op':['reduce',16],'minus_op':['reduce',16],'exclamation_op':['reduce',16],'statement_list':['reduce',16],'statement':['reduce',16],'location':['reduce',16],'method_call':['reduce',16],'block':['reduce',16],'var_decl':['reduce',16],'expr':['reduce',16],'method_name':['reduce',16],'literal':['reduce',16],'-':['reduce',16],'!':['reduce',16],'=':['reduce',16],'expr_list':['reduce',16],'bin_op':['reduce',16],'callout_arg_list':['reduce',16],'callout_arg':['reduce',16]},
+            27:{'{':['reduce',17],'}':['reduce',17],',':['reduce',17],'[':['reduce',17],']':['reduce',17],';':['reduce',17],'type':['reduce',17],'void':['reduce',17],'if':['reduce',17],'(':['shift',51],')':['reduce',17],'else':['reduce',17],'for':['reduce',17],'return':['reduce',17],'break':['reduce',17],'continue':['reduce',17],'assign_op':['reduce',17],'callout':['reduce',17],'arit_op':['reduce',17],'rel_op':['reduce',17],'eq_op':['reduce',17],'cond_op':['reduce',17],'bool_literal':['reduce',17],'char_literal':['reduce',17],'string_literal':['reduce',17],'int_literal':['reduce',17],'id':['reduce',17],'minus_op':['reduce',17],'exclamation_op':['reduce',17],'minus_op':['reduce',17],'exclamation_op':['reduce',17],'statement_list':['reduce',17],'statement':['reduce',17],'location':['reduce',17],'method_call':['goto',27],'block':['reduce',17],'var_decl':['reduce',17],'expr':['reduce',17],'method_name':['reduce',17],'literal':['reduce',17],'-':['reduce',17],'!':['reduce',17],'=':['reduce',17],'expr_list':['reduce',17],'bin_op':['reduce',17],'callout_arg_list':['reduce',17],'callout_arg':['reduce',17]},
             28:{'{':['reduce',18],'}':['reduce',18],',':['reduce',18],'[':['reduce',18],']':['reduce',18],';':['reduce',18],'type':['reduce',18],'void':['reduce',18],'if':['reduce',18],'(':['reduce',18],')':['reduce',18],'else':['reduce',18],'for':['reduce',18],'return':['reduce',18],'break':['reduce',18],'continue':['reduce',18],'assign_op':['reduce',18],'callout':['reduce',18],'arit_op':['reduce',18],'rel_op':['reduce',18],'eq_op':['reduce',18],'cond_op':['reduce',18],'bool_literal':['reduce',18],'char_literal':['reduce',18],'string_literal':['reduce',18],'int_literal':['reduce',18],'id':['reduce',18],'minus_op':['reduce',18],'exclamation_op':['reduce',18],'minus_op':['reduce',18],'exclamation_op':['reduce',18],'statement_list':['reduce',18],'statement':['reduce',18],'location':['reduce',18],'method_call':['reduce',18],'block':['reduce',18],'var_decl':['reduce',18],'expr':['reduce',18],'method_name':['reduce',18],'literal':['reduce',18],'-':['reduce',18],'!':['reduce',18],'=':['reduce',18],'expr_list':['reduce',18],'bin_op':['reduce',18],'callout_arg_list':['reduce',18],'callout_arg':['reduce',18]},
             29:{'{':['reduce',44],'}':['reduce',44],',':['reduce',44],'[':['reduce',44],']':['reduce',44],';':['reduce',44],'type':['reduce',44],'void':['reduce',44],'if':['reduce',44],'(':['reduce',44],')':['reduce',44],'else':['reduce',44],'for':['reduce',44],'return':['reduce',44],'break':['reduce',44],'continue':['reduce',44],'assign_op':['reduce',44],'callout':['reduce',44],'arit_op':['reduce',44],'rel_op':['reduce',44],'eq_op':['reduce',44],'cond_op':['reduce',44],'bool_literal':['reduce',44],'char_literal':['reduce',44],'string_literal':['reduce',44],'int_literal':['reduce',44],'id':['reduce',44],'minus_op':['reduce',44],'exclamation_op':['reduce',44],'minus_op':['reduce',44],'exclamation_op':['reduce',44],'statement_list':['reduce',44],'statement':['reduce',44],'location':['reduce',44],'method_call':['reduce',44],'block':['reduce',44],'var_decl':['reduce',44],'expr':['reduce',44],'method_name':['reduce',44],'literal':['reduce',44],'-':['reduce',44],'!':['reduce',44],'=':['reduce',44],'expr_list':['reduce',44],'bin_op':['reduce',44],'callout_arg_list':['reduce',44],'callout_arg':['reduce',44]},
             30:{'{':['reduce',45],'}':['reduce',45],',':['reduce',45],'[':['reduce',45],']':['reduce',45],';':['reduce',45],'type':['reduce',45],'void':['reduce',45],'if':['reduce',45],'(':['reduce',45],')':['reduce',45],'else':['reduce',45],'for':['reduce',45],'return':['reduce',45],'break':['reduce',45],'continue':['reduce',45],'assign_op':['reduce',45],'callout':['reduce',45],'arit_op':['reduce',45],'rel_op':['reduce',45],'eq_op':['reduce',45],'cond_op':['reduce',45],'bool_literal':['reduce',45],'char_literal':['reduce',45],'string_literal':['reduce',45],'int_literal':['reduce',45],'id':['reduce',45],'minus_op':['reduce',45],'exclamation_op':['reduce',45],'minus_op':['reduce',45],'exclamation_op':['reduce',45],'statement_list':['reduce',45],'statement':['reduce',45],'location':['reduce',45],'method_call':['reduce',45],'block':['reduce',45],'var_decl':['reduce',45],'expr':['reduce',45],'method_name':['reduce',45],'literal':['reduce',45],'-':['reduce',45],'!':['reduce',45],'=':['reduce',45],'expr_list':['reduce',45],'bin_op':['reduce',45],'callout_arg_list':['reduce',45],'callout_arg':['reduce',45]},
             31:{'{':['reduce',46],'}':['reduce',46],',':['reduce',46],'[':['reduce',46],']':['reduce',46],';':['reduce',46],'type':['reduce',46],'void':['reduce',46],'if':['reduce',46],'(':['reduce',46],')':['reduce',46],'else':['reduce',46],'for':['reduce',46],'return':['reduce',46],'break':['reduce',46],'continue':['reduce',46],'assign_op':['reduce',46],'callout':['reduce',46],'arit_op':['reduce',46],'rel_op':['reduce',46],'eq_op':['reduce',46],'cond_op':['reduce',46],'bool_literal':['reduce',46],'char_literal':['reduce',46],'string_literal':['reduce',46],'int_literal':['reduce',46],'id':['reduce',46],'minus_op':['reduce',46],'exclamation_op':['reduce',46],'minus_op':['reduce',46],'exclamation_op':['reduce',46],'statement_list':['reduce',46],'statement':['reduce',46],'location':['reduce',46],'method_call':['reduce',46],'block':['reduce',46],'var_decl':['reduce',46],'expr':['reduce',46],'method_name':['reduce',46],'literal':['reduce',46],'-':['reduce',46],'!':['reduce',46],'=':['reduce',46],'expr_list':['reduce',46],'bin_op':['reduce',46],'callout_arg_list':['reduce',46],'callout_arg':['reduce',46]},
-            32:{'arit_op':['shift',54],'eq_op':['shift',55],'cond_op':['shift',56],'bin_op':['goto',52]},
+            32:{';':['shift', 43],')':['reduce',19], 'rel_op':['shift',54],'arit_op':['shift',53],'eq_op':['shift',55],'cond_op':['shift',56],'bin_op':['goto',52]},
             33:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34]},
             34:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34]},
             35:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34]},
@@ -135,7 +135,7 @@ class ParseDFA:
             42:{';':['shift',43]},
             43:{'{':['reduce',5],'}':['reduce',5],',':['reduce',5],'[':['reduce',5],']':['reduce',5],';':['reduce',5],'type':['reduce',5],'void':['reduce',5],'if':['reduce',5],'(':['reduce',5],')':['reduce',5],'else':['reduce',5],'for':['reduce',5],'return':['reduce',5],'break':['reduce',5],'continue':['reduce',5],'assign_op':['reduce',5],'callout':['reduce',5],'arit_op':['reduce',5],'rel_op':['reduce',5],'eq_op':['reduce',5],'cond_op':['reduce',5],'bool_literal':['reduce',5],'char_literal':['reduce',5],'string_literal':['reduce',5],'int_literal':['reduce',5],'id':['reduce',5],'minus_op':['reduce',5],'exclamation_op':['reduce',5],'minus_op':['reduce',5],'exclamation_op':['reduce',5],'statement_list':['reduce',5],'statement':['reduce',5],'location':['reduce',5],'method_call':['reduce',5],'block':['reduce',5],'var_decl':['reduce',5],'expr':['reduce',5],'method_name':['reduce',5],'literal':['reduce',5],'-':['reduce',5],'!':['reduce',5],'=':['reduce',5],'expr_list':['reduce',5],'bin_op':['reduce',5],'callout_arg_list':['reduce',5],'callout_arg':['reduce',5]},
             44:{')':['shift',64]},
-            45:{'{':['reduce',11],'}':['reduce',11],',':['reduce',11],'[':['reduce',11],']':['reduce',11],';':['reduce',11],'type':['reduce',11],'void':['reduce',11],'if':['reduce',11],'(':['shift',35],')':['reduce',11],'else':['reduce',11],'for':['reduce',11],'return':['reduce',11],'break':['reduce',11],'continue':['reduce',11],'assign_op':['reduce',11],'callout':['shift',16],'arit_op':['reduce',11],'rel_op':['reduce',11],'eq_op':['reduce',11],'cond_op':['reduce',11],'bool_literal':['shift',31],'char_literal':['shift',30],'string_literal':['reduce',11],'int_literal':['shift',29],'id':['shift',15],'minus_op':['reduce',11],'exclamation_op':['reduce',11],'minus_op':['reduce',11],'exclamation_op':['reduce',11],'statement_list':['reduce',11],'statement':['reduce',11],'location':['goto',26],'method_call':['goto',27],'block':['reduce',11],'var_decl':['reduce',11],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34],'=':['reduce',11],'expr_list':['reduce',11],'bin_op':['reduce',11],'callout_arg_list':['reduce',11],'callout_arg':['reduce',11]},
+            45:{'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['goto',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34],},
             46:{')':['shift',47]},
             47:{'{':['reduce',26],'}':['reduce',26],',':['reduce',26],'[':['reduce',26],']':['reduce',26],';':['reduce',26],'type':['reduce',26],'void':['reduce',26],'if':['reduce',26],'(':['reduce',26],')':['reduce',26],'else':['reduce',26],'for':['reduce',26],'return':['reduce',26],'break':['reduce',26],'continue':['reduce',26],'assign_op':['reduce',26],'callout':['reduce',26],'arit_op':['reduce',26],'rel_op':['reduce',26],'eq_op':['reduce',26],'cond_op':['reduce',26],'bool_literal':['reduce',26],'char_literal':['reduce',26],'string_literal':['reduce',26],'int_literal':['reduce',26],'id':['reduce',26],'minus_op':['reduce',26],'exclamation_op':['reduce',26],'minus_op':['reduce',26],'exclamation_op':['reduce',26],'statement_list':['reduce',26],'statement':['reduce',26],'location':['reduce',26],'method_call':['reduce',26],'block':['reduce',26],'var_decl':['reduce',26],'expr':['reduce',26],'method_name':['reduce',26],'literal':['reduce',26],'-':['reduce',26],'!':['reduce',26],'=':['reduce',26],'expr_list':['reduce',26],'bin_op':['reduce',26],'callout_arg_list':['reduce',26],'callout_arg':['reduce',26]},
             48:{')':['shift',49]},
@@ -175,8 +175,8 @@ class ParseDFA:
             82:{'(':['shift',35],'callout':['shift',16],'bool_literal':['shift',31],'char_literal':['shift',30],'string_literal':['shift',79],'int_literal':['shift',29],'id':['shift',15],'location':['goto',26],'method_call':['goto',27],'expr':['goto',32],'method_name':['shift',24],'literal':['goto',28],'-':['goto',33],'!':['goto',34],'callout_arg_list':['goto',85],'callout_arg':['goto',77]},
             83:{'{':['reduce',8],'}':['reduce',8],',':['reduce',8],'[':['reduce',8],']':['reduce',8],';':['reduce',8],'type':['reduce',8],'void':['reduce',8],'if':['reduce',8],'(':['reduce',8],')':['reduce',8],'else':['reduce',8],'for':['reduce',8],'return':['reduce',8],'break':['reduce',8],'continue':['reduce',8],'assign_op':['reduce',8],'callout':['reduce',8],'arit_op':['reduce',8],'rel_op':['reduce',8],'eq_op':['reduce',8],'cond_op':['reduce',8],'bool_literal':['reduce',8],'char_literal':['reduce',8],'string_literal':['reduce',8],'int_literal':['reduce',8],'id':['reduce',8],'minus_op':['reduce',8],'exclamation_op':['reduce',8],'minus_op':['reduce',8],'exclamation_op':['reduce',8],'statement_list':['reduce',8],'statement':['reduce',8],'location':['reduce',8],'method_call':['reduce',8],'block':['reduce',8],'var_decl':['reduce',8],'expr':['reduce',8],'method_name':['reduce',8],'literal':['reduce',8],'-':['reduce',8],'!':['reduce',8],'=':['reduce',8],'expr_list':['reduce',8],'bin_op':['reduce',8],'callout_arg_list':['reduce',8],'callout_arg':['reduce',8]},
             84:{'{':['reduce',9],'}':['reduce',9],',':['reduce',9],'[':['reduce',9],']':['reduce',9],';':['reduce',9],'type':['reduce',9],'void':['reduce',9],'if':['reduce',9],'(':['reduce',9],')':['reduce',9],'else':['reduce',9],'for':['reduce',9],'return':['reduce',9],'break':['reduce',9],'continue':['reduce',9],'assign_op':['reduce',9],'callout':['reduce',9],'arit_op':['reduce',9],'rel_op':['reduce',9],'eq_op':['reduce',9],'cond_op':['reduce',9],'bool_literal':['reduce',9],'char_literal':['reduce',9],'string_literal':['reduce',9],'int_literal':['reduce',9],'id':['reduce',9],'minus_op':['reduce',9],'exclamation_op':['reduce',9],'minus_op':['reduce',9],'exclamation_op':['reduce',9],'statement_list':['reduce',9],'statement':['reduce',9],'location':['reduce',9],'method_call':['reduce',9],'block':['reduce',9],'var_decl':['reduce',9],'expr':['reduce',9],'method_name':['reduce',9],'literal':['reduce',9],'-':['reduce',9],'!':['reduce',9],'=':['reduce',9],'expr_list':['reduce',9],'bin_op':['reduce',9],'callout_arg_list':['reduce',9],'callout_arg':['reduce',9]},
-            85: {'{': ['reduce', 31], '}': ['reduce', 31], ',': ['reduce', 31], '[': ['reduce', 31], ']': ['reduce', 31], ';': ['reduce', 31], 'type': ['reduce', 31], 'void': ['reduce', 31], 'if': ['reduce', 31], '(': ['reduce', 31], ')': ['reduce', 31], 'else': ['reduce', 31], 'for': ['reduce', 31], 'return': ['reduce', 31], 'break': ['reduce', 31], 'continue': ['reduce', 31], 'assign_op': ['reduce', 31], 'callout': ['reduce', 31], 'arit_op': ['reduce', 31], 'rel_op': ['reduce', 31], 'eq_op': ['reduce', 31], 'cond_op': ['reduce', 31], 'bool_literal': ['reduce', 31], 'char_literal': ['reduce', 31], 'string_literal': ['reduce', 31], 'int_literal': ['reduce', 31], 'id': ['reduce', 31], 'minus_op': ['reduce', 31], 'exclamation_op': ['reduce', 31], 'minus_op': ['reduce', 31], 'exclamation_op': ['reduce', 31], 'statement_list': ['reduce', 31], 'statement': ['reduce', 31], 'location': ['reduce', 31], 'method_call': ['reduce', 31], 'block': ['reduce', 31], 'var_decl': ['reduce', 31], 'expr': ['reduce', 31], 'method_name': ['reduce', 31], 'literal': ['reduce', 31], '-': ['reduce', 31], '!': ['reduce', 31], '=': ['reduce', 31], 'expr_list': ['reduce', 31], 'bin_op': ['reduce', 31], 'callout_arg_list': ['reduce', 31], 'callout_arg': ['reduce', 31]}
-            
+            85: {'{': ['reduce', 31], '}': ['reduce', 31], ',': ['reduce', 31], '[': ['reduce', 31], ']': ['reduce', 31], ';': ['reduce', 31], 'type': ['reduce', 31], 'void': ['reduce', 31], 'if': ['reduce', 31], '(': ['reduce', 31], ')': ['reduce', 31], 'else': ['reduce', 31], 'for': ['reduce', 31], 'return': ['reduce', 31], 'break': ['reduce', 31], 'continue': ['reduce', 31], 'assign_op': ['reduce', 31], 'callout': ['reduce', 31], 'arit_op': ['reduce', 31], 'rel_op': ['reduce', 31], 'eq_op': ['reduce', 31], 'cond_op': ['reduce', 31], 'bool_literal': ['reduce', 31], 'char_literal': ['reduce', 31], 'string_literal': ['reduce', 31], 'int_literal': ['reduce', 31], 'id': ['reduce', 31], 'minus_op': ['reduce', 31], 'exclamation_op': ['reduce', 31], 'minus_op': ['reduce', 31], 'exclamation_op': ['reduce', 31], 'statement_list': ['reduce', 31], 'statement': ['reduce', 31], 'location': ['reduce', 31], 'method_call': ['reduce', 31], 'block': ['reduce', 31], 'var_decl': ['reduce', 31], 'expr': ['reduce', 31], 'method_name': ['reduce', 31], 'literal': ['reduce', 31], '-': ['reduce', 31], '!': ['reduce', 31], '=': ['reduce', 31], 'expr_list': ['reduce', 31], 'bin_op': ['reduce', 31], 'callout_arg_list': ['reduce', 31], 'callout_arg': ['reduce', 31]},
+            86:{'{':['reduce',11],'}':['reduce',11],',':['reduce',11],'[':['reduce',11],']':['reduce',11],';':['reduce',11],'type':['reduce',11],'void':['reduce',11],'if':['reduce',11],'(':['reduce',11],')':['reduce',11],'else':['reduce',11],'for':['reduce',11],'return':['reduce',11],'break':['reduce',11],'continue':['reduce',11],'assign_op':['reduce',11],'callout':['reduce',11],'arit_op':['reduce',11],'rel_op':['reduce',11],'eq_op':['reduce',11],'cond_op':['reduce',11],'bool_literal':['reduce',11],'char_literal':['reduce',11],'string_literal':['reduce',11],'int_literal':['reduce',11],'id':['reduce',11],'minus_op':['reduce',11],'exclamation_op':['reduce',11],'minus_op':['reduce',11],'exclamation_op':['reduce',11],'statement_list':['reduce',11],'statement':['reduce',11],'location':['reduce',11],'method_call':['reduce',11],'block':['reduce',11],'var_decl':['reduce',11],'expr':['reduce',11],'method_name':['reduce',11],'literal':['reduce',11],'-':['reduce',11],'!':['reduce',11],'=':['reduce',11],'expr_list':['reduce',11],'bin_op':['reduce',11],'callout_arg_list':['reduce',11],'callout_arg':['reduce',11]}  
      }
 
     def parse_field(self, program, main_node, type_dfa, debug):
@@ -376,18 +376,164 @@ class ParseDFA:
             print(error_list)
 
     def parse_block(self, program, main_node, debug):
+        initial_node = Node.Node("$", "$", [])
+        states_stack = [0]
+        nodes_stack = [initial_node]
         error_list = []
+
         print(program, main_node.type_node, debug)
         node_list_analize = main_node.node_list
+        
+        for n in node_list_analize:
+            print(n.type_node)
 
         len_list = len(node_list_analize)
-        counter = 0
-        while(counter<len_list):
-            print(node_list_analize[counter].object_node.symbol_type.name)
-            counter += 1
+        index = 0
+        last_state = states_stack[-1]
+        param_list = []
+        current_node = node_list_analize[last_state]
+        param_list = self.dfa_parse_1.get(last_state).get(current_node.type_node)
+        if(param_list==None):
+            error_list.append("Missing opening { in line " + str(current_node.object_node.line))
 
-        # for node in node_list_analize:
-        #     print(node.object_node.symbol_type.name)
+        print(param_list)
+        print(len_list, index)
+        rip = 0
+        while(index<len_list and rip<15):
+            #rip += 1
+            print(node_list_analize[index])
+            print(node_list_analize[index].object_node.symbol_type.name)
+            print(last_state)
+            if (param_list != None):
+                if(param_list[0]=='shift'):
+
+                    print("current", current_node.type_node)
+                    print("param", param_list[1])
+                    nodes_stack.append(current_node)
+                    states_stack.append(param_list[1])
+                    index+=1
+                    current_node = node_list_analize[index]
+                    param_list = self.dfa_parse_1.get(states_stack[-1]).get(current_node.type_node)
+
+                    # current_node = token_list[index].symbol_type.name
+                    # self.tokens_stack.append(current_node)
+                    # param_list = self.dfa_parse_1.get(self.states_stack[-1]).get(current_node)
+                    # self.states_stack.append(param_list[1])
+                    # index+=1
+                    # if(index<len(token_list)):
+                    #     current_node = token_list[index].symbol_type.name
+                    # param_list = self.dfa_parse_1.get(self.states_stack[-1]).get(current_node)
+                    print("shift")
+                elif(param_list[0]=='goto'):
+                    states_stack.append(param_list[1])
+                    
+                    current_node = node_list_analize[index]
+                    print("GOTO CURR",current_node.type_node)
+                    print(states_stack[-1])
+                    param_list = self.dfa_parse_1.get(states_stack[-1]).get(current_node.type_node)
+                    print("GOTO PARAM", param_list)
+ 
+                    # print(current_node)
+                    # print(param_list[1])
+                    # self.states_stack.append(param_list[1])
+                    # if(index<len(token_list)):
+                    #     current_node = token_list[index].symbol_type.name
+                    #     param_list = self.dfa_parse_1.get(self.states_stack[-1]).get(current_node)
+                    # else:
+                    #     #param_list = self.dfa_parse_1.get(self.states_stack[-1]).get()
+                    #     print(param_list)
+                    #     self.tokens_stack.pop(-1)
+                    #     self.states_stack.pop(-1)
+                    #     break
+                    print('goto')
+                elif(param_list[0]=='reduce'):
+                    print(param_list[1])
+                    if(param_list[1] == 2):  
+                        print("last node", node_list_analize[index].type_node)
+                        #create while (statement) ---> {; verify block method
+                        #return block with children
+                        print("riiiip") 
+                        break
+                        #hacer otro algo rip
+                    else:
+                        object_node = list(self.grammer_1[param_list[1]-1].keys())[0]
+                        type_node = list(self.grammer_1[param_list[1]-1].keys())[0]
+                        count = len(list(self.grammer_1[param_list[1]-1].values())[0])
+
+                        child_node_list = nodes_stack[-count:]
+
+                        nodes_stack = nodes_stack[:-count]
+
+                        states_stack = states_stack[:-(count)]
+                        new_node = Node.Node(object_node, type_node, child_node_list)
+
+                        nodes_stack.append(new_node)
+                        print(new_node.type_node)
+                        param_list = self.dfa_parse_1.get(states_stack[-1]).get(new_node.type_node)
+                        print("PARAM", param_list)
+                        if(param_list!=None and param_list[0]=='goto' and param_list[1]==32):
+                            if(node_list_analize[index].type_node == "{" and nodes_stack[-1].type_node == "expr" and nodes_stack[-2].type_node == "," and nodes_stack[-3].type_node == "expr"):
+                                param_list = ['goto', 81]
+                                print("PARAM2", param_list)
+                            print("=[")
+                            for xd in nodes_stack:
+                                print(xd.type_node)
+                            print("=]")
+                        if(param_list!=None and param_list[0]=='goto' and param_list[1]==32):
+                            if(node_list_analize[index].type_node == ")" and nodes_stack[-1].type_node == "expr" and nodes_stack[-2].type_node == "(" and nodes_stack[-3].type_node != "if"):
+                                param_list = ['goto', 59]
+                                print("PARAM2", param_list)
+                            print("=[")
+                            for xd in nodes_stack:
+                                print(xd.type_node)
+                            print("=]")
+                        if(param_list!=None and param_list[0]=='goto' and param_list[1]==32):
+                            if(node_list_analize[index].type_node == ")" and nodes_stack[-1].type_node == "expr" and nodes_stack[-2].type_node == "(" and nodes_stack[-3].type_node == "if"):
+                                param_list = ['goto', 44]
+                                print("PARAM2", param_list)
+                            print("=[")
+                            for xd in nodes_stack:
+                                print(xd.type_node)
+                            print("=]")
+                        if(param_list!=None and param_list[0]=='goto' and param_list[1]==32):
+                            if(node_list_analize[index].type_node == "," and nodes_stack[-1].type_node == "expr" and nodes_stack[-2].type_node == "assign_op"):
+                                param_list = ['goto', 65]
+                                print("PARAM2", param_list)
+                            print("=[")
+                            for xd in nodes_stack:
+                                print(xd.type_node)
+                            print("=]")
+                    print("reduce")
+                    # print(param_list[1])
+                    # node = Node.Node(list(self.grammar[param_list[1]-1].keys())[0], list(self.grammar[param_list[1]-1].values())[0])
+                    # count = len(list(self.grammar[param_list[1]-1].values())[0])
+                    # self.tokens_stack = self.tokens_stack[:-count]
+                    # self.states_stack = self.states_stack[:-(count)]
+                    # self.tokens_stack.append(list(self.grammar[param_list[1]-1].keys())[0])
+                    # current_node = self.tokens_stack[-1]
+                    # print(self.states_stack)
+                    # param_list = self.dfa_parse_1.get(self.states_stack[-1]).get(current_node)
+                    # #self.states_stack.append(param_list[1])
+                    # print("node list", node.token_list)
+                    # print("node", node)
+                    # print("reduce")
+                elif(param_list[0]=='accept'):
+                    print("accept :)")
+            else:
+                print("state not defined")
+                if(index<len(node_list_analize)):
+                    print("unexpected token",node_list_analize[index].type_node,"at line",node_list_analize[index].object_node.line)
+                else:
+                    print("unexpected token",node_list_analize[index-1].type_node,"at line",node_list_analize[index-1].object_node.line)
+                break
+            print("----[")
+            for xd in nodes_stack:
+                print(xd.type_node)
+            print("----]")
+            print(states_stack)
+            print("------")
+        for node in node_list_analize:
+            print(node.object_node.symbol_type.name)
 
 
         if(debug):

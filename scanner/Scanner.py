@@ -26,7 +26,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(16, "return", "return"))
     SYMBOL_LIST.append(Symbol.Symbol(17, "break", "break"))
     SYMBOL_LIST.append(Symbol.Symbol(18, "continue", "continue"))
-    SYMBOL_LIST.append(Symbol.Symbol(19, "asign_op", "(+=)|(-=)|(=)"))
+    SYMBOL_LIST.append(Symbol.Symbol(19, "assign_op", "(+=)|(-=)|(=)"))
     SYMBOL_LIST.append(Symbol.Symbol(20, "callout", "callout"))
     SYMBOL_LIST.append(Symbol.Symbol(21, "arit_op", "(+)|(*)|(/)|(%)"))
     SYMBOL_LIST.append(Symbol.Symbol(22, "rel_op", "(<)|(>)|(>=)|(<=)"))

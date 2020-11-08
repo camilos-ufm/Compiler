@@ -30,20 +30,29 @@ class ReadFile():
                     flag_comment = False
                 elif(flag_comment==False):
                     string_line = line
+                    cx = 0
                     for char in string_line:
                         if(char=="+" or char=="=" or char=="-" or char=="<" or char==">" or char=="!"):
+                            # print("char", char)
                             try:
                                 if(string_line[string_line.index(char)+1] != "+" and string_line[string_line.index(char)+1] != "=" and string_line[string_line.index(char)+1] != "-" 
                                 and string_line[string_line.index(char)-1] != "+"  and string_line[string_line.index(char)-1] != "-" and string_line[string_line.index(char)-1] != ">" and
                                 string_line[string_line.index(char)-1] != "<" and string_line[string_line.index(char)-1] != "=" and string_line[string_line.index(char)-1] != "!") :
-                                    string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
+                                    # print("cx",string_line[cx])
+                                    string_line = string_line[:cx] + " " + string_line[cx] + " " + string_line[cx + 1:]
+                                    #string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
+                                    # print(string_line)
                             except Exception:
                                 print(Exception)
                             else:
                                 pass
+                        cx+=1
+                    for char in string_line:
                         if(char=="&" or char=="%" or char=="/"
                             or char=="*" or char=="(" or char==")" or char=="{" or char=="}" or char==";" or char==","):
                             string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
+                        
+                    
                     if("+=" in string_line):
                         string_line = string_line.replace("+=", " += ")
                     elif("==" in string_line):
