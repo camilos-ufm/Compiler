@@ -36,6 +36,7 @@ python Compiler.py ejemplo -target hola
 python Compiler.py simple -target parse -debug parse:scan -o out
 
 python Compiler.py semantic -target semantic -debug ast:semantic
+python Compiler.py eje -target semantic -debug semantic
 ```
 
 **💡 IMPORTANTE** 
