@@ -405,7 +405,7 @@ class ParseDFA:
         while(index<len_list and rip<15):
             #rip += 1
             # print(node_list_analize[index])
-            print("node_list",node_list_analize[index].object_node.symbol_type.name)
+            # print("node_list",node_list_analize[index].object_node.symbol_type.name)
             # print(last_state)
             if (param_list != None):
                 if(param_list[0]=='shift'):
@@ -495,7 +495,7 @@ class ParseDFA:
                         nodes_stack.append(new_node)
                         # print(new_node.type_node)
                         param_list = self.dfa_parse_1.get(states_stack[-1]).get(new_node.type_node)
-                        print("PARAM", param_list)
+                        # print("PARAM", param_list)
                         if(param_list!=None and param_list[0]=='goto' and param_list[1]==32):
                             if(nodes_stack[-1].type_node == "expr" and nodes_stack[-2].type_node == "!"):
                                 param_list = ['goto', 58]
@@ -531,7 +531,7 @@ class ParseDFA:
                         if(param_list!=None and param_list[0]=='goto' and param_list[1]==32):
                             if(nodes_stack[-1].type_node == "expr" and nodes_stack[-2].type_node == "minus_op" and nodes_stack[-3].type_node == "expr"):
                                 param_list = ['goto', 69]
-                                print("PARAM2", param_list)
+                                # print("PARAM2", param_list)
                             # print("=[")
                             # for xd in nodes_stack:
                             #     print(xd.type_node)
@@ -585,18 +585,18 @@ class ParseDFA:
                 elif(param_list[0]=='accept'):
                     print("accept :)")
             else:
-                print("state not defined")
+                # print("state not defined")
                 if(index<len(node_list_analize)):
                     error_list.append("unexpected token " + node_list_analize[index].type_node + " at line " + str(node_list_analize[index].object_node.line))
                 else:
                     error_list.append("unexpected token " + node_list_analize[index-1].type_node + " at line " + str(node_list_analize[index-1].object_node.line))
                 break
-            print("----[")
-            for xd in nodes_stack:
-                print(xd.type_node)
-            print("----]")
-            print(states_stack)
-            print("------")
+            # print("----[")
+            # for xd in nodes_stack:
+            #     print(xd.type_node)
+            # print("----]")
+            # print(states_stack)
+            # print("------")
         # for node in node_list_analize:
         #     print(node.object_node.symbol_type.name)
 
