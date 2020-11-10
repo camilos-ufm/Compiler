@@ -38,7 +38,7 @@ class Scanner:
     SYMBOL_LIST.append(Symbol.Symbol(28, "int_literal", ""))
     SYMBOL_LIST.append(Symbol.Symbol(29, "id", ""))
     SYMBOL_LIST.append(Symbol.Symbol(30, "minus_op", "-"))
-    SYMBOL_LIST.append(Symbol.Symbol(31, "exclamation_op", "!"))
+    SYMBOL_LIST.append(Symbol.Symbol(31, "!", "!"))
 
 
     def scan(self, input_string, debug):

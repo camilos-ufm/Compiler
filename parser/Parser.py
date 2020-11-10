@@ -57,8 +57,11 @@ class Parser:
 
                     field_decl_node = Node.Node("<field_decl_list>", "field_decl_list", field_decl_node_list)
                     main_program.node_list[3] = field_decl_node
-
-                    method_decl_list = tokens[counter_last_index+1:len_tokens-1]
+                    
+                    if(len(field_decl_node_list)==0):
+                        method_decl_list = tokens[counter_last_index:len_tokens-1]
+                    else:
+                        method_decl_list = tokens[counter_last_index+1:len_tokens-1]
                     method_decl_node_list = []
                     for token in method_decl_list:
                         method_decl_node_list.append(Node.Node(token, token.symbol_type.name, []))              
@@ -76,6 +79,7 @@ class Parser:
             # print(main_program.node_list)
 
             # print("before parse", len(main_program.node_list[4].node_list))
+            # print("rip", main_program.node_list[4].node_list[0].type_node)
             dfa.parse_method(main_program, main_program.node_list[4], 'method_decl_list', debug)
             # print("after parse", len(main_program.node_list[4].node_list))
 

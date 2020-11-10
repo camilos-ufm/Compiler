@@ -35,13 +35,62 @@ class ReadFile():
                         if(char=="+" or char=="=" or char=="-" or char=="<" or char==">" or char=="!"):
                             # print("char", char)
                             try:
-                                if(string_line[string_line.index(char)+1] != "+" and string_line[string_line.index(char)+1] != "=" and string_line[string_line.index(char)+1] != "-" 
-                                and string_line[string_line.index(char)-1] != "+"  and string_line[string_line.index(char)-1] != "-" and string_line[string_line.index(char)-1] != ">" and
-                                string_line[string_line.index(char)-1] != "<" and string_line[string_line.index(char)-1] != "=" and string_line[string_line.index(char)-1] != "!") :
+                                if(char=='+'):
+                                    if(string_line[cx-1] != '+'):
+                                        string_line = string_line = string_line[:cx] + " " + string_line[cx] + string_line[cx + 1:]
+                                        cx += 1
+                                    if(string_line[cx+1] != '+' and string_line[cx+1] != '='):
+                                        string_line = string_line = string_line[:cx] + string_line[cx] + " " + string_line[cx + 1:]
+                                        cx += 1
+                                if(char=='='):
+                                    if(string_line[cx-1] != '=' and string_line[cx-1] != '+' and string_line[cx-1] != '-' and string_line[cx-1] != '<' and string_line[cx-1] != '>' and string_line[cx-1] != '!'):
+                                        string_line = string_line = string_line[:cx] + " " + string_line[cx] + string_line[cx + 1:]
+                                        cx += 1
+                                    if(string_line[cx+1] != '='):
+                                        string_line = string_line = string_line[:cx] + string_line[cx] + " " + string_line[cx + 1:]
+                                        cx += 1  
+                                if(char=='-'):
+                                    if(string_line[cx-1] != '-'):
+                                        string_line = string_line = string_line[:cx] + " " + string_line[cx] + string_line[cx + 1:]
+                                        cx += 1
+                                    if(string_line[cx+1] != '-' and string_line[cx+1] != '='):
+                                        string_line = string_line = string_line[:cx] + string_line[cx] + " " + string_line[cx + 1:]
+                                        cx += 1
+                                if(char=='<'):
+                                    
+                                    string_line = string_line = string_line[:cx] + " " + string_line[cx] + string_line[cx + 1:]
+                                    cx += 1
+
+                                    if(string_line[cx+1] != '='):
+                                        string_line = string_line = string_line[:cx] + string_line[cx] + " " + string_line[cx + 1:]
+                                        cx += 1
+
+                                if(char=='>'):
+                                    string_line = string_line = string_line[:cx] + " " + string_line[cx] + string_line[cx + 1:]
+                                    cx += 1
+
+                                    if(string_line[cx+1] != '='):
+                                        string_line = string_line = string_line[:cx] + string_line[cx] + " " + string_line[cx + 1:]
+                                        cx += 1
+
+                                if(char=='!'): 
+                                    string_line = string_line = string_line[:cx] + " " + string_line[cx] + string_line[cx + 1:]
+                                    cx += 1
+
+                                    if(string_line[cx+1] != '='):
+                                        string_line = string_line = string_line[:cx] + string_line[cx] + " " + string_line[cx + 1:]
+                                        cx += 1
+                                # if(string_line[string_line.index(char)+1] != "+" and string_line[string_line.index(char)+1] != "=" and string_line[string_line.index(char)+1] != "-" 
+                                # and string_line[string_line.index(char)-1] != "+"  and string_line[string_line.index(char)-1] != "-" and string_line[string_line.index(char)-1] != ">" and
+                                # string_line[string_line.index(char)-1] != "<" and string_line[string_line.index(char)-1] != "=" and string_line[string_line.index(char)-1] != "!") :
                                     # print("cx",string_line[cx])
-                                    string_line = string_line[:cx] + " " + string_line[cx] + " " + string_line[cx + 1:]
+                                    # print(string_line[string_line.index(char)+1])
+                                    # print(string_line[string_line.index(char)-1])
+                                    # print("ccx", cx)
+                                    # string_line = string_line[:cx] + " " + string_line[cx] + " " + string_line[cx + 1:]
+                                    # cx+=2
                                     #string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
-                                    # print(string_line)
+                                # print(string_line)
                             except Exception:
                                 print(Exception)
                             else:

@@ -1,6 +1,13 @@
 class Program {
-    {
-        
-    string x, y;
+    void main(){
+        x = x+x-x;
+        x = -x;
+        x = !x;
+        if(!x){
+            int x;
+            x = x+1;
+        }
+
+    }
     
 }

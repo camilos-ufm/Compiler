@@ -7,19 +7,21 @@ class Semantic:
         ### generate symbol table
         counter = 0
         for node in main_program.node_list:
-            if(len(node.node_list)==0 and node.object_node.symbol_type.name == "{"):
-                print("push scope")
+            if(len(node.node_list)==0 and str(type(node.object_node)) == "<class 'objects.Token.Token'>" and node.object_node.symbol_type.name == "{"):
+                # print("push scope")
                 main_program.symbol_table.append([])
-            if(len(node.node_list)==0 and node.object_node.symbol_type.name == "}"):
+            if(len(node.node_list)==0 and str(type(node.object_node)) == "<class 'objects.Token.Token'>" and node.object_node.symbol_type.name == "}"):
                 #del main_program.symbol_table[-1]
-                print("pop scope")
+                # print("pop scope")
+                pass
             counter+=1
             if (len(node.node_list)!=0):
                 counter = node.semanticAnalysis(main_program.symbol_table, counter, error_list)
         # clprint(main_program.node_list)
-        for symbol in main_program.symbol_table:
-            print(symbol)
+
         #print(main_program.symbol_table)
         if(debug):
+            for symbol in main_program.symbol_table:
+                print(symbol)
             print("error_list", error_list)
         # print(main_program, debug)

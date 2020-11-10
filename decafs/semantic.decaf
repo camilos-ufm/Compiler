@@ -6,6 +6,8 @@ class Program {
         main();
         for z = 3, (z <= 1) {
             int x;
+            int h;
+            h = a + 1;
             int y;
             if ( x>1 ){
                 x=1;
@@ -14,6 +16,8 @@ class Program {
                     int x;
                     int j;
                     char z;
+                } else {
+                    int x;
                 }
             }
         }
