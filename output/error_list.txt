@@ -1,10 +1,14 @@
-[14/11/2020 11:21:35]: Lexical error: invalid token found in line 6
-[14/11/2020 11:21:35]: Parse error: unexpected token id at line 5
-[14/11/2020 11:21:38]: Lexical error: invalid token found in line 6
-[14/11/2020 11:21:38]: Parse error: unexpected token id at line 5
-[14/11/2020 11:22:33]: Type error, cannot assign int in char
-[14/11/2020 11:22:33]: Type error, cannot eq_op two things with diff type
-[14/11/2020 11:22:33]: Type error, cannot eq op two things with diff type
-[14/11/2020 11:22:33]: Type error, cannot assign int in char
-[14/11/2020 11:22:33]: Type error, cannot assign int in char
-[14/11/2020 11:30:37]: Parse error: unexpected token } at line 15
+[14/11/2020 11:39:17]: Lexical error: invalid token found in line 3
+[14/11/2020 11:39:17]: Parse error: Not enough tokens in field declaration at line 3
+[14/11/2020 11:39:35]: Lexical error: invalid token found in line 3
+[14/11/2020 11:39:35]: Parse error: Not enough tokens in field declaration at line 3
+[14/11/2020 11:39:39]: Lexical error: invalid token found in line 3
+[14/11/2020 11:39:39]: Parse error: Not enough tokens in field declaration at line 3
+[14/11/2020 11:39:47]: Type error: cannot assign int in char
+[14/11/2020 11:39:47]: Type error: cannot eq_op two things with diff type
+[14/11/2020 11:39:47]: Type error: cannot eq op two things with diff type
+[14/11/2020 11:39:47]: Type error: cannot assign int in char
+[14/11/2020 11:39:47]: Type error: cannot assign int in char
+[14/11/2020 11:39:47]: Type error: cannot rel_op two things !int
+[14/11/2020 11:39:47]: Type error: cannot FOR without id int decl
+[14/11/2020 11:39:47]: Type error: cannot assign int in char

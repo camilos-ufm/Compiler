@@ -64,35 +64,35 @@ class Node:
                             and self.node_list[2].getType(symbol_table, error_list) == "int"):
                             return "int"
                         else:
-                            error_list.append("Type error, cannot arit_op two things !int")
+                            error_list.append("Type error: cannot arit_op two things !int")
                             return "type_error"
                     if(self.node_list[1].node_list[0].type_node == 'rel_op'):
                         if(self.node_list[0].getType(symbol_table, error_list) == "int" 
                             and self.node_list[2].getType(symbol_table, error_list) == "int"):
                             return "boolean"
                         else:
-                            error_list.append("Type error, cannot rel_op two things !int")
+                            error_list.append("Type error: cannot rel_op two things !int")
                             return "type_error"
                     if(self.node_list[1].node_list[0].type_node == 'eq_op'):
                         if(self.node_list[0].getType(symbol_table, error_list) == 
                             self.node_list[2].getType(symbol_table, error_list)):
                             return "boolean"
                         else:
-                            error_list.append("Type error, cannot eq_op two things with diff type")
+                            error_list.append("Type error: cannot eq_op two things with diff type")
                             return "type_error"
                     if(self.node_list[1].node_list[0].type_node == 'cond_op'):
                         if(self.node_list[0].getType(symbol_table, error_list) == "boolean" 
                             and self.node_list[2].getType(symbol_table, error_list) == "boolean"):
                             return "boolean"
                         else:
-                            error_list.append("Type error, cannot cond_op two things !boolean")
+                            error_list.append("Type error: cannot cond_op two things !boolean")
                             return "type_error"
                 elif(self.node_list[1].type_node == 'minus_op'):
                     if(self.node_list[0].getType(symbol_table, error_list) == "int" 
                         and self.node_list[2].getType(symbol_table, error_list) == "int"):
                         return "int"
                     else:
-                        error_list.append("Type error, cannot arit_op two things !int")
+                        error_list.append("Type error: cannot arit_op two things !int")
                         return "type_error"
                     return "minus"
             if(self.node_list[0].type_node == 'minus_op'):
@@ -192,7 +192,7 @@ class Node:
                                     type_exp2 = node1.node_list[2].getType(symbol_table, error_list)
                                     if(type_exp1 != "type_error" and type_exp2!="type_error" and 
                                         type_exp1 != "int" and type_exp2!="int"):
-                                        error_list.append("Type error, cannot arit op two !ints")
+                                        error_list.append("Type error: cannot arit op two !ints")
                                 if(node1.node_list[1].node_list[0].type_node == 'rel_op'):
                                     # print("check rel op")
                                     # for child_exp in node1.node_list:
@@ -201,7 +201,7 @@ class Node:
                                     type_exp2 = node1.node_list[2].getType(symbol_table, error_list)
                                     if(type_exp1 != "type_error" and type_exp2!="type_error" and 
                                         type_exp1 != "int" and type_exp2!="int"):
-                                        error_list.append("Type error, cannot rel op two !ints")
+                                        error_list.append("Type error: cannot rel op two !ints")
                                 if(node1.node_list[1].node_list[0].type_node == 'eq_op'):
                                     # print("check eq op")
                                     # for child_exp in node1.node_list:
@@ -210,7 +210,7 @@ class Node:
                                     type_exp2 = node1.node_list[2].getType(symbol_table, error_list)
                                     if(type_exp1 != "type_error" and type_exp2!="type_error" and 
                                         type_exp1 != type_exp2):
-                                        error_list.append("Type error, cannot eq op two things with diff type")
+                                        error_list.append("Type error: cannot eq op two things with diff type")
                                 if(node1.node_list[1].node_list[0].type_node == 'cond_op'):
                                     # print("check cond op")
                                     # for child_exp in node1.node_list:
@@ -219,7 +219,7 @@ class Node:
                                     type_exp2 = node1.node_list[2].getType(symbol_table, error_list)
                                     if(type_exp1 != "type_error" and type_exp2!="type_error" and 
                                         type_exp1 != "boolean" and type_exp2!="boolean"):
-                                        error_list.append("Type error, cannot cond op two things !boolean")
+                                        error_list.append("Type error: cannot cond op two things !boolean")
                             elif(node1.node_list[1].type_node == 'minus_op'):
                                     # print("check minus op")
                                     # for child_exp in node1.node_list:
@@ -228,14 +228,14 @@ class Node:
                                     type_exp2 = node1.node_list[2].getType(symbol_table, error_list)
                                     if(type_exp1 != "type_error" and type_exp2!="type_error" and 
                                         type_exp1 != "int" and type_exp2!="int"):
-                                        error_list.append("Type error, cannot minus op two !ints")
+                                        error_list.append("Type error: cannot minus op two !ints")
                         if(node1.node_list[0].type_node == 'minus_op'):
                             # print("check - expr op")
                             # for child_exp in node1.node_list:
                             #     print("         " + child_exp.type_node)
                             type_exp = node1.node_list[1].getType(symbol_table, error_list)
                             if(type_exp != "type_error" and type_exp!="int"):
-                                error_list.append("Type error, cannot minus op a thing that is !int")
+                                error_list.append("Type error: cannot minus op a thing that is !int")
                         if(node1.node_list[0].type_node == '!'):
                             # print("check ! expr op")
                             # for child_exp in node1.node_list:
@@ -243,7 +243,7 @@ class Node:
                             type_exp = node1.node_list[1].getType(symbol_table, error_list)
                             # print("type exp", type_exp)
                             if(type_exp != "type_error" and type_exp!="boolean"):
-                                error_list.append("Type error, cannot ! op a thing that is !boolean")
+                                error_list.append("Type error: cannot ! op a thing that is !boolean")
 
                     # node1.object_node.typeCheck(node1.node_list, symbol_table, error_list)
 
@@ -255,7 +255,7 @@ class Node:
                             #     print("         " + child_exp.type_node)
                             type_exp = node1.node_list[2].getType(symbol_table, error_list)
                             if(type_exp != "type_error" and type_exp != "boolean"):
-                                error_list.append("Type error, cannot IF without boolean")
+                                error_list.append("Type error: cannot IF without boolean")
                         if(node1.node_list[0].type_node == 'for'):
                             # print("check for")
                             # for child_exp in node1.node_list:
@@ -265,11 +265,11 @@ class Node:
                             type_id = node1.node_list[1].getType(symbol_table, error_list)
 
                             if(type_exp_2 != "type_error" and type_exp_2 != "boolean"):
-                                error_list.append("Type error, cannot FOR without boolean")
+                                error_list.append("Type error: cannot FOR without boolean")
                             if(type_exp_1 != "type_error" and type_exp_1 != "int"):
-                                error_list.append("Type error, cannot FOR without int decl")
+                                error_list.append("Type error: cannot FOR without int decl")
                             if(type_id != "type_error" and type_id != "int"):
-                                error_list.append("Type error, cannot FOR without id int decl")
+                                error_list.append("Type error: cannot FOR without id int decl")
                             
                         if(node1.node_list[0].type_node == 'location'):
                             # print("check location")
@@ -279,7 +279,7 @@ class Node:
                             type_1 = node1.node_list[0].getType(symbol_table, error_list)
                             type_2 = node1.node_list[2].getType(symbol_table, error_list)
                             if(type_1 != type_2 and (type_1 != "type_error" and type_2 != "type_error")):
-                                error_list.append("Type error, cannot assign " + 
+                                error_list.append("Type error: cannot assign " + 
                                 node1.node_list[2].getType(symbol_table, error_list) + " in "
                                 + node1.node_list[0].getType(symbol_table, error_list))
                         # node1.object_node.typeCheck(node1.node_list, symbol_table, error_list)

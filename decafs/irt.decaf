@@ -1,7 +1,6 @@
 class Program {
     boolean y;
     void main(){
-        
         int x;
         boolean y;
         x = 0;
