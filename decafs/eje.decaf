@@ -1,14 +1,28 @@
 class Program {
     void main(){
+        string b;
+        b = "ca";
         int x;
-        x = x+x-x;
-        x = -x;
         x = !x;
-        if(!x){
+        char a;
+        string b;
+        x = a + b;
+
+        x = x+x-x;
+        x = -x;       
+        if(x){
             int x;
             x = x+1;
         }
-
+        
+        x = a + b;
+        int j;
+        char a;
+        x = 1+2-3;
+        for j = x, (x) {
+            x+=1;
+        }
+        
     }
     
 }
