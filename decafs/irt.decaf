@@ -1,7 +1,7 @@
 class Program {
     boolean y;
     void main(){
-        char x;
+        int x;
         boolean y;
         x = 0;
         if(x == 0){
