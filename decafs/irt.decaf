@@ -1,6 +1,7 @@
 class Program {
     boolean y;
     void main(){
+        
         int x;
         boolean y;
         x = 0;
@@ -8,6 +9,10 @@ class Program {
             x+=1;
         } else {
             x = 0;
+        }
+
+        for x=0, (x<2){
+            x+=1;
         }
     }    
 }

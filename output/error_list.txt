@@ -7,3 +7,4 @@
 [14/11/2020 11:22:33]: Type error, cannot eq op two things with diff type
 [14/11/2020 11:22:33]: Type error, cannot assign int in char
 [14/11/2020 11:22:33]: Type error, cannot assign int in char
+[14/11/2020 11:30:37]: Parse error: unexpected token } at line 15
