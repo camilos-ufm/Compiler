@@ -38,7 +38,7 @@ class Parser:
                 main_program.node_list[5] = Node.Node(tokens[len_tokens-1],tokens[len_tokens-1].symbol_type.name,[])
 
                 if(tokens[3].symbol_type.name != 'type' and tokens[3].symbol_type.name != 'void' and len_tokens>=5):
-                    error_list.append("Unexpected token " + tokens[3].symbol_type.name + " at line " + str(tokens[3].line))
+                    error_list.append("Parse error: Unexpected token " + tokens[3].symbol_type.name + " at line " + str(tokens[3].line))
                 else:
                     counter_field_decl = 3
                     counter_last_index = 3
@@ -73,18 +73,18 @@ class Parser:
         if(first_step):
             dfa = ParseDFA.ParseDFA()
             # print("before parse", len(main_program.node_list[3].node_list))
-            dfa.parse_field(main_program, main_program.node_list[3], 'field_decl_list', debug)
+            dfa.parse_field(main_program, main_program.node_list[3], 'field_decl_list', debug, error_list)
             # print("after parse", len(main_program.node_list[3].node_list))
             
             # print(main_program.node_list)
 
             # print("before parse", len(main_program.node_list[4].node_list))
             # print("rip", main_program.node_list[4].node_list[0].type_node)
-            dfa.parse_method(main_program, main_program.node_list[4], 'method_decl_list', debug)
+            dfa.parse_method(main_program, main_program.node_list[4], 'method_decl_list', debug, error_list)
             # print("after parse", len(main_program.node_list[4].node_list))
 
             for method in main_program.getMethodDeclList():
-                method.node_list[5] = dfa.parse_block(main_program, method.node_list[5], debug)
+                method.node_list[5] = dfa.parse_block(main_program, method.node_list[5], debug, error_list)
             # DotExporter(program_ui).to_picture("AST.png")
             # print(main_program.symbol_table)
             # for field_decl in main_program.getFieldDeclList():
@@ -101,4 +101,4 @@ class Parser:
         if(debug):
             print(error_list)
         #print(main_program.node_list)
-        return main_program
+        return main_program, error_list

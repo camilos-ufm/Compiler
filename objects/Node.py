@@ -17,6 +17,15 @@ class Node:
                 if(len(node1.node_list)!=0):
                     counter = node1.getNodes(Program, counter, nodey)
         return counter
+    
+    def getNodesIrt(self, Program, counter):
+        if(len(self.node_list)!=0 and self.type_node!=''):
+            for node1 in self.node_list:
+                Program.append(node1)
+                counter+=1
+                if(len(node1.node_list)!=0):
+                    counter = node1.getNodesIrt(Program, counter)
+        return counter
 
     def typeCheck(self, symbol_table, counter, error_list):
         print(symbol_table, counter, error_list)

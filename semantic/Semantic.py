@@ -24,4 +24,5 @@ class Semantic:
             for symbol in main_program.symbol_table:
                 print(symbol)
             print("error_list", error_list)
+        return error_list
         # print(main_program, debug)

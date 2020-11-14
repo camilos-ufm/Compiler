@@ -1,0 +1,9 @@
+[14/11/2020 11:21:35]: Lexical error: invalid token found in line 6
+[14/11/2020 11:21:35]: Parse error: unexpected token id at line 5
+[14/11/2020 11:21:38]: Lexical error: invalid token found in line 6
+[14/11/2020 11:21:38]: Parse error: unexpected token id at line 5
+[14/11/2020 11:22:33]: Type error, cannot assign int in char
+[14/11/2020 11:22:33]: Type error, cannot eq_op two things with diff type
+[14/11/2020 11:22:33]: Type error, cannot eq op two things with diff type
+[14/11/2020 11:22:33]: Type error, cannot assign int in char
+[14/11/2020 11:22:33]: Type error, cannot assign int in char

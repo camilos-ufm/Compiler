@@ -10,6 +10,7 @@ class Program:
         self.symbol_table = []
         self.all_nodes = []
         self.program_tree = ''
+        self.irt_list = []
 
     def getAllNodes(self):
         program_ui = Node_any("Program")
@@ -21,7 +22,14 @@ class Program:
             counter+=1
             if (len(node.node_list)!=0):
                 counter = node.getNodes(self.all_nodes, counter, nodex)
-
+   
+    def getAllNodesIrt(self):
+        counter=0
+        for node in self.node_list:
+            self.irt_list.append(node)
+            counter+=1
+            if (len(node.node_list)!=0):
+                counter = node.getNodesIrt(self.irt_list, counter)
 
     def getFieldDeclList(self):
         return self.node_list[3].node_list

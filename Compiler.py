@@ -40,6 +40,8 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
 
         # write file in output/
         wf.write_file(file_name, string_list)
+        # write file in output/
+        wf.write_file_append("error_list", error_list)
 
     if(stage=="parse" or stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
         debug=False
@@ -47,7 +49,9 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
             debug=True
 
         pr = Parser.Parser()
-        main_program = pr.parse(token_list, debug)
+        main_program, error_list = pr.parse(token_list, debug)
+        # write file in output/
+        wf.write_file_append("error_list", error_list)
 
     if(stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
         debug=False
@@ -55,18 +59,23 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
             debug=True
         ast = Ast.Ast()
         ast.ast(main_program,debug)
+
     if(stage=="semantic" or stage=="irt" or stage=="codegen"):
         debug=False
         if(("semantic" in debug_stage)):
             debug=True
         sm = Semantic.Semantic()
-        sm.semantic(main_program, debug)
+        error_list = sm.semantic(main_program, debug)
+        # write file in output/
+        wf.write_file_append("error_list", error_list)
+
     if(stage=="irt" or stage=="codegen"):
         debug=False
         if(("irt" in debug_stage)):
             debug=True
         irt = Irt.Irt()
         irt.irt(main_program, debug)
+
     if(stage=="codegen"):
         print("CODEGEN not ready")
     if (stage!="scan" and stage!="parse" and stage!="ast" and stage!="semantic" and stage!="irt" and stage!="codegen"):

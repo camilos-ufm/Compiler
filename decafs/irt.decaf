@@ -1,6 +1,8 @@
 class Program {
+    boolean y;
     void main(){
         char x;
+        boolean y;
         x = 0;
         if(x == 0){
             x+=1;

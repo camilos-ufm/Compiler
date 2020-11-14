@@ -17,4 +17,9 @@ class Irt:
         for pre, fill, node in RenderTree(program_ui):
             print("%s%s" % (pre, node.name))
         # DotExporter(program_ui).to_picture("AST.pdf")
-        print(main_program.all_nodes)
+        # print(main_program.all_nodes)
+
+        main_program.getAllNodesIrt()
+        print(main_program.irt_list)
+        for node_irt in main_program.irt_list:
+            print(node_irt.type_node)

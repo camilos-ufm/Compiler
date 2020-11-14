@@ -181,8 +181,7 @@ class ParseDFA:
 
      }
 
-    def parse_field(self, program, main_node, type_dfa, debug):
-        error_list = []
+    def parse_field(self, program, main_node, type_dfa, debug, error_list):
         node_list = main_node.node_list
         # print(main_node.type_node)
         if(type_dfa == 'field_decl_list'):
@@ -201,14 +200,14 @@ class ParseDFA:
                     fields_list.append(node_list[split_indexes[split-1]+1:split_indexes[split]+1])
             for field_decl in fields_list:
                 if(len(field_decl)<3):
-                    error_list.append("Not enough tokens in field declaration at line "+str(field_decl[0].object_node.line))
+                    error_list.append("Parse error: Not enough tokens in field declaration at line "+str(field_decl[0].object_node.line))
                 if(len(field_decl)==3):
                     if(field_decl[0].object_node.symbol_type.name!='type'):
-                        error_list.append("Unexpected token "+ field_decl[0].object_node.symbol_type.name +" at line "+str(field_decl[0].object_node.line))
+                        error_list.append("Parse error: Unexpected token "+ field_decl[0].object_node.symbol_type.name +" at line "+str(field_decl[0].object_node.line))
                     if(field_decl[1].object_node.symbol_type.name!='id'):
-                        error_list.append("Unexpected token "+ field_decl[1].object_node.symbol_type.name +" at line "+str(field_decl[1].object_node.line))
+                        error_list.append("Parse error: Unexpected token "+ field_decl[1].object_node.symbol_type.name +" at line "+str(field_decl[1].object_node.line))
                     if(field_decl[2].object_node.symbol_type.name!=';'):
-                        error_list.append("Unexpected token "+ field_decl[2].object_node.symbol_type.name +" at line "+str(field_decl[2].object_node.line))
+                        error_list.append("Parse error: Unexpected token "+ field_decl[2].object_node.symbol_type.name +" at line "+str(field_decl[2].object_node.line))
                     if(field_decl[0].object_node.symbol_type.name=='type'
                         and field_decl[1].object_node.symbol_type.name=='id'
                         and field_decl[2].object_node.symbol_type.name==';'):
@@ -218,18 +217,18 @@ class ParseDFA:
                     temp_ids = []
                     id_list_bool = True
                     if(field_decl[0].object_node.symbol_type.name!='type'):
-                        error_list.append("Unexpected token "+ field_decl[0].object_node.symbol_type.name +" at line "+str(field_decl[0].object_node.line))
+                        error_list.append("Parse error: Unexpected token "+ field_decl[0].object_node.symbol_type.name +" at line "+str(field_decl[0].object_node.line))
                         id_list_bool = False
                     for id_index in range(1, len(field_decl)-1):
                         if(id_index%2!=0):
                             if(field_decl[id_index].object_node.symbol_type.name != 'id'):
-                                error_list.append("Unexpected token "+ field_decl[id_index].object_node.symbol_type.name +" at line "+str(field_decl[id_index].object_node.line))
+                                error_list.append("Parse error: Unexpected token "+ field_decl[id_index].object_node.symbol_type.name +" at line "+str(field_decl[id_index].object_node.line))
                                 id_list_bool = False
                             else:
                                 temp_ids.append(field_decl[id_index])
                         else:
                             if(field_decl[id_index].object_node.symbol_type.name != ','):
-                                error_list.append("Unexpected token "+ field_decl[id_index].object_node.symbol_type.name +" at line "+str(field_decl[id_index].object_node.line))
+                                error_list.append("Parse error: Unexpected token "+ field_decl[id_index].object_node.symbol_type.name +" at line "+str(field_decl[id_index].object_node.line))
                                 id_list_bool = False
                     if(id_list_bool):
                         for temp_id in temp_ids:
@@ -269,20 +268,19 @@ class ParseDFA:
         if(debug):
             print("error list", error_list)
 
-    def parse_method(self, program, main_node, type_dfa, debug):
+    def parse_method(self, program, main_node, type_dfa, debug, error_list):
         new_node_list_method = []
-        error_list = []
         node_list = main_node.node_list
         # print(main_node.type_node)
         if(len(node_list)<6):
-            error_list.append("Not enough tokens to parse a valid method decl")
+            error_list.append("Parse error: Not enough tokens to parse a valid method decl")
         else:
             if(node_list[0].object_node.symbol_type.name != "type" and node_list[0].object_node.symbol_type.name != "void"):
-                error_list.append("Unexpected token "+ node_list[0].object_node.symbol_type.name +" at line "+str(node_list[0].object_node.line))
+                error_list.append("Parse error: Unexpected token "+ node_list[0].object_node.symbol_type.name +" at line "+str(node_list[0].object_node.line))
             if(node_list[1].object_node.symbol_type.name != "id"):
-                error_list.append("Unexpected token "+ node_list[1].object_node.symbol_type.name +" at line "+str(node_list[1].object_node.line))
+                error_list.append("Parse error: Unexpected token "+ node_list[1].object_node.symbol_type.name +" at line "+str(node_list[1].object_node.line))
             if(node_list[2].object_node.symbol_type.name != "("):
-                error_list.append("Unexpected token "+ node_list[2].object_node.symbol_type.name +" at line "+str(node_list[2].object_node.line))
+                error_list.append("Parse error: Unexpected token "+ node_list[2].object_node.symbol_type.name +" at line "+str(node_list[2].object_node.line))
             
             for node_index in range(len(node_list)):
                 if(node_index<len(node_list)-3):
@@ -306,7 +304,7 @@ class ParseDFA:
                             if(node_list[counter_1].object_node.symbol_type.name == "type"):
                                 if(node_list[counter_1+1].object_node.symbol_type.name != "id" 
                                     or (node_list[counter_1+2].object_node.symbol_type.name != "," and node_list[counter_1+2].object_node.symbol_type.name != ")")):
-                                    error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                    error_list.append("Parse error: Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
                                     tout_bien = False
                                 else:
                                     child_var_decl_list.append(node_list[counter_1])
@@ -316,7 +314,7 @@ class ParseDFA:
                             elif(node_list[counter_1].object_node.symbol_type.name == "id"):
                                 if((node_list[counter_1+1].object_node.symbol_type.name != "," and node_list[counter_1+1].object_node.symbol_type.name != ")")
                                     or node_list[counter_1-1].object_node.symbol_type.name != "type" ):
-                                    error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                    error_list.append("Parse error: Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
                                     tout_bien = False
                                 else:
                                     child_var_decl_list.append(node_list[counter_1])
@@ -326,7 +324,7 @@ class ParseDFA:
                             elif(node_list[counter_1].object_node.symbol_type.name == ","):
                                 if(node_list[counter_1+1].object_node.symbol_type.name != "type"
                                     or node_list[counter_1-1].object_node.symbol_type.name != "id" ):
-                                    error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                    error_list.append("Parse error: Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
                                     tout_bien = False
                                 else:
                                     child_var_decl_list.append(node_list[counter_1])
@@ -334,12 +332,12 @@ class ParseDFA:
                                     # print("child var decl list", child_var_decl_list)
                                     # print("todo bien")  
                             else:
-                                error_list.append("Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
+                                error_list.append("Parse error: Unexpected token "+ node_list[counter_1].object_node.symbol_type.name +" at line "+str(node_list[counter_1].object_node.line))
                                 tout_bien = False
                             # print(node_list[counter_1].object_node.symbol_type.name)
                             counter_1+=1
                         if(node_list[counter_1].object_node.symbol_type.name != ")"):
-                            error_list.append("Missing closing ) in method declaration args")
+                            error_list.append("Parse error: Missing closing ) in method declaration args")
                         var_decl_object = VarDeclList.VarDeclList()
                         var_decl_node = Node.Node(var_decl_object, "var_decl_list", [])
                         if(tout_bien):
@@ -378,11 +376,10 @@ class ParseDFA:
         if(debug):
             print(error_list)
 
-    def parse_block(self, program, main_node, debug):
+    def parse_block(self, program, main_node, debug, error_list):
         initial_node = Node.Node("$", "$", [])
         states_stack = [0]
         nodes_stack = [initial_node]
-        error_list = []
 
         # print(program, main_node.type_node, debug)
         node_list_analize = main_node.node_list
@@ -397,7 +394,7 @@ class ParseDFA:
         current_node = node_list_analize[last_state]
         param_list = self.dfa_parse_1.get(last_state).get(current_node.type_node)
         if(param_list==None):
-            error_list.append("Missing opening { in line " + str(current_node.object_node.line))
+            error_list.append("Parse error: Missing opening { in line " + str(current_node.object_node.line))
 
         # print(param_list)
         # print(len_list, index)
@@ -587,9 +584,9 @@ class ParseDFA:
             else:
                 # print("state not defined")
                 if(index<len(node_list_analize)):
-                    error_list.append("unexpected token " + node_list_analize[index].type_node + " at line " + str(node_list_analize[index].object_node.line))
+                    error_list.append("Parse error: unexpected token " + node_list_analize[index].type_node + " at line " + str(node_list_analize[index].object_node.line))
                 else:
-                    error_list.append("unexpected token " + node_list_analize[index-1].type_node + " at line " + str(node_list_analize[index-1].object_node.line))
+                    error_list.append("Parse error: unexpected token " + node_list_analize[index-1].type_node + " at line " + str(node_list_analize[index-1].object_node.line))
                 break
             # print("----[")
             # for xd in nodes_stack:

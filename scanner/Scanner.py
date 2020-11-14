@@ -198,7 +198,7 @@ class Scanner:
                                 token_list.append(tk)
                                 invalid_token = False
                         else:
-                            error_list.append(f"Missing one ] in line {object_list[1]}")
+                            error_list.append(f"Lexical error: Missing one ] in line {object_list[1]}")
 
                     if ("\"" in word):
                         if(word[-1]=="\""):
@@ -206,21 +206,21 @@ class Scanner:
                             token_list.append(tk)
                             invalid_token = False
                         else:
-                            error_list.append(f"wrong string, missing one \" in line {object_list[1]}")
+                            error_list.append(f"Lexical error: wrong string, missing one \" in line {object_list[1]}")
                     if ("\'" in word):
                         if(word[-1]=="\'" and len(word)==3):
                             tk = Token.Token(self.SYMBOL_LIST[26], object_list[1], word)
                             token_list.append(tk)
                             invalid_token = False
                         else:
-                            error_list.append(f"wrong char, missing one \' or too many chars in line {object_list[1]}")
+                            error_list.append(f"Lexical error: wrong char, missing one \' or too many chars in line {object_list[1]}")
                     #print("RIP TOKEN: " + word)
                 if(invalid_token):
-                    error_list.append("invalid token found in line " + str(object_list[1]))
+                    error_list.append("Lexical error: "+"invalid token found in line " + str(object_list[1]))
         if(debug):
             for token in token_list:
                 print(token.pretty_print())
-        for error in error_list:
-            print("Lexical error: "+error)
+            for error in error_list:
+                print(error)
 
         return token_list, error_list
