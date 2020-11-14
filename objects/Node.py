@@ -241,14 +241,14 @@ class Node:
                 if(node1.type_node == "statement"):
                     if(len(node1.node_list) > 0):
                         if(node1.node_list[0].type_node == 'if'):
-                            print("check if - done")
+                            print("check if")
                             for child_exp in node1.node_list:
                                 print("         " + child_exp.type_node)
                             type_exp = node1.node_list[2].getType(symbol_table, error_list)
                             if(type_exp != "type_error" and type_exp != "bool"):
                                 error_list.append("Type error, cannot IF without bool")
                         if(node1.node_list[0].type_node == 'for'):
-                            print("check for - done")
+                            print("check for")
                             for child_exp in node1.node_list:
                                 print("         " + child_exp.type_node)
                             type_exp_1 = node1.node_list[3].getType(symbol_table, error_list)
@@ -263,7 +263,7 @@ class Node:
                                 error_list.append("Type error, cannot FOR without id int decl")
                             
                         if(node1.node_list[0].type_node == 'location'):
-                            print("check location - done")
+                            print("check location")
                             location_type = ""
                             for child_exp in node1.node_list:
                                 print("         " + child_exp.type_node)
