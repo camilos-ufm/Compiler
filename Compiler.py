@@ -4,6 +4,7 @@ import scanner.Scanner as Scanner
 import parser.Parser as Parser
 import ast.Ast as Ast
 import semantic.Semantic as Semantic
+import irt.Irt as Irt
 import utils.ReadFile as ReadFile
 import utils.WriteFile as WriteFile
 
@@ -61,7 +62,11 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         sm = Semantic.Semantic()
         sm.semantic(main_program, debug)
     if(stage=="irt" or stage=="codegen"):
-        print("IRT not ready")
+        debug=False
+        if(("irt" in debug_stage)):
+            debug=True
+        irt = Irt.Irt()
+        irt.irt(main_program, debug)
     if(stage=="codegen"):
         print("CODEGEN not ready")
     if (stage!="scan" and stage!="parse" and stage!="ast" and stage!="semantic" and stage!="irt" and stage!="codegen"):
