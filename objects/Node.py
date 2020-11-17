@@ -1,6 +1,8 @@
 from anytree import Node as Node_any
 from anytree import RenderTree
 from anytree.exporter import DotExporter
+import objects.IrtNode as IrtNode
+
 
 class Node:
     def __init__(self, object_node, type_node, node_list):
@@ -18,16 +20,20 @@ class Node:
                     counter = node1.getNodes(Program, counter, nodey)
         return counter
     
-    def getIrtInstruction(self, Program, symbol_table, counter):
-        print(Program, symbol_table, counter)
+    def getIrtInstructions(self, irt_list, symbol_table, counter):
+        # return ""
+        if(self.type_node == "statement"):
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + "Instructions for: " + self.type_node))
+        if(self.type_node == "expr"):
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + "Instructions for: " + self.type_node))
 
-    def getNodesIrt(self, Program, counter):
+    def getNodesIrt(self, irt_list, symbol_table, counter):
         if(len(self.node_list)!=0 and self.type_node!=''):
             for node1 in self.node_list:
-                Program.append(node1)
+                node1.getIrtInstructions(irt_list, symbol_table, counter)
                 counter+=1
                 if(len(node1.node_list)!=0):
-                    counter = node1.getNodesIrt(Program, counter)
+                    counter = node1.getNodesIrt(irt_list, symbol_table, counter)
         return counter
 
     def typeCheck(self, symbol_table, counter, error_list):
