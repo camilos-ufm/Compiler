@@ -18,6 +18,9 @@ class Node:
                     counter = node1.getNodes(Program, counter, nodey)
         return counter
     
+    def getIrtInstruction(self, Program, symbol_table, counter):
+        print(Program, symbol_table, counter)
+
     def getNodesIrt(self, Program, counter):
         if(len(self.node_list)!=0 and self.type_node!=''):
             for node1 in self.node_list:

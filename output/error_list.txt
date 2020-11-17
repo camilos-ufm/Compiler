@@ -12,3 +12,23 @@
 [14/11/2020 11:39:47]: Type error: cannot rel_op two things !int
 [14/11/2020 11:39:47]: Type error: cannot FOR without id int decl
 [14/11/2020 11:39:47]: Type error: cannot assign int in char
+[17/11/2020 09:51:45]: Semantic error, Uniqueness check: identifier already used in line 6
+[17/11/2020 09:51:45]: Type error: cannot assign string in boolean
+[17/11/2020 09:51:45]: Cannot ! a thing that is !boolean
+[17/11/2020 09:51:45]: Type error: cannot ! op a thing that is !boolean
+[17/11/2020 09:51:45]: Semantic error, Uniqueness check: identifier already used in line 11
+[17/11/2020 09:51:45]: Type error: cannot arit_op two things !int
+[17/11/2020 09:51:45]: Type error: cannot arit op two !ints
+[17/11/2020 09:51:45]: Type error: cannot IF without boolean
+[17/11/2020 09:51:45]: Type error: cannot arit_op two things !int
+[17/11/2020 09:51:45]: Type error: cannot arit op two !ints
+[17/11/2020 09:51:45]: Type error: cannot FOR without boolean
+[17/11/2020 09:52:07]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:52:48]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:53:01]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:55:11]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:55:25]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:55:43]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:59:19]: Parse error: Unexpected token id at line 2
+[17/11/2020 09:59:36]: Parse error: Unexpected token id at line 2
+[17/11/2020 10:01:02]: Parse error: Unexpected token id at line 2
