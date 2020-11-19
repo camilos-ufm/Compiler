@@ -7,6 +7,12 @@ class Program {
             x+=1;
         } else {
             x = 0;
+            x = 1;
+            x = 2;
+        }
+
+        if(x != 0){
+            x = 0;
         }
     }   
     /*

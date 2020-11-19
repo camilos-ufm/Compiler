@@ -53,7 +53,13 @@ class Node:
         if(self.type_node == "statement"):
             irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "StartStatement"))
             #if is if -->
+            if(self.node_list[0].type_node == "if" and len(self.node_list)==5):
+                print("IF WO ELSE")
+                self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
 
+            if(self.node_list[0].type_node == "if" and len(self.node_list)==7):
+                self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
+                print("IF W ELSE")
             #vard_decl -->
 
             #for --> 
@@ -65,7 +71,7 @@ class Node:
             #return;break;continue
 
             #block -->
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+            # irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
             
             irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
 
