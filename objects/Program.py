@@ -28,8 +28,8 @@ class Program:
         for node in self.node_list:
             node.getIrtInstructions(self.irt_list, self.symbol_table, counter)
             counter+=1
-            if (len(node.node_list)!=0):
-                counter = node.getNodesIrt(self.irt_list, self.symbol_table, counter)
+            # if (len(node.node_list)!=0):
+            #     counter = node.getNodesIrt(self.irt_list, self.symbol_table, counter)
 
     def getFieldDeclList(self):
         return self.node_list[3].node_list

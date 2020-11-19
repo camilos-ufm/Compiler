@@ -32,3 +32,14 @@
 [17/11/2020 09:59:19]: Parse error: Unexpected token id at line 2
 [17/11/2020 09:59:36]: Parse error: Unexpected token id at line 2
 [17/11/2020 10:01:02]: Parse error: Unexpected token id at line 2
+[19/11/2020 13:55:48]: Semantic error, Uniqueness check: identifier already used in line 6
+[19/11/2020 13:55:48]: Type error: cannot assign string in boolean
+[19/11/2020 13:55:48]: Cannot ! a thing that is !boolean
+[19/11/2020 13:55:48]: Type error: cannot ! op a thing that is !boolean
+[19/11/2020 13:55:48]: Semantic error, Uniqueness check: identifier already used in line 11
+[19/11/2020 13:55:48]: Type error: cannot arit_op two things !int
+[19/11/2020 13:55:48]: Type error: cannot arit op two !ints
+[19/11/2020 13:55:48]: Type error: cannot IF without boolean
+[19/11/2020 13:55:48]: Type error: cannot arit_op two things !int
+[19/11/2020 13:55:48]: Type error: cannot arit op two !ints
+[19/11/2020 13:55:48]: Type error: cannot FOR without boolean

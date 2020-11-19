@@ -21,11 +21,60 @@ class Node:
         return counter
     
     def getIrtInstructions(self, irt_list, symbol_table, counter):
+        if(self.type_node == "field_decl_list"):
+            for field_decl_i in self.node_list:
+                counter+=1
+                field_decl_i.getIrtInstructions(irt_list, symbol_table, counter)
+        if(self.type_node == "method_decl_list"):
+            for method_decl_i in self.node_list:
+                counter+=1
+                method_decl_i.getIrtInstructions(irt_list, symbol_table, counter)
+        if(self.type_node == "field_decl"):
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+        if(self.type_node == "method_decl"):
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "TAG$"+self.node_list[1].object_node.value))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "BeginFuncMT"))
+            if(len(self.node_list[3].node_list) != 0):
+                self.node_list[3].getIrtInstructions(irt_list, symbol_table, counter)
+            self.node_list[5].getIrtInstructions(irt_list, symbol_table, counter)
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndFuncMT"))
+            # irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + "Instructions for: " + self.type_node))
         # return ""
+        if(self.type_node == "block"):
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "StartBlock"))
+
+            if(len(self.node_list[1].node_list) != 0):
+                for statement_i in self.node_list[1].node_list:
+                    counter+=1
+                    statement_i.getIrtInstructions(irt_list, symbol_table, counter)
+
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndBlock"))
+
         if(self.type_node == "statement"):
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + "Instructions for: " + self.type_node))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "StartStatement"))
+            #if is if -->
+
+            #vard_decl -->
+
+            #for --> 
+
+            #location;assign;expr -->
+
+            #methodcall -->
+
+            #return;break;continue
+
+            #block -->
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+            
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
+
         if(self.type_node == "expr"):
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + "Instructions for: " + self.type_node))
+
+            #suma -- >
+            #compare -- >
+            #method call -- >
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
 
     def getNodesIrt(self, irt_list, symbol_table, counter):
         if(len(self.node_list)!=0 and self.type_node!=''):
