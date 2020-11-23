@@ -43,3 +43,32 @@
 [19/11/2020 13:55:48]: Type error: cannot arit_op two things !int
 [19/11/2020 13:55:48]: Type error: cannot arit op two !ints
 [19/11/2020 13:55:48]: Type error: cannot FOR without boolean
+[20/11/2020 16:13:18]: Semantic error, Uniqueness check: identifier already used in line 6
+[20/11/2020 16:13:18]: Type error: cannot assign string in boolean
+[20/11/2020 16:13:18]: Cannot ! a thing that is !boolean
+[20/11/2020 16:13:18]: Type error: cannot ! op a thing that is !boolean
+[20/11/2020 16:13:18]: Semantic error, Uniqueness check: identifier already used in line 11
+[20/11/2020 16:13:18]: Type error: cannot arit_op two things !int
+[20/11/2020 16:13:18]: Type error: cannot arit op two !ints
+[20/11/2020 16:13:18]: Type error: cannot IF without boolean
+[20/11/2020 16:13:18]: Type error: cannot arit_op two things !int
+[20/11/2020 16:13:18]: Type error: cannot arit op two !ints
+[20/11/2020 16:13:18]: Type error: cannot FOR without boolean
+[22/11/2020 21:49:03]: Lexical error: invalid token found in line 6
+[22/11/2020 21:49:03]: Lexical error: invalid token found in line 6
+[22/11/2020 21:49:03]: Parse error: unexpected token id at line 6
+[22/11/2020 21:51:50]: Lexical error: invalid token found in line 6
+[22/11/2020 21:51:50]: Lexical error: invalid token found in line 6
+[22/11/2020 21:51:50]: Parse error: unexpected token id at line 6
+[22/11/2020 21:54:16]: Type error: cannot cond_op two things !boolean
+[22/11/2020 21:54:16]: Type error: cannot eq_op two things with diff type
+[22/11/2020 21:54:16]: Type error: cannot cond_op two things !boolean
+[22/11/2020 21:55:42]: Type error: cannot cond_op two things !boolean
+[22/11/2020 21:55:42]: Type error: cannot eq_op two things with diff type
+[22/11/2020 21:55:42]: Type error: cannot cond_op two things !boolean
+[22/11/2020 22:00:05]: Type error: cannot cond_op two things !boolean
+[22/11/2020 22:00:05]: Type error: cannot eq_op two things with diff type
+[22/11/2020 22:00:05]: Type error: cannot cond_op two things !boolean
+[22/11/2020 22:00:17]: Type error: cannot cond_op two things !boolean
+[22/11/2020 22:00:17]: Type error: cannot eq_op two things with diff type
+[22/11/2020 22:00:17]: Type error: cannot cond_op two things !boolean

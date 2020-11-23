@@ -37,6 +37,7 @@ python Compiler.py simple -target parse -debug parse:scan -o out
 
 python Compiler.py semantic -target semantic -debug ast:semantic
 python Compiler.py eje -target semantic -debug semantic
+python Compiler.py irt2 -target irt
 ```
 
 **💡 IMPORTANTE** 

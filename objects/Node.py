@@ -52,10 +52,12 @@ class Node:
 
         if(self.type_node == "statement"):
             irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "StartStatement"))
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
             #if is if -->
             if(self.node_list[0].type_node == "if" and len(self.node_list)==5):
                 print("IF WO ELSE")
                 self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
+
 
             if(self.node_list[0].type_node == "if" and len(self.node_list)==7):
                 self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
@@ -71,16 +73,18 @@ class Node:
             #return;break;continue
 
             #block -->
-            # irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
             
             irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
 
         if(self.type_node == "expr"):
+            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+            #expr binop expr 
+
+
 
             #suma -- >
             #compare -- >
             #method call -- >
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
 
     def getNodesIrt(self, irt_list, symbol_table, counter):
         if(len(self.node_list)!=0 and self.type_node!=''):

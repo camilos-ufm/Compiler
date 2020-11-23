@@ -139,7 +139,7 @@ class Scanner:
                     tk = Token.Token(self.SYMBOL_LIST[23], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False
-                elif(word=="cond_op"):
+                elif(word=="&&" or word == "||"):
                     tk = Token.Token(self.SYMBOL_LIST[24], object_list[1], word)
                     token_list.append(tk)
                     invalid_token = False

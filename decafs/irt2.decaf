@@ -5,7 +5,9 @@ class Program {
         x = 0;
         if(x == 0){
             x+=1;
-        } else {
+        } 
+        /*
+        else {
             x = 0;
             x = 1;
             x = 2;
@@ -14,6 +16,7 @@ class Program {
         if(x != 0){
             x = 0;
         }
+        */
     }   
     /*
     int fib(){

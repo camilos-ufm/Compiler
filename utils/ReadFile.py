@@ -97,7 +97,7 @@ class ReadFile():
                                 pass
                         cx+=1
                     for char in string_line:
-                        if(char=="&" or char=="%" or char=="/"
+                        if(char=="%" or char=="/"
                             or char=="*" or char=="(" or char==")" or char=="{" or char=="}" or char==";" or char==","):
                             string_line = string_line.replace(string_line[string_line.index(char)], " "+string_line[string_line.index(char)]+" ")
                         
@@ -116,6 +116,8 @@ class ReadFile():
                         string_line = string_line.replace("!=", " != ")  
                     elif("||" in string_line):
                         string_line = string_line.replace("||", " || ")  
+                    elif("&&" in string_line):
+                        string_line = string_line.replace("&&", " && ")  
                     elif("++" in string_line):
                         string_line = string_line.replace("++", " ++ ")
                     elif("--" in string_line):
