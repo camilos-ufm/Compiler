@@ -57,6 +57,8 @@ class Node:
             if(self.node_list[0].type_node == "if" and len(self.node_list)==5):
                 print("IF WO ELSE")
                 self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
+                irt_list.append(IrtNode.IrtNode(self.type_node, "If !EXPR then Go TO "))
+                self.node_list[4].getIrtInstructions(irt_list, symbol_table, counter)
 
 
             if(self.node_list[0].type_node == "if" and len(self.node_list)==7):
