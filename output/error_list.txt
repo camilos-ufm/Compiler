@@ -72,3 +72,27 @@
 [22/11/2020 22:00:17]: Type error: cannot cond_op two things !boolean
 [22/11/2020 22:00:17]: Type error: cannot eq_op two things with diff type
 [22/11/2020 22:00:17]: Type error: cannot cond_op two things !boolean
+[23/11/2020 19:41:10]: Type error: cannot cond_op two things !boolean
+[23/11/2020 19:41:10]: Type error: cannot eq_op two things with diff type
+[23/11/2020 19:41:10]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:22:51]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:22:51]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:22:51]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:09]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:09]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:30:09]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:16]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:16]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:30:16]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:34]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:34]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:30:34]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:54]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:54]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:30:54]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:56]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:30:56]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:30:56]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:31:00]: Type error: cannot cond_op two things !boolean
+[23/11/2020 22:31:00]: Type error: cannot eq_op two things with diff type
+[23/11/2020 22:31:00]: Type error: cannot cond_op two things !boolean

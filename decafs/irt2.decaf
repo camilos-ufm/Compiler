@@ -4,10 +4,9 @@ class Program {
         int x;
         x = 0;
         if(x == 0){
-            if(x!=1){
-                x+=1;
-            }
+            x+=1;
         } 
+        x = 0;
         /*
         else {
             x = 0;
@@ -20,14 +19,17 @@ class Program {
         }
         */
     }   
-    /*
+    
+    
     int fib(){
         int x;
         x = 0;
-        if(x == 0){
+        if((x == 0) || (x == 1) ){
             x+=1;
-        } else {
+        } 
+        /*else {
             x = 0;
         }
-    }  */  
+        */
+    }  
 }
