@@ -9,6 +9,37 @@ class Node:
         self.object_node = object_node
         self.type_node = type_node
         self.node_list = node_list
+    
+    def getMinValue(self, symbol_table, counter):
+        if(self.type_node == "expr"):
+            if(self.node_list[0].type_node == "location"):
+                for decls in symbol_table[::-1]:
+                    for decl in decls:
+                        if self.node_list[0].node_list[0].object_node.value == decl[1]:
+                            return_type = decl[3]
+                            return str(return_type)
+                            break
+            elif(self.node_list[0].type_node == "literal"):
+                if(self.node_list[0].node_list[0].type_node == "int_literal"):
+                    return str(self.node_list[0].node_list[0].object_node.value)          
+            else:
+                return "minValue"
+        elif(self.type_node == "bin_op"):
+            if(self.node_list[0].type_node == "eq_op"):
+                return self.node_list[0].object_node.value
+            else:
+                return "minValue"
+        elif(self.type_node == "assign_op"):
+            return self.object_node.value
+        elif(self.type_node == "location"):
+            for decls in symbol_table[::-1]:
+                for decl in decls:
+                    if self.node_list[0].object_node.value == decl[1]:
+                        return_type = decl[3]
+                        return str(return_type)
+                        break
+        else:
+            return "minValue"
 
     def getNodes(self, Program, counter, parent_node):
         if(len(self.node_list)!=0 and self.type_node!=''):
@@ -65,12 +96,31 @@ class Node:
                 counter = self.node_list[4].getIrtInstructions(irt_list, symbol_table, counter)
                 irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "Goto "+if_label_continue))
                 irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "LABEL$"+if_label_continue))                
-            else:
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
-            if(self.node_list[0].type_node == "if" and len(self.node_list)==7):
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "LABEL$"+if_label_continue)) 
+
+            elif(self.node_list[0].type_node == "location" and len(self.node_list)==4): 
+                assign_op = self.node_list[1].getMinValue(symbol_table, counter) 
+                print("ASSIGN",assign_op)
+                if(assign_op == "="):
+                    irt_list.append(IrtNode.IrtNode(self.type_node,
+                        "MOVE "+self.node_list[0].getMinValue(symbol_table, counter) 
+                        + " " + assign_op + " " +  self.node_list[2].getMinValue(symbol_table, counter)))
+                elif(assign_op == "+="):
+                    irt_list.append(IrtNode.IrtNode(self.type_node, 
+                        "SUM "+ self.node_list[0].getMinValue(symbol_table, counter) + " "
+                        + self.node_list[0].getMinValue(symbol_table, counter) + " "
+                        + " " + self.node_list[2].getMinValue(symbol_table, counter)))
+                elif(assign_op == "-="):
+                    irt_list.append(IrtNode.IrtNode(self.type_node, 
+                        "MINUS "+ self.node_list[0].getMinValue(symbol_table, counter) + " "
+                        + self.node_list[0].getMinValue(symbol_table, counter) + " "
+                        + " " + self.node_list[2].getMinValue(symbol_table, counter)))
+
+            elif(self.node_list[0].type_node == "if" and len(self.node_list)==7):
                 counter = self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
                 print("IF W ELSE")
+            else:
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
             #vard_decl -->
 
             #for --> 
@@ -88,7 +138,16 @@ class Node:
             irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
             #expr binop expr 
             #expr.getValue ; binop getValue ; expr get value
-
+            if(len(self.node_list) == 3):
+                if(self.node_list[0].type_node == "expr" and 
+                    self.node_list[1].type_node=="bin_op" and 
+                    self.node_list[2].type_node=="expr"):
+                    if(len(self.node_list[0].node_list)==1 and len(self.node_list[1].node_list)==1 and len(self.node_list[1].node_list)==1 ):
+                        instruction = self.node_list[0].getMinValue(symbol_table, counter) + " " +self.node_list[1].getMinValue(symbol_table, counter) + " " + self.node_list[2].getMinValue(symbol_table, counter)
+                        if(label!=""):
+                            irt_list.append(IrtNode.IrtNode(self.type_node, label + " = " + instruction))
+                        else:
+                            irt_list.append(IrtNode.IrtNode(self.type_node, "_T"+ str(counter) + " = " + instruction))
 
             #suma -- >
             #compare -- >
@@ -214,7 +273,7 @@ class Node:
         else:   
             return "default"
 
-    def semanticAnalysis(self, symbol_table, counter, error_list):
+    def semanticAnalysis(self, symbol_table, counter, error_list, frame_pointer):
         if(len(self.node_list)!=0 and self.type_node!=''):
             inner_counter = 0
             for node1 in self.node_list:
@@ -226,7 +285,8 @@ class Node:
                             if node1.object_node.value == symbol_verify[1]:
                                 is_unique=False
                         if(is_unique):
-                            symbol_table[-1].append([self.node_list[inner_counter-1].object_node.value, node1.object_node.value, node1.object_node.line, 0])
+                            frame_pointer += 4
+                            symbol_table[-1].append([self.node_list[inner_counter-1].object_node.value, node1.object_node.value, node1.object_node.line, "$fp-"+str(frame_pointer)])
                         else:
                             error_list.append("Semantic error, Uniqueness check: identifier already used in line " + str(node1.object_node.line))
                     else:
@@ -364,5 +424,5 @@ class Node:
                 counter+=1
                 inner_counter+=1
                 if(len(node1.node_list)!=0):
-                    counter = node1.semanticAnalysis(symbol_table, counter, error_list)
+                    counter = node1.semanticAnalysis(symbol_table, counter, error_list, frame_pointer)
         return counter

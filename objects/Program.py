@@ -12,6 +12,7 @@ class Program:
         self.all_nodes = []
         self.program_tree = ''
         self.irt_list = []
+        self.frame_pointer = 0
 
     def getAllNodes(self):
         program_ui = Node_any("Program")

@@ -3,7 +3,9 @@ class Program {
     void main(){
         int x;
         x = 0;
-        if(x == 0){
+        int z;
+        z = 1;
+        if(x == z){
             x+=1;
         } 
         x = 0;
@@ -20,7 +22,7 @@ class Program {
         */
     }   
     
-    
+    /*
     int fib(){
         int x;
         x = 0;
@@ -31,5 +33,5 @@ class Program {
             x = 0;
         }
         */
-    }  
+    }  */
 }

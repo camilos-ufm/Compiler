@@ -16,8 +16,13 @@ class Semantic:
                 pass
             counter+=1
             if (len(node.node_list)!=0):
-                counter = node.semanticAnalysis(main_program.symbol_table, counter, error_list)
+                counter = node.semanticAnalysis(main_program.symbol_table, counter, error_list, main_program.frame_pointer)
         # clprint(main_program.node_list)
+        fp = 4
+        for symbol in main_program.symbol_table:
+            for symbol_in in symbol:
+                symbol_in[3] = "$fp-"+str(fp)
+                fp+=4
 
         #print(main_program.symbol_table)
         if(debug):
