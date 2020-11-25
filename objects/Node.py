@@ -115,7 +115,7 @@ class Node:
                         "MINUS "+ self.node_list[0].getMinValue(symbol_table, counter) + " "
                         + self.node_list[0].getMinValue(symbol_table, counter) + " "
                         + " " + self.node_list[2].getMinValue(symbol_table, counter)))
-
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
             elif(self.node_list[0].type_node == "if" and len(self.node_list)==7):
                 counter = self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
                 print("IF W ELSE")
