@@ -96,3 +96,4 @@
 [23/11/2020 22:31:00]: Type error: cannot cond_op two things !boolean
 [23/11/2020 22:31:00]: Type error: cannot eq_op two things with diff type
 [23/11/2020 22:31:00]: Type error: cannot cond_op two things !boolean
+[25/11/2020 11:07:18]: Parse error: unexpected token minus_op at line 12

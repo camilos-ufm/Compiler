@@ -21,11 +21,19 @@ class Node:
                             break
             elif(self.node_list[0].type_node == "literal"):
                 if(self.node_list[0].node_list[0].type_node == "int_literal"):
-                    return str(self.node_list[0].node_list[0].object_node.value)          
+                    return str(self.node_list[0].node_list[0].object_node.value)  
+            elif(self.node_list[0].type_node == "("):
+                self.node_list[1].getMinValue(symbol_table, counter)         
             else:
                 return "minValue"
         elif(self.type_node == "bin_op"):
             if(self.node_list[0].type_node == "eq_op"):
+                return self.node_list[0].object_node.value
+            elif(self.node_list[0].type_node == "rel_op"):
+                return self.node_list[0].object_node.value
+            elif(self.node_list[0].type_node == "arit_op"):
+                return self.node_list[0].object_node.value
+            elif(self.node_list[0].type_node == "eq_op"):
                 return self.node_list[0].object_node.value
             else:
                 return "minValue"
@@ -35,6 +43,13 @@ class Node:
             for decls in symbol_table[::-1]:
                 for decl in decls:
                     if self.node_list[0].object_node.value == decl[1]:
+                        return_type = decl[3]
+                        return str(return_type)
+                        break
+        elif(self.type_node == "id"):
+            for decls in symbol_table[::-1]:
+                for decl in decls:
+                    if self.object_node.value == decl[1]:
                         return_type = decl[3]
                         return str(return_type)
                         break
@@ -60,67 +75,107 @@ class Node:
             for method_decl_i in self.node_list:
                 counter = method_decl_i.getIrtInstructions(irt_list, symbol_table, counter)
         if(self.type_node == "field_decl"):
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+            irt_list.append(IrtNode.IrtNode(self.type_node, [str(counter) + " Instructions for: " + self.type_node]))
         if(self.type_node == "method_decl"):
-            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "LABEL$"+self.node_list[1].object_node.value))
-            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "BeginFuncMT"))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL",self.node_list[1].object_node.value]))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["BeginFuncMT"]))
             if(len(self.node_list[3].node_list) != 0):
                 counter = self.node_list[3].getIrtInstructions(irt_list, symbol_table, counter)
             counter = self.node_list[5].getIrtInstructions(irt_list, symbol_table, counter)
-            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndFuncMT"))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndFuncMT"]))
             # irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + "Instructions for: " + self.type_node))
         # return ""
         if(self.type_node == "block"):
-            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "StartBlock"))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["StartBlock"]))
 
             if(len(self.node_list[1].node_list) != 0):
                 for statement_i in self.node_list[1].node_list:
                     counter = statement_i.getIrtInstructions(irt_list, symbol_table, counter)
 
-            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndBlock"))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndBlock"]))
 
         if(self.type_node == "statement"):
             counter+=1
-            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "StartStatement"))
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+            irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["StartStatement"]))
+            irt_list.append(IrtNode.IrtNode(self.type_node, [str(counter) + " Instructions for: " + self.type_node]))
             #if is if -->
             if(self.node_list[0].type_node == "if" and len(self.node_list)==5):
-                print("IF WO ELSE")
                 if_label_expr = "_T"+str(counter)
                 if_label = "_L"+str(counter)
                 if_label_continue = "_L"+str(counter+1)
                 counter = self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter, if_label_expr)
-                irt_list.append(IrtNode.IrtNode(self.type_node, "if "+if_label_expr+ " Goto "+if_label))
-                irt_list.append(IrtNode.IrtNode(self.type_node, "if not "+if_label_expr+ " Goto "+if_label_continue))
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "LABEL$"+if_label))
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if",if_label_expr,"Goto",if_label]))
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if not", if_label_expr, "Goto",if_label_continue]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL", if_label]))
                 counter = self.node_list[4].getIrtInstructions(irt_list, symbol_table, counter)
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "Goto "+if_label_continue))
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "LABEL$"+if_label_continue)) 
-
-            elif(self.node_list[0].type_node == "location" and len(self.node_list)==4): 
-                assign_op = self.node_list[1].getMinValue(symbol_table, counter) 
-                print("ASSIGN",assign_op)
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["Goto",if_label_continue]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndStatement"]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL",if_label_continue])) 
+            elif(self.node_list[0].type_node == "if" and len(self.node_list)==7):
+                if_label_expr = "_T"+str(counter)
+                if_label = "_L"+str(counter)
+                else_label = "_L"+str(counter+1)
+                if_label_continue = "_L"+str(counter+2)
+                counter = self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter, if_label_expr)
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if", if_label_expr, "Goto",if_label]))
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if not", if_label_expr, "Goto",else_label]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL",if_label]))
+                counter = self.node_list[4].getIrtInstructions(irt_list, symbol_table, counter)
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["Goto", if_label_continue]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL",else_label])) 
+                counter = self.node_list[6].getIrtInstructions(irt_list, symbol_table, counter)
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["Goto", if_label_continue]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndStatement"]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL",if_label_continue])) 
+            elif(self.node_list[0].type_node == "for"):
+                assign_op = self.node_list[2].getMinValue(symbol_table, counter) 
                 if(assign_op == "="):
                     irt_list.append(IrtNode.IrtNode(self.type_node,
-                        "MOVE "+self.node_list[0].getMinValue(symbol_table, counter) 
-                        + " " + assign_op + " " +  self.node_list[2].getMinValue(symbol_table, counter)))
+                        ["MOVE",self.node_list[1].getMinValue(symbol_table, counter),
+                        assign_op, self.node_list[3].getMinValue(symbol_table, counter) ]))
                 elif(assign_op == "+="):
                     irt_list.append(IrtNode.IrtNode(self.type_node, 
-                        "SUM "+ self.node_list[0].getMinValue(symbol_table, counter) + " "
-                        + self.node_list[0].getMinValue(symbol_table, counter) + " "
-                        + " " + self.node_list[2].getMinValue(symbol_table, counter)))
+                        ["SUM", self.node_list[1].getMinValue(symbol_table, counter),
+                        self.node_list[1].getMinValue(symbol_table, counter),
+                        self.node_list[3].getMinValue(symbol_table, counter) ]))
                 elif(assign_op == "-="):
                     irt_list.append(IrtNode.IrtNode(self.type_node, 
-                        "MINUS "+ self.node_list[0].getMinValue(symbol_table, counter) + " "
-                        + self.node_list[0].getMinValue(symbol_table, counter) + " "
-                        + " " + self.node_list[2].getMinValue(symbol_table, counter)))
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
-            elif(self.node_list[0].type_node == "if" and len(self.node_list)==7):
-                counter = self.node_list[2].getIrtInstructions(irt_list, symbol_table, counter)
-                print("IF W ELSE")
+                        ["MINUS", self.node_list[1].getMinValue(symbol_table, counter),
+                        self.node_list[1].getMinValue(symbol_table, counter),
+                        self.node_list[3].getMinValue(symbol_table, counter) ]))
+
+                if_label_expr = "_T"+str(counter)
+                if_label = "_L"+str(counter)
+                if_label_continue = "_L"+str(counter+1)
+                counter = self.node_list[5].getIrtInstructions(irt_list, symbol_table, counter, if_label_expr)
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if",if_label_expr,"Goto",if_label]))
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if not", if_label_expr, "Goto",if_label_continue]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL", if_label]))
+                counter = self.node_list[6].getIrtInstructions(irt_list, symbol_table, counter)
+                counter = self.node_list[5].getIrtInstructions(irt_list, symbol_table, counter, if_label_expr)
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if",if_label_expr,"Goto",if_label]))
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["if not", if_label_expr, "Goto",if_label_continue]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndStatement"]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["LABEL",if_label_continue])) 
+            elif(self.node_list[0].type_node == "location" and len(self.node_list)==4): 
+                assign_op = self.node_list[1].getMinValue(symbol_table, counter) 
+                if(assign_op == "="):
+                    irt_list.append(IrtNode.IrtNode(self.type_node,
+                        ["MOVE",self.node_list[0].getMinValue(symbol_table, counter),
+                        assign_op, self.node_list[2].getMinValue(symbol_table, counter) ]))
+                elif(assign_op == "+="):
+                    irt_list.append(IrtNode.IrtNode(self.type_node, 
+                        ["SUM", self.node_list[0].getMinValue(symbol_table, counter),
+                        self.node_list[0].getMinValue(symbol_table, counter),
+                        self.node_list[2].getMinValue(symbol_table, counter) ]))
+                elif(assign_op == "-="):
+                    irt_list.append(IrtNode.IrtNode(self.type_node, 
+                        ["MINUS", self.node_list[0].getMinValue(symbol_table, counter),
+                        self.node_list[0].getMinValue(symbol_table, counter),
+                        self.node_list[2].getMinValue(symbol_table, counter) ]))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndStatement"]))
             else:
-                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), "EndStatement"))
+                irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["EndStatement"]))
             #vard_decl -->
 
             #for --> 
@@ -135,7 +190,7 @@ class Node:
             
         if(self.type_node == "expr"):
             counter+=1
-            irt_list.append(IrtNode.IrtNode(self.type_node, str(counter) + " Instructions for: " + self.type_node))
+            irt_list.append(IrtNode.IrtNode(self.type_node, [str(counter) + " Instructions for: " + self.type_node]))
             #expr binop expr 
             #expr.getValue ; binop getValue ; expr get value
             if(len(self.node_list) == 3):
@@ -143,11 +198,13 @@ class Node:
                     self.node_list[1].type_node=="bin_op" and 
                     self.node_list[2].type_node=="expr"):
                     if(len(self.node_list[0].node_list)==1 and len(self.node_list[1].node_list)==1 and len(self.node_list[1].node_list)==1 ):
-                        instruction = self.node_list[0].getMinValue(symbol_table, counter) + " " +self.node_list[1].getMinValue(symbol_table, counter) + " " + self.node_list[2].getMinValue(symbol_table, counter)
+                        instruction = [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
                         if(label!=""):
-                            irt_list.append(IrtNode.IrtNode(self.type_node, label + " = " + instruction))
+                            irt_list.append(IrtNode.IrtNode(self.type_node, [label,"=",instruction]))
                         else:
-                            irt_list.append(IrtNode.IrtNode(self.type_node, "_T"+ str(counter) + " = " + instruction))
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["_T"+ str(counter),"=",instruction]))
+                elif(self.node_list[0].type_node=="("):
+                    self.node_list[1].getIrtInstructions(irt_list, symbol_table, counter, label)
 
             #suma -- >
             #compare -- >
