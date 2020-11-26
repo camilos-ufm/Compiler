@@ -6,7 +6,7 @@ class Program:
         self._fp_12 = 0
         self._fp_16 = 0
         self._fp_20 = 0
-    def main(self):
+    def fib(self):
         print("holarip")
         # load immediate literal into var1
         self._fp_8 = 1
@@ -18,8 +18,8 @@ class Program:
         self._fp_20 = 0
         # load immediate literal into var1
         self._fp_20 = 0
-         # loads data into t1, t0, set s_ to verify ifs
-        _s_2 = ( self._fp_20  <  5 )
+        # loads data into t1, t0, set s_ to verify ifs
+        _s_2 = ( self._fp_20  <  10 )
         # jump if condition
         if (_s_2):
             self._L25()
@@ -36,12 +36,8 @@ class Program:
         self._fp_12 = self._fp_16
         # sums var1 + immediate, saves in var1
         self._fp_20 = self._fp_20 + 1
-         # loads data into t1, t0, set s_ to verify ifs
-        _s_3 = ( self._fp_20  <  5 )
-
-        #custom print for debug
-        print(self._fp_16)
-
+        # loads data into t1, t0, set s_ to verify ifs
+        _s_3 = ( self._fp_20  <  10 )
         # jump if condition
         if (_s_3):
             self._L25()
@@ -52,4 +48,4 @@ class Program:
         print("_L26")
 if __name__ == "__main__":
     program = Program()
-    program.main()
+    program.fib()

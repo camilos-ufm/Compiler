@@ -1,5 +1,5 @@
 class Program {
-    void main(){
+    void fib(){
      int x;
      int y;
      int z;
@@ -9,7 +9,7 @@ class Program {
 
      int j;
      j = 0;
-     for j = 0, (j<5){
+     for j = 0, (j<10){
          z = x+y;
          x = y;
          y = z;

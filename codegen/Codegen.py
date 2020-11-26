@@ -131,7 +131,7 @@ class Codegen:
                 return [ins1, ins2]  
         elif(instruction[0]=="IF_BOOL"):
             instruction_list = []
-            instruction_list.append("         # loads data into t1, t0, set s_ to verify ifs")
+            instruction_list.append("        # loads data into t1, t0, set s_ to verify ifs")
             
             instruction_string = "        _s_"+str(self.if_bool_counter) + " = "
             string_to_convert = str(instruction[3])

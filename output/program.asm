@@ -1,7 +1,7 @@
         .data
 msg:    .asciiz "Hello World"
         .text
-main:
+fib:
     # load immediate literal into var1
     li $t1, 1
     sw $t1, 8($fp)
@@ -19,7 +19,7 @@ main:
     sw $t1, 20($fp)
     # loads data into t1, t0, set s_ to verify ifs
     lw $t0, 20($fp)
-    li $t1, 5
+    li $t1, 10
     slt $s0, $t0, $t1
     # jump if condition
     li $t0, 1
@@ -45,7 +45,7 @@ _L25:
     sw $t3, 20($fp)
     # loads data into t1, t0, set s_ to verify ifs
     lw $t0, 20($fp)
-    li $t1, 5
+    li $t1, 10
     slt $s1, $t0, $t1
     # jump if condition
     li $t0, 1
