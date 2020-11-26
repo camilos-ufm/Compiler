@@ -45,7 +45,7 @@ class Node:
                 return self.node_list[0].object_node.value
             elif(self.node_list[0].type_node == "arit_op"):
                 return self.node_list[0].object_node.value
-            elif(self.node_list[0].type_node == "eq_op"):
+            elif(self.node_list[0].type_node == "cond_op"):
                 return self.node_list[0].object_node.value
             else:
                 return "minValue"
@@ -217,6 +217,12 @@ class Node:
                             irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL",label,"=",instruction]))
                         else:
                             irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL","_T"+ str(counter),"=",instruction]))
+                    else:
+                        instruction = [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
+                        if(label!=""):
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL",label,"=",instruction]))
+                        else:
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL","_T"+ str(counter),"=",instruction]))
                 elif(self.node_list[0].type_node == "expr" and 
                     self.node_list[1].type_node=="minus_op" and 
                     self.node_list[2].type_node=="expr"):
@@ -229,7 +235,8 @@ class Node:
                 
                 elif(self.node_list[0].type_node=="("):
                     self.node_list[1].getIrtInstructions(irt_list, symbol_table, counter, label)
-
+            elif(self.node_list[0].type_node=="("):
+                self.node_list[1].getIrtInstructions(irt_list, symbol_table, counter, label)
             #suma -- >
             #compare -- >
             #method call -- >

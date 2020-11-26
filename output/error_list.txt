@@ -106,3 +106,7 @@
 [25/11/2020 21:25:34]: Type error: cannot assign char in boolean
 [25/11/2020 21:25:57]: Type error: cannot assign string in boolean
 [25/11/2020 21:39:32]: Parse error: unexpected token for at line 12
+[26/11/2020 01:09:18]: Type error: cannot cond_op two things !boolean
+[26/11/2020 01:09:18]: Type error: cannot eq_op two things with diff type
+[26/11/2020 01:09:18]: Type error: cannot cond_op two things !boolean
+[26/11/2020 01:21:36]: Type error: cannot assign boolean in int
