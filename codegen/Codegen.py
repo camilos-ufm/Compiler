@@ -14,6 +14,7 @@ class Codegen:
 
     def codegen(self, main_program, debug):
         code_list = []
+        code_list_2 = []
         # program_ui = main_program.program_tree
         # for pre, fill, node in RenderTree(program_ui):
         #     print("%s%s" % (pre, node.name))
@@ -26,7 +27,17 @@ class Codegen:
                         code_list.append(return_code_item)
                 else:
                     code_list.append(return_code)
-        return code_list
+        for node_irt in main_program.irt_list:
+            return_code = self.translatePython(node_irt.instruction)
+            if(return_code != None):
+                if(type(return_code) is list):
+                    for return_code_item in return_code:
+                        code_list_2.append(return_code_item)
+                else:
+                    code_list_2.append(return_code)
+        return code_list,code_list_2
+    def translatePython(self, instruction):
+        return "# python python python"
     def translateASM(self, instruction):
         # print("ASM:", instruction)
         #analyze instruction, create new instruction in ASM
