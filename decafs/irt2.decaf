@@ -1,4 +1,16 @@
 class Program {
+    int fib(){
+        int x;
+        x = 0;
+        if((x == 0) || (x == 1) ){
+            x+=1;
+        } 
+        /*else {
+            x = 0;
+        }
+        */
+    }  
+    
     void main(){
         int x;
         x = 0;
@@ -23,25 +35,11 @@ class Program {
             }
             j+=1;
         }
-        //fib();
-        // /*
-        // if(x != 0){
-        //     x = 0;
-        // }
-        // */
-    }   
-    
-    
-    /*
-    int fib(){
-        int x;
-        x = 0;
-        if((x == 0) || (x == 1) ){
-            x+=1;
-        } 
-        /*else {
+        fib();
+        /*
+        if(x != 0){
             x = 0;
         }
         */
-    }  */
+    }   
 }

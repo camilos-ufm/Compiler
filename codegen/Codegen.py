@@ -530,6 +530,11 @@ class Codegen:
             instruction_list.append("    # jump if not condition")
             instruction_list.append("    beq $s"+str(self.if_bool_counter-1) + ", $zero, "+ instruction[3])
             return instruction_list
+        elif(instruction[0]=="VAR_DECL"):
+            instruction_list = []
+            instruction_list.append("    # var decl, sp+=4")
+            instruction_list.append("    addi $sp, $sp, 4")
+            return instruction_list
         elif(instruction[0]=="EndProgram"):
             instruction_list = []
             instruction_list.append("    # end of program")

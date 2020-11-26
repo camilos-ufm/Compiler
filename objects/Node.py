@@ -113,7 +113,9 @@ class Node:
             irt_list.append(IrtNode.IrtNode(self.type_node + str(counter), ["StartStatement"]))
             irt_list.append(IrtNode.IrtNode(self.type_node, [str(counter) + " Instructions for: " + self.type_node]))
             #if is if -->
-            if(self.node_list[0].type_node == "if" and len(self.node_list)==5):
+            if(self.node_list[0].type_node == "var_decl"):
+                irt_list.append(IrtNode.IrtNode(self.type_node, ["VAR_DECL"]))
+            elif(self.node_list[0].type_node == "if" and len(self.node_list)==5):
                 if_label_expr = "_T"+str(counter)
                 if_label = "_L"+str(counter)
                 if_label_continue = "_L"+str(counter+1)

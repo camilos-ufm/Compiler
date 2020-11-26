@@ -2,6 +2,12 @@
 msg:    .asciiz "Hello World"
         .text
 fib:
+    # var decl, sp+=4
+    addi $sp, $sp, 4
+    # var decl, sp+=4
+    addi $sp, $sp, 4
+    # var decl, sp+=4
+    addi $sp, $sp, 4
     # load immediate literal into var1
     li $t1, 1
     sw $t1, 8($fp)
@@ -11,6 +17,8 @@ fib:
     # load immediate literal into var1
     li $t1, 0
     sw $t1, 16($fp)
+    # var decl, sp+=4
+    addi $sp, $sp, 4
     # load immediate literal into var1
     li $t1, 0
     sw $t1, 20($fp)
