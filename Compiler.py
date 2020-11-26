@@ -5,6 +5,7 @@ import parser.Parser as Parser
 import ast.Ast as Ast
 import semantic.Semantic as Semantic
 import irt.Irt as Irt
+import codegen.Codegen as Codegen
 import utils.ReadFile as ReadFile
 import utils.WriteFile as WriteFile
 
@@ -77,7 +78,10 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         irt_list = irt.irt(main_program, debug)
 
     if(stage=="codegen"):
-        print("CODEGEN not ready")
+        codegen = Codegen.Codegen()
+        codegen.codegen(main_program, debug)
+        # print("CODEGEN not ready")
+
     if (stage!="scan" and stage!="parse" and stage!="ast" and stage!="semantic" and stage!="irt" and stage!="codegen"):
         print("stage value not defined")
 

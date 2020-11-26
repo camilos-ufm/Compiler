@@ -23,9 +23,11 @@ class Node:
                 if(self.node_list[0].node_list[0].type_node == "int_literal"):
                     return str(self.node_list[0].node_list[0].object_node.value)  
             elif(self.node_list[0].type_node == "("):
-                self.node_list[1].getMinValue(symbol_table, counter)   
+                return (self.node_list[1].getMinValue(symbol_table, counter)) 
             elif(len(self.node_list)==3 and self.node_list[0].type_node == "expr" and self.node_list[1].type_node == "bin_op" and self.node_list[2].type_node == "expr"):      
                 return [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
+            elif(len(self.node_list) == 1 and self.node_list[0].type_node == "expr"):
+                return self.node_list[0].getMinValue(symbol_table, counter)
             else:
                 return "minValue"
         elif(self.type_node == "bin_op"):

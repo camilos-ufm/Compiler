@@ -25,13 +25,15 @@
 ~ Type: ;, Line: 7, Value: ; ~
 ~ Type: id, Line: 8, Value: z ~
 ~ Type: assign_op, Line: 8, Value: = ~
+~ Type: (, Line: 8, Value: ( ~
 ~ Type: id, Line: 8, Value: x ~
 ~ Type: arit_op, Line: 8, Value: + ~
 ~ Type: int_literal, Line: 8, Value: 1 ~
 ~ Type: arit_op, Line: 8, Value: + ~
 ~ Type: int_literal, Line: 8, Value: 2 ~
+~ Type: ), Line: 8, Value: ) ~
 ~ Type: arit_op, Line: 8, Value: * ~
-~ Type: int_literal, Line: 8, Value: 1 ~
+~ Type: id, Line: 8, Value: z ~
 ~ Type: ;, Line: 8, Value: ; ~
 ~ Type: type, Line: 9, Value: int ~
 ~ Type: id, Line: 9, Value: j ~
@@ -75,5 +77,5 @@
 ~ Type: int_literal, Line: 18, Value: 1 ~
 ~ Type: ;, Line: 18, Value: ; ~
 ~ Type: }, Line: 19, Value: } ~
-~ Type: }, Line: 26, Value: } ~
-~ Type: }, Line: 40, Value: } ~
+~ Type: }, Line: 25, Value: } ~
+~ Type: }, Line: 39, Value: } ~
