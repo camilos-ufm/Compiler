@@ -23,8 +23,15 @@ main:
     lw $t0, 12($fp)
     mul $t9, $t8, $t0
     sw $t9, 12($fp)
-    # intermidate operetions to var 1
-    sw $t9, 16($fp)
+    # intermidate operetions to var 1 bool
+    lw $t0, 12($fp)
+    li $t1, 1
+    seq $t3, $t0, $t1
+    lw $t4, 8($fp)
+    li $t5, 2
+    sne $t6, $t4, $t5
+    and $t1, $t4, $t6
+    sw $t1, 16($fp)
     # load immediate literal into var1
     li $t1, 1
     sw $t1, 20($fp)
@@ -47,6 +54,13 @@ main:
     beq $s0, $zero, _L34
 _L33:
     # loads data into t1, t0, set s_ to verify ifs
+    lw $t0, 8($fp)
+    lw $t1, 12($fp)
+    seq $t3, $t0, $t1
+    lw $t4, 8($fp)
+    li $t5, 0
+    sne $t6, $t4, $t5
+    and $s1, $t4, $t6
     # jump if condition
     li $t0, 1
     beq $s1, $t0, _L38

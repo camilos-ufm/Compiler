@@ -49,7 +49,7 @@
 ~ Type: cond_op, Line: 10, Value: && ~
 ~ Type: (, Line: 10, Value: ( ~
 ~ Type: id, Line: 10, Value: x ~
-~ Type: eq_op, Line: 10, Value: == ~
+~ Type: eq_op, Line: 10, Value: != ~
 ~ Type: int_literal, Line: 10, Value: 2 ~
 ~ Type: ), Line: 10, Value: ) ~
 ~ Type: ;, Line: 10, Value: ; ~

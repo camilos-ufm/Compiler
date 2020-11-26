@@ -79,6 +79,98 @@ class Codegen:
                         ins1 = "    li $t1, "+instruction[3]
                         ins2 = "    sw $t1, "+instruction[1][4:]+"($fp)"
                         return [ins4, ins1, ins2]
+                elif("&&" in instruction[3] or "||" in instruction[3]):
+                    ins1 = "    # intermidate operetions to var 1 bool"
+                    instruction_list = []
+                    instruction_list.append(ins1)
+
+                    if(instruction[3][1]=='&&'):
+                        if(instruction[3][0][0][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t0, " +instruction[3][0][0][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t0, " +instruction[3][0][0])
+                        if(instruction[3][0][2][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t1, " +instruction[3][0][2][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t1, " +instruction[3][0][2])
+                        if(instruction[3][0][1] == "=="):
+                            instruction_list.append("    seq $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == "<"):
+                            instruction_list.append("    slt $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == ">"):
+                            instruction_list.append("    sgt $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == "<="):
+                            instruction_list.append("    sle $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == ">="):
+                            instruction_list.append("    sge $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == "!="):
+                            instruction_list.append("    sne $t3, $t0, $t1")
+
+                        if(instruction[3][2][0][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t4, " +instruction[3][2][0][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t4, " +instruction[3][2][0])
+                        if(instruction[3][2][2][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t5, " +instruction[3][2][2][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t5, " +instruction[3][2][2])
+                        if(instruction[3][2][1] == "=="):
+                            instruction_list.append("    seq $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == "<"):
+                            instruction_list.append("    slt $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == ">"):
+                            instruction_list.append("    sgt $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == "<="):
+                            instruction_list.append("    sle $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == ">="):
+                            instruction_list.append("    sge $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == "!="):
+                            instruction_list.append("    sne $t6, $t4, $t5")
+
+                        instruction_list.append("    and $t1, $t4, $t6")
+                        instruction_list.append("    sw $t1, "+instruction[1][4:]+"($fp)")
+                    elif(instruction[3][1]=='||'):
+                        if(instruction[3][0][0][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t0, " +instruction[3][0][0][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t0, " +instruction[3][0][0])
+                        if(instruction[3][0][2][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t1, " +instruction[3][0][2][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t1, " +instruction[3][0][2])
+                        if(instruction[3][0][1] == "=="):
+                            instruction_list.append("    seq $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == "<"):
+                            instruction_list.append("    slt $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == ">"):
+                            instruction_list.append("    sgt $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == "<="):
+                            instruction_list.append("    sle $t3, $t0, $t1")
+                        elif(instruction[3][0][1] == ">="):
+                            instruction_list.append("    sge $t3, $t0, $t1")
+
+                        if(instruction[3][2][0][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t4, " +instruction[3][2][0][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t4, " +instruction[3][2][0])
+                        if(instruction[3][2][2][0:4] == "$fp-"):
+                            instruction_list.append("    lw $t5, " +instruction[3][2][2][4:]+"($fp)")
+                        else:
+                            instruction_list.append("    li $t5, " +instruction[3][2][2])
+                        if(instruction[3][2][1] == "=="):
+                            instruction_list.append("    seq $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == "<"):
+                            instruction_list.append("    slt $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == ">"):
+                            instruction_list.append("    sgt $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == "<="):
+                            instruction_list.append("    sle $t6, $t4, $t5")
+                        elif(instruction[3][2][1] == ">="):
+                            instruction_list.append("    sge $t6, $t4, $t5")
+
+                        instruction_list.append("    or $t1, $t4, $t6")
+                        instruction_list.append("    sw $t1, "+instruction[1][4:]+"($fp)")
+                    return instruction_list
                 else:
                     ins1 = "    # intermidate operetions to var 1"
                     instruction_list = []
@@ -230,10 +322,100 @@ class Codegen:
                 else:
                     instruction_list.append("    li $t1, " +instruction[3][2])
                 instruction_list.append("    sge $s"+str(self.if_bool_counter) + ", $t0, $t1")
+            elif(instruction[3][1]=='!='):
+                if(instruction[3][0][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t0, " +instruction[3][0][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t0, " +instruction[3][0])
+                if(instruction[3][2][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t1, " +instruction[3][2][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t1, " +instruction[3][2])
+                instruction_list.append("    sne $s"+str(self.if_bool_counter) + ", $t0, $t1")
             elif(instruction[3][1]=='&&'):
-                print("and")
+                if(instruction[3][0][0][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t0, " +instruction[3][0][0][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t0, " +instruction[3][0][0])
+                if(instruction[3][0][2][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t1, " +instruction[3][0][2][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t1, " +instruction[3][0][2])
+                if(instruction[3][0][1] == "=="):
+                    instruction_list.append("    seq $t3, $t0, $t1")
+                elif(instruction[3][0][1] == "<"):
+                    instruction_list.append("    slt $t3, $t0, $t1")
+                elif(instruction[3][0][1] == ">"):
+                    instruction_list.append("    sgt $t3, $t0, $t1")
+                elif(instruction[3][0][1] == "<="):
+                    instruction_list.append("    sle $t3, $t0, $t1")
+                elif(instruction[3][0][1] == ">="):
+                    instruction_list.append("    sge $t3, $t0, $t1")
+                elif(instruction[3][0][1] == "!="):
+                    instruction_list.append("    sne $t3, $t0, $t1")
+
+                if(instruction[3][2][0][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t4, " +instruction[3][2][0][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t4, " +instruction[3][2][0])
+                if(instruction[3][2][2][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t5, " +instruction[3][2][2][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t5, " +instruction[3][2][2])
+                if(instruction[3][2][1] == "=="):
+                    instruction_list.append("    seq $t6, $t4, $t5")
+                elif(instruction[3][2][1] == "<"):
+                    instruction_list.append("    slt $t6, $t4, $t5")
+                elif(instruction[3][2][1] == ">"):
+                    instruction_list.append("    sgt $t6, $t4, $t5")
+                elif(instruction[3][2][1] == "<="):
+                    instruction_list.append("    sle $t6, $t4, $t5")
+                elif(instruction[3][2][1] == ">="):
+                    instruction_list.append("    sge $t6, $t4, $t5")
+                elif(instruction[3][2][1] == "!="):
+                    instruction_list.append("    sne $t6, $t4, $t5")
+
+                instruction_list.append("    and $s"+str(self.if_bool_counter) + ", $t4, $t6")
             elif(instruction[3][1]=='||'):
-                print("or")
+                if(instruction[3][0][0][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t0, " +instruction[3][0][0][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t0, " +instruction[3][0][0])
+                if(instruction[3][0][2][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t1, " +instruction[3][0][2][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t1, " +instruction[3][0][2])
+                if(instruction[3][0][1] == "=="):
+                    instruction_list.append("    seq $t3, $t0, $t1")
+                elif(instruction[3][0][1] == "<"):
+                    instruction_list.append("    slt $t3, $t0, $t1")
+                elif(instruction[3][0][1] == ">"):
+                    instruction_list.append("    sgt $t3, $t0, $t1")
+                elif(instruction[3][0][1] == "<="):
+                    instruction_list.append("    sle $t3, $t0, $t1")
+                elif(instruction[3][0][1] == ">="):
+                    instruction_list.append("    sge $t3, $t0, $t1")
+
+                if(instruction[3][2][0][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t4, " +instruction[3][2][0][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t4, " +instruction[3][2][0])
+                if(instruction[3][2][2][0:4] == "$fp-"):
+                    instruction_list.append("    lw $t5, " +instruction[3][2][2][4:]+"($fp)")
+                else:
+                    instruction_list.append("    li $t5, " +instruction[3][2][2])
+                if(instruction[3][2][1] == "=="):
+                    instruction_list.append("    seq $t6, $t4, $t5")
+                elif(instruction[3][2][1] == "<"):
+                    instruction_list.append("    slt $t6, $t4, $t5")
+                elif(instruction[3][2][1] == ">"):
+                    instruction_list.append("    sgt $t6, $t4, $t5")
+                elif(instruction[3][2][1] == "<="):
+                    instruction_list.append("    sle $t6, $t4, $t5")
+                elif(instruction[3][2][1] == ">="):
+                    instruction_list.append("    sge $t6, $t4, $t5")
+
+                instruction_list.append("    or $s"+str(self.if_bool_counter) + ", $t4, $t6")
             #todo && and ||
             # print(self.if_bool_counter)
             self.if_bool_counter+=1

@@ -7,7 +7,7 @@ class Program {
         z+=3;
         z = (x + 1 / 2) * z;
         boolean b;
-        b = (z==1) && (x==2);
+        b = (z==1) && (x!=2);
         int j;
         j = 1;
         int k;
