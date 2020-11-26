@@ -28,6 +28,10 @@
 ~ Type: id, Line: 8, Value: x ~
 ~ Type: arit_op, Line: 8, Value: + ~
 ~ Type: int_literal, Line: 8, Value: 1 ~
+~ Type: arit_op, Line: 8, Value: + ~
+~ Type: int_literal, Line: 8, Value: 2 ~
+~ Type: arit_op, Line: 8, Value: * ~
+~ Type: int_literal, Line: 8, Value: 1 ~
 ~ Type: ;, Line: 8, Value: ; ~
 ~ Type: type, Line: 9, Value: int ~
 ~ Type: id, Line: 9, Value: j ~

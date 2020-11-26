@@ -5,7 +5,7 @@ class Program {
         x = 0;
         int z;
         z = 1;
-        z = x + 1;
+        z = x + 1 + 2 * 1;
         int j;
         j = 1;
         for j += x, (j < 5) {
@@ -17,7 +17,6 @@ class Program {
             }
             j+=1;
         }
-
         /*
         if(x != 0){
             x = 0;
