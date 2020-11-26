@@ -1,20 +1,18 @@
 class Program {
     void fib(){
-     int x;
-     int y;
-     int z;
-     x = 1;
-     y = 1;
-     z = 0;
-
-     int j;
-     j = 0;
-     for j = 0, (j<10){
-         z = x+y;
-         x = y;
-         y = z;
-         j+=1;
-     }
-        
+        int x;
+        int y;
+        int z;
+        x = 1;
+        y = 1;
+        z = 0;
+        int j;
+        j = 0;
+        for j = 0, (j<10){
+            z = x+y;
+            x = y;
+            y = z;
+            j+=1;
+        }
     }
 }
