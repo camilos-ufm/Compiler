@@ -30,7 +30,7 @@ class Codegen:
                 else:
                     code_list.append(return_code)
         for node_irt in main_program.irt_list:
-            return_code = self.translatePython(node_irt.instruction)
+            return_code = self.translatePython(node_irt.instruction, main_program)
             if(return_code != None):
                 if(type(return_code) is list):
                     for return_code_item in return_code:
@@ -38,23 +38,122 @@ class Codegen:
                 else:
                     code_list_2.append(return_code)
         return code_list,code_list_2
-    def translatePython(self, instruction):
-        if(instruction[0]=="LABEL"):
+    def translatePython(self, instruction, main_program):
+        if(instruction[0]=="StartProgram"):
+            ins1 = "# python code from decaf file"
+            ins_list = []
+            ins_list.append(ins1)
+
+            ins3 = "class Program:"
+            inst4 = "    def __init__(self):"
+            ins_list.append(ins3)
+            ins_list.append(inst4)
+
+            for decl in main_program.symbol_table:
+                for decl_i in decl:
+                    ins_list.append("        self."+decl_i[3].replace("$fp-", "_fp_")+" = 0")    
+            return ins_list
+        elif(instruction[0]=="LABEL"):
             if(self.method_counter_python == 0):
                 self.method_counter_python+=1
                 # ins0 = "if __name__ == \"__main__\":"
                 self.first_method = "   "+instruction[1]+"()"
-                ins1 = "def "+instruction[1]+"():"
-                ins2 = "    print(\"holarip\")"
+                ins1 = "    def "+instruction[1]+"(self):"
+                ins2 = "        print(\"holarip\")"
                 return [ins1,ins2]
             else:
-                ins1 = "def "+instruction[1]+"():"
-                ins2 = "    pass"
+                ins1 = "    def "+instruction[1]+"(self):"
+                ins2 = "        print(\""+instruction[1]+"\")"
                 return [ins1,ins2]
-        if(instruction[0]=="EndProgram"):
+        elif(instruction[0]=="EndProgram"):
             ins0 = "if __name__ == \"__main__\":"
-            return [ins0,self.first_method]
+            ins1 = "    program = Program()"
+            ins2 = "    program."+self.first_method.replace(" ","")
+            return [ins0,ins1,ins2]
+        elif(instruction[0]=="MOVE"):
+            if(len(instruction)==4):
+                if(type(instruction[3]) is not list):
+                    if(instruction[3][0:4] == "$fp-"):
+                        ins4 = "        # moving var2 into var1"
+                        ins2 = "        "+"self._fp_"+instruction[1][4:]+" = "+"self._fp_"+instruction[3][4:]
+                        return [ins4, ins2]
+                    else:
+                        ins4 = "        # load immediate literal into var1"
+                        ins1 = "        "+"self._fp_"+instruction[1][4:]+" = "+instruction[3]
+                        return [ins4, ins1]
+                elif("&&" in instruction[3] or "||" in instruction[3]):
+                    ins1 = "        # intermidate operetions to var 1 bool"
+                    instruction_list = []
+                    instruction_list.append(ins1)
+
+                    if(instruction[3][1]=='&&' or instruction[3][1]=='||'):
+                        instruction_list_string = "        "+"self._fp_"+str(instruction[1][4:])+" = "
+                        for instr in instruction[3]:
+                            if (type(instr) is list):
+                                for instr_i in instr:
+                                    if instr_i[0:4] == "$fp-":
+                                        instruction_list_string += "self._fp_"+instr_i[4:]
+                                    else:
+                                        instruction_list_string+=instr_i
+                            elif(instr == "&&"):
+                                instruction_list_string+=" and "
+                            elif(instr=="||"):
+                                instruction_list_string+=" or "
+                        instruction_list.append(instruction_list_string)
+                    return instruction_list
+                else:
+                    ins1 = "        # intermidate operetions to var 1"
+                    instruction_list = []
+                    instruction_list.append(ins1)
+                    instruction_string = "        "+"self._fp_"+instruction[1][4:]+ " = "
+                    string_to_convert = str(instruction[3])
+                    string_to_convert = string_to_convert.replace("\'", " ").replace(", ", "").replace("[", "(").replace("]",")").replace("$fp-", "self._fp_")
+                    instruction_string += string_to_convert
+                    instruction_list.append(instruction_string)
+                    return instruction_list
+        elif(instruction[0]=="SUM"):
+            if(instruction[3][0:4] == "$fp-"):
+                ins1 = "        # sums var1 + var2, saves in var1"
+                ins2 = "        self._fp_"+instruction[1][4:]+" = self._fp_" + instruction[1][4:]+ " + self._fp_"+instruction[3][4:]
+                return [ins1, ins2]
+            else:
+                ins1 = "        # sums var1 + immediate, saves in var1"
+                ins2 = "        self._fp_"+instruction[1][4:]+" = self._fp_" + instruction[1][4:]+ " + "+instruction[3]
+                return [ins1, ins2]                
+        elif(instruction[0]=="MINUS"):
+            if(instruction[3][0:4] == "$fp-"):
+                ins1 = "        # subs var1 - var2, saves in var1"
+                ins2 = "        self._fp_"+instruction[1][4:]+" = self._fp_" + instruction[1][4:]+ " - self._fp_"+instruction[3][4:]
+                return [ins1, ins2]
+            else:
+                ins1 = "        # subs var1 - immediate, saves in var1"
+                ins2 = "        self._fp_"+instruction[1][4:]+" = self._fp_" + instruction[1][4:]+ " - "+instruction[3]
+                return [ins1, ins2]  
+        elif(instruction[0]=="IF_BOOL"):
+            instruction_list = []
+            instruction_list.append("         # loads data into t1, t0, set s_ to verify ifs")
             
+            instruction_string = "        _s_"+str(self.if_bool_counter) + " = "
+            string_to_convert = str(instruction[3])
+            string_to_convert = string_to_convert.replace("\'", " ").replace(", ", "").replace("[", "(").replace("]",")").replace("$fp-", "self._fp_").replace("&&", "and").replace("||", "or")
+            instruction_string += string_to_convert
+            instruction_list.append(instruction_string)
+            # print(self.if_bool_counter)
+            self.if_bool_counter+=1
+            return instruction_list
+        elif(instruction[0]=="if"):
+            instruction_list = []
+            instruction_list.append("        # jump if condition")
+            instruction_list.append("        if (_s_"+str(self.if_bool_counter-1) + "):")
+            instruction_list.append("            self."+instruction[3]+"()")
+            return instruction_list
+        elif(instruction[0]=="if not"):
+            instruction_list = []
+            instruction_list.append("        # jump if not condition")
+            instruction_list.append("        if not (_s_"+str(self.if_bool_counter-1) + "):")
+            instruction_list.append("            self."+instruction[3]+"()")
+            return instruction_list
+          
     def translateASM(self, instruction):
         # print("ASM:", instruction)
         #analyze instruction, create new instruction in ASM
