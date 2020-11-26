@@ -11,6 +11,8 @@ from anytree.exporter import DotExporter
 class Codegen:
     def __init__(self):
         self.if_bool_counter = 0
+        self.method_counter_python = 0
+        self.first_method = ""
 
     def codegen(self, main_program, debug):
         code_list = []
@@ -37,7 +39,22 @@ class Codegen:
                     code_list_2.append(return_code)
         return code_list,code_list_2
     def translatePython(self, instruction):
-        return "# python python python"
+        if(instruction[0]=="LABEL"):
+            if(self.method_counter_python == 0):
+                self.method_counter_python+=1
+                # ins0 = "if __name__ == \"__main__\":"
+                self.first_method = "   "+instruction[1]+"()"
+                ins1 = "def "+instruction[1]+"():"
+                ins2 = "    print(\"holarip\")"
+                return [ins1,ins2]
+            else:
+                ins1 = "def "+instruction[1]+"():"
+                ins2 = "    pass"
+                return [ins1,ins2]
+        if(instruction[0]=="EndProgram"):
+            ins0 = "if __name__ == \"__main__\":"
+            return [ins0,self.first_method]
+            
     def translateASM(self, instruction):
         # print("ASM:", instruction)
         #analyze instruction, create new instruction in ASM
