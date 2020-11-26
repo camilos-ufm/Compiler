@@ -21,9 +21,12 @@ class Irt:
 
         main_program.getAllNodesIrt()
         # print(main_program.irt_list)
-        for node_irt in main_program.irt_list:
-            try:
-                # print(node_irt.type_irt)
-                print(node_irt.instruction)
-            except:
-                print("not an irt node")
+        if(debug):
+            for node_irt in main_program.irt_list:
+                try:
+                    # print(node_irt.type_irt)
+                    print(node_irt.instruction)
+                except:
+                    print("not an irt node")
+        
+        return main_program.irt_list

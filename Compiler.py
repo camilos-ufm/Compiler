@@ -74,7 +74,7 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         if(("irt" in debug_stage)):
             debug=True
         irt = Irt.Irt()
-        irt.irt(main_program, debug)
+        irt_list = irt.irt(main_program, debug)
 
     if(stage=="codegen"):
         print("CODEGEN not ready")
