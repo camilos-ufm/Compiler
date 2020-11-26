@@ -26,7 +26,7 @@ class Program:
                 counter = node.getNodes(self.all_nodes, counter, nodex)
    
     def getAllNodesIrt(self):
-        self.irt_list.append(IrtNode.IrtNode("Program", "StartProgram"))
+        self.irt_list.append(IrtNode.IrtNode("Program", ["StartProgram"]))
 
         counter=0
         for node in self.node_list:
@@ -35,7 +35,7 @@ class Program:
             # if (len(node.node_list)!=0):
             #     counter = node.getNodesIrt(self.irt_list, self.symbol_table, counter)
 
-        self.irt_list.append(IrtNode.IrtNode("Program", "EndProgram"))
+        self.irt_list.append(IrtNode.IrtNode("Program", ["EndProgram"]))
 
 
     def getFieldDeclList(self):

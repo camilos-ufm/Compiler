@@ -22,9 +22,17 @@ class Node:
             elif(self.node_list[0].type_node == "literal"):
                 if(self.node_list[0].node_list[0].type_node == "int_literal"):
                     return str(self.node_list[0].node_list[0].object_node.value)  
+                if(self.node_list[0].node_list[0].type_node == "string_literal"):
+                    return str(self.node_list[0].node_list[0].object_node.value)  
+                if(self.node_list[0].node_list[0].type_node == "char_literal"):
+                    return str(self.node_list[0].node_list[0].object_node.value)  
+                if(self.node_list[0].node_list[0].type_node == "bool_literal"):
+                    return str(self.node_list[0].node_list[0].object_node.value)  
             elif(self.node_list[0].type_node == "("):
                 return (self.node_list[1].getMinValue(symbol_table, counter)) 
             elif(len(self.node_list)==3 and self.node_list[0].type_node == "expr" and self.node_list[1].type_node == "bin_op" and self.node_list[2].type_node == "expr"):      
+                return [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
+            elif(len(self.node_list)==3 and self.node_list[0].type_node == "expr" and self.node_list[1].type_node == "minus_op" and self.node_list[2].type_node == "expr"):      
                 return [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
             elif(len(self.node_list) == 1 and self.node_list[0].type_node == "expr"):
                 return self.node_list[0].getMinValue(symbol_table, counter)
@@ -41,6 +49,8 @@ class Node:
                 return self.node_list[0].object_node.value
             else:
                 return "minValue"
+        elif(self.type_node == "minus_op"):
+            return self.object_node.value
         elif(self.type_node == "assign_op"):
             return self.object_node.value
         elif(self.type_node == "location"):
@@ -204,9 +214,19 @@ class Node:
                     if(len(self.node_list[0].node_list)==1 and len(self.node_list[1].node_list)==1 and len(self.node_list[1].node_list)==1 ):
                         instruction = [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
                         if(label!=""):
-                            irt_list.append(IrtNode.IrtNode(self.type_node, [label,"=",instruction]))
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL",label,"=",instruction]))
                         else:
-                            irt_list.append(IrtNode.IrtNode(self.type_node, ["_T"+ str(counter),"=",instruction]))
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL","_T"+ str(counter),"=",instruction]))
+                elif(self.node_list[0].type_node == "expr" and 
+                    self.node_list[1].type_node=="minus_op" and 
+                    self.node_list[2].type_node=="expr"):
+                    if(len(self.node_list[0].node_list)==1 and len(self.node_list[1].node_list)==1 ):
+                        instruction = [self.node_list[0].getMinValue(symbol_table, counter), self.node_list[1].getMinValue(symbol_table, counter), self.node_list[2].getMinValue(symbol_table, counter)]
+                        if(label!=""):
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL",label,"=",instruction]))
+                        else:
+                            irt_list.append(IrtNode.IrtNode(self.type_node, ["IF_BOOL","_T"+ str(counter),"=",instruction]))
+                
                 elif(self.node_list[0].type_node=="("):
                     self.node_list[1].getIrtInstructions(irt_list, symbol_table, counter, label)
 

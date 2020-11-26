@@ -11,6 +11,13 @@ class WriteFile():
             file_output.write(line+"\n")
         file_output.close()
 
+    def write_file_no_extension(self, file_name, string_list):
+        self.file_name = file_name
+        file_output = open("output/"+file_name, "w")
+        for line in string_list:
+            file_output.write(line+"\n")
+        file_output.close()
+
     def write_file_append(self, file_name, string_list):
         # datetime object containing current date and time
         now = datetime.now()

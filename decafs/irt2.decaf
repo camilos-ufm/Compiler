@@ -1,14 +1,16 @@
 class Program {
-    boolean y;
     void main(){
         int x;
         x = 0;
         int z;
         z = 1;
-        z = (x + 1 + 2) * z;
+        z+=3;
+        z = (x + 1 / 2) * z;
         int j;
         j = 1;
-        for j += x, (j < 5) {
+        int k;
+        k = j;
+        for j += x, (j <= 5) {
             if(x == z){
                 x+=1;
             } 
@@ -17,12 +19,14 @@ class Program {
             }
             j+=1;
         }
-        /*
-        if(x != 0){
-            x = 0;
-        }
-        */
+        //fib();
+        // /*
+        // if(x != 0){
+        //     x = 0;
+        // }
+        // */
     }   
+    
     
     /*
     int fib(){

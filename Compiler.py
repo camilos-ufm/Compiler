@@ -79,7 +79,9 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
 
     if(stage=="codegen"):
         codegen = Codegen.Codegen()
-        codegen.codegen(main_program, debug)
+        code_list = codegen.codegen(main_program, debug)
+        wf.write_file_no_extension("program.asm", code_list)
+        # TODO write file asm or py from code_list
         # print("CODEGEN not ready")
 
     if (stage!="scan" and stage!="parse" and stage!="ast" and stage!="semantic" and stage!="irt" and stage!="codegen"):

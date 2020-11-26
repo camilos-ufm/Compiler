@@ -97,3 +97,12 @@
 [23/11/2020 22:31:00]: Type error: cannot eq_op two things with diff type
 [23/11/2020 22:31:00]: Type error: cannot cond_op two things !boolean
 [25/11/2020 11:07:18]: Parse error: unexpected token minus_op at line 12
+[25/11/2020 20:50:28]: Semantic error, Uniqueness check: Var not declared in line 20
+[25/11/2020 20:51:01]: Semantic error, Uniqueness check: Var not declared in line 20
+[25/11/2020 20:52:18]: Semantic error, Uniqueness check: Var not declared in line 20
+[25/11/2020 21:23:03]: Type error: cannot assign string in int
+[25/11/2020 21:23:18]: Type error: cannot assign string in int
+[25/11/2020 21:24:48]: Type error: cannot assign char in boolean
+[25/11/2020 21:25:34]: Type error: cannot assign char in boolean
+[25/11/2020 21:25:57]: Type error: cannot assign string in boolean
+[25/11/2020 21:39:32]: Parse error: unexpected token for at line 12
