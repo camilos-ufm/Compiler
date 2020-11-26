@@ -230,6 +230,10 @@ class Codegen:
                 else:
                     instruction_list.append("    li $t1, " +instruction[3][2])
                 instruction_list.append("    sge $s"+str(self.if_bool_counter) + ", $t0, $t1")
+            elif(instruction[3][1]=='&&'):
+                print("and")
+            elif(instruction[3][1]=='||'):
+                print("or")
             #todo && and ||
             # print(self.if_bool_counter)
             self.if_bool_counter+=1
