@@ -38,6 +38,7 @@ python Compiler.py simple -target parse -debug parse:scan -o out
 python Compiler.py semantic -target semantic -debug ast:semantic
 python Compiler.py eje -target semantic -debug semantic
 python Compiler.py irt2 -target irt
+python Compiler.py final -target codegen -debug irt
 ```
 
 **💡 IMPORTANTE** 
@@ -54,8 +55,9 @@ python Compiler.py irt2 -target irt
 
 # Fase del proyecto
 - [x] Scanner
-- [ ] Parser
-- [ ] Semantic Check
-- [ ] IRT
-- [ ]  Code Gen
+- [x] Parser
+- [x] Semantic Check
+- [x] IRT
+- [x] Code Gen
+- [x] Python && ASM
 
