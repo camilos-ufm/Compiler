@@ -42,6 +42,7 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         # write file in output/
         wf.write_file(file_name, string_list)
         # write file in output/
+        error1 = len(error_list)
         wf.write_file_append("error_list", error_list)
 
     if(stage=="parse" or stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
@@ -53,6 +54,7 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         main_program, error_list = pr.parse(token_list, debug)
         # write file in output/
         wf.write_file_append("error_list", error_list)
+        error2 = len(error_list)
 
     if(stage=="ast" or stage=="semantic" or stage=="irt" or stage=="codegen"):
         debug=False
@@ -69,21 +71,26 @@ def runCompiler(input_file, file_name, stage, opt_stage, debug_stage):
         error_list = sm.semantic(main_program, debug)
         # write file in output/
         wf.write_file_append("error_list", error_list)
-
+        error3 = len(error_list)
     if(stage=="irt" or stage=="codegen"):
-        debug=False
-        if(("irt" in debug_stage)):
-            debug=True
-        irt = Irt.Irt()
-        irt_list = irt.irt(main_program, debug)
+        if(error1 == 0 and error2 == 0 and error3 == 0):
+            debug=False
+            if(("irt" in debug_stage)):
+                debug=True
+            irt = Irt.Irt()
+            irt_list = irt.irt(main_program, debug)
+        else:
+            print("There are errors in the error_log")
 
     if(stage=="codegen"):
-        codegen = Codegen.Codegen()
-        code_list,code_list_2 = codegen.codegen(main_program, debug)
-        wf.write_file_no_extension("program.asm", code_list)
-        
-        wf.write_file_no_extension("program.py", code_list_2)
-
+        if(error1 == 0 and error2 == 0 and error3 == 0):
+            codegen = Codegen.Codegen()
+            code_list,code_list_2 = codegen.codegen(main_program, debug)
+            wf.write_file_no_extension("program.asm", code_list)
+            
+            wf.write_file_no_extension("program.py", code_list_2)
+        else:
+            print("There are errors in the error_log")
         # TODO write file asm or py from code_list
         # print("CODEGEN not ready")
 

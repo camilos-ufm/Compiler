@@ -532,7 +532,7 @@ class Codegen:
             return instruction_list
         elif(instruction[0]=="VAR_DECL"):
             instruction_list = []
-            instruction_list.append("    # var decl, sp+=4")
+            instruction_list.append("    # var decl, sp=4")
             instruction_list.append("    addi $sp, $sp, 4")
             return instruction_list
         elif(instruction[0]=="EndProgram"):

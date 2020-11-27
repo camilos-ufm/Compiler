@@ -112,3 +112,47 @@
 [26/11/2020 01:21:36]: Type error: cannot assign boolean in int
 [26/11/2020 14:55:24]: Semantic error, Uniqueness check: Var not declared in line 26
 [26/11/2020 14:56:31]: Semantic error, Uniqueness check: Var not declared in line 26
+[27/11/2020 12:51:00]: Parse error: unexpected token assign_op at line 11
+[27/11/2020 12:52:42]: Parse error: unexpected token assign_op at line 12
+[27/11/2020 12:55:00]: Type error: cannot rel_op two things !int
+[27/11/2020 12:55:00]: Type error: cannot FOR without id int decl
+[27/11/2020 12:55:00]: Type error: cannot assign int in string
+[27/11/2020 12:55:38]: Parse error: unexpected token type at line 3
+[27/11/2020 12:56:41]: Parse error: unexpected token assign_op at line 9
+[27/11/2020 12:57:34]: Semantic error, Uniqueness check: identifier already used in line 9
+[27/11/2020 12:57:34]: Type error: cannot rel_op two things !int
+[27/11/2020 12:57:34]: Type error: cannot FOR without id int decl
+[27/11/2020 12:57:34]: Type error: cannot assign int in string
+[27/11/2020 12:57:57]: Parse error: unexpected token type at line 3
+[27/11/2020 12:58:49]: Type error: cannot assign int in 
+[27/11/2020 12:58:49]: Semantic error, Uniqueness check: Var not declared in line 5
+[27/11/2020 12:58:49]: Type error: cannot rel_op two things !int
+[27/11/2020 12:58:49]: Type error: cannot FOR without id int decl
+[27/11/2020 12:58:49]: Type error: cannot arit_op two things !int
+[27/11/2020 12:58:49]: Semantic error, Uniqueness check: Var not declared in line 11
+[27/11/2020 12:58:49]: Type error: cannot assign int in 
+[27/11/2020 12:58:49]: Semantic error, Uniqueness check: Var not declared in line 12
+[27/11/2020 12:58:49]: Type error: cannot assign int in string
+[27/11/2020 13:02:20]: Type error: cannot assign int in 
+[27/11/2020 13:02:20]: Semantic error, Uniqueness check: Var not declared in line 5
+[27/11/2020 13:02:20]: Type error: cannot rel_op two things !int
+[27/11/2020 13:02:20]: Type error: cannot FOR without id int decl
+[27/11/2020 13:02:20]: Type error: cannot arit_op two things !int
+[27/11/2020 13:02:20]: Semantic error, Uniqueness check: Var not declared in line 11
+[27/11/2020 13:02:20]: Type error: cannot assign int in 
+[27/11/2020 13:02:20]: Semantic error, Uniqueness check: Var not declared in line 12
+[27/11/2020 13:02:20]: Type error: cannot assign int in string
+[27/11/2020 13:02:36]: Type error: cannot rel_op two things !int
+[27/11/2020 13:02:36]: Type error: cannot FOR without id int decl
+[27/11/2020 13:02:36]: Semantic error, Uniqueness check: Var not declared in line 10
+[27/11/2020 13:02:36]: Semantic error, Uniqueness check: Var not declared in line 10
+[27/11/2020 13:02:36]: Type error: cannot assign int in 
+[27/11/2020 13:02:36]: Semantic error, Uniqueness check: Var not declared in line 14
+[27/11/2020 13:03:03]: Type error: cannot rel_op two things !int
+[27/11/2020 13:03:03]: Type error: cannot FOR without id int decl
+[27/11/2020 13:03:03]: Semantic error, Uniqueness check: Var not declared in line 10
+[27/11/2020 13:03:03]: Semantic error, Uniqueness check: Var not declared in line 10
+[27/11/2020 13:03:03]: Type error: cannot assign int in 
+[27/11/2020 13:03:03]: Semantic error, Uniqueness check: Var not declared in line 14
+[27/11/2020 13:40:59]: Parse error: unexpected token type at line 5
+[27/11/2020 13:41:20]: Parse error: unexpected token assign_op at line 11
